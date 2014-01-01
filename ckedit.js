@@ -1,11 +1,4 @@
-/*\
-title: $:/core/modules/widgets/edit-html.js
-type: application/javascript
-module-type: widget
 
-Edit-html widget
-
-\*/
 (function(){
 
 /*jslint node: true, browser: true */
@@ -13,88 +6,60 @@ Edit-html widget
 "use strict";
 
 if($tw.browser) {
-	//document.write('<script src="ckeditor.js"></script>');
-require("$:/plugins/tiddlywiki/ckeditor/ckeditor.js");
-
-       //require("$:/plugins/tiddlywiki/ckeditor/lang/en.js");   
-        //require("$:/plugins/tiddlywiki/ckeditor/plugins/about/dialogs/about.js");  
+	require("$:/plugins/tiddlywiki/ckeditor/ckeditor.js");
+	var dom=require("$:/core/modules/utils/dom.js");
  
-    if (typeof CKEDITOR != 'undefined')   {
-//CKEDITOR.config.entities = false;
-//CKEDITOR.config.htmlEncodeOutput = false;
-CKEDITOR.stylesSet.add( 'default', [
-    // Block Styles
-    { name: 'Blue Title',       element: 'h3',      styles: { 'color': 'Blue' } },
-    { name: 'Red Title',        element: 'h3',      styles: { 'color': 'Red' } },
+	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/editor.css"));
+	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/dialog.css"));
+	if (typeof CKEDITOR != 'undefined')   {
+		CKEDITOR.stylesSet.add( 'default', [
+			// Block Styles
+			{ name: 'Blue Title',       element: 'h3',      styles: { 'color': 'Blue' } },
+			{ name: 'Red Title',        element: 'h3',      styles: { 'color': 'Red' } },
 
-    // Inline Styles
-    { name: 'Marker: Yellow',   element: 'span',    styles: { 'background-color': 'Yellow'} },
-    { name: 'Marker: Green',    element: 'span',    styles: { 'background-color': 'Lime' } },
+			// Inline Styles
+			{ name: 'Marker: Yellow',   element: 'span',    styles: { 'background-color': 'Yellow'} },
+			{ name: 'Marker: Green',    element: 'span',    styles: { 'background-color': 'Lime' } },
 
-    // Object Styles
-    {
-        name: 'Image on Left',
-        element: 'img',
-        attributes: {
-            style: 'padding: 5px; margin-right: 5px',
-            border: '2',
-            align: 'left'
-        }
-    }
-
-
-] );
- var loadCSS= function (filename){ 
-
-       var file = document.createElement("link")
-       file.setAttribute("rel", "stylesheet")
-       file.setAttribute("type", "text/css")
-       file.setAttribute("href", filename)
-
-       if (typeof file !== "undefined")
-          document.getElementsByTagName("head")[0].appendChild(file)
-    }
-
-
-   //just call a function to load a new CSS:
-   //alert(escape("$:/plugins/tiddlywiki/ckeditor/skins/karma/editor.css") );
-   loadCSS( 'data:text/css,'+
-					   escape( $tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/editor.css")) );
-	 loadCSS( 'data:text/css,'+
-					   escape( $tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/dialog.css")) );
-CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
-//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
- CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
-(function() {
-	/*for non shadow tiddlers - maybe user drags some new plugins for ckeditor, use
-	extensions =  $tw.wiki.getTiddlersWithTag("CKEditorExtension");
-	for i to 1 to extensions.length do....
-	*/
-	var workfn= function(tiddler,title) {
-		var head_ext=title.split(".");
-			if (head_ext[1]==='png'){
-					var head = head_ext[0];//hack of .png
-					var headlist = head.split("/"); //filename is last
-					if (headlist[3] ==='ckeditor') {
-						var iconname = headlist[headlist.length-1];
-						//alert("icon"+iconname);
-						CKEDITOR.skin.icons[ iconname ] = { path: '); background-image: url(data:image/png;base64,'+
-						   $tw.wiki.getTiddlerText(title)+');', offset: 0 } ;
-					}
-			}else if (head_ext[1]==='js'){
-					var head = head_ext[0];//hack of .png
-					var headlist = head.split("/"); //filename is last
-					if (headlist[3] ==='ckeditor') require(title);  
+			// Object Styles
+			{
+				name: 'Image on Left',
+				element: 'img',
+				attributes: {
+					style: 'padding: 5px; margin-right: 5px',
+					border: '2',
+					align: 'left'
+				}
 			}
-	}
+		]);
+		//BJ FixMe: figure out how to hide tw5 tags and macros
+		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
+		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
+		CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
+		CKEDITOR.config.entities = false;
+		var workfn= function(tiddler,title) {
+			var head_ext=title.split(".");
+				if (head_ext[1]==='png'){
+						var head = head_ext[0];//hack of .png
+						var headlist = head.split("/"); //filename is last
+						if (headlist[3] ==='ckeditor') {
+							var iconname = headlist[headlist.length-1];
+							//alert("icon"+iconname);
+							CKEDITOR.skin.icons[ iconname ] = { path: '); background-image: url(data:image/png;base64,'+
+							   $tw.wiki.getTiddlerText(title)+');', offset: 0 } ;
+						}
+				}else if (head_ext[1]==='js'){
+						var head = head_ext[0];//hack of .png
+						var headlist = head.split("/"); //filename is last
+						if (headlist[3] ==='ckeditor') require(title);  
+				}
+		}
+		$tw.utils.each($tw.wiki.shadowTiddlers,workfn);
 
-	$tw.utils.each($tw.wiki.shadowTiddlers,workfn);
-	/*for non shadow tiddlers - maybe user drags some new plugins for ckeditor, use
-	extensions =  $tw.wiki.getTiddlersWithTag("CKEditorExtension");
-	for i to 1 to extensions.length do workfn
-	*/
-})();
-}
+		//for non shadow tiddlers 
+		var extensions =  $tw.wiki.getTiddlersWithTag("CKExtension");
+		for (var i = 1; i<extensions.length;i++) {workfn(null,extensions[i])};
+	}
 }
 
 })();
@@ -122,27 +87,31 @@ EditHtmlWidget.prototype.postRender = function() {
 	var self = this,
 		cm;
 	if($tw.browser && window.CKEDITOR && this.editTag === "textarea") {
-
-
-				var ck ="editor"+ Math.random();
-			this.domNodes[0].setAttribute("name",ck);
-			this.domNodes[0].setAttribute("id",ck);
-			
-			//CKEDITOR.replace(ck,{skin : 'moono', customConfig:'' });
-			CKEDITOR.replace(ck, { customConfig:"" }	);	
-			//CKEDITOR.replace(ck,{skin : 'moono'});
-						//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})
-			//CKEDITOR.replace(ck,{ extraPlugins : 'divarea', skin : 'moonodiv'})
-			CKEDITOR.instances[ck].on('change', 
-				function() {
-					//alert('text changed!'+CKEDITOR.instances[ck].getData());
-					self.getEditInfo().update(CKEDITOR.instances[ck].getData());
-				}
-			);
-
-	
-		} 
+		var ck ="editor"+ Math.random();
+		this.domNodes[0].setAttribute("name",ck);
+		this.domNodes[0].setAttribute("id",ck);
+		CKEDITOR.replace(ck, { customConfig:"" }	);	
+		//BJ: note that we have statically loaded the style sheet already,
+		//therefore it is not possible to load a different skin here
+		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})
+		CKEDITOR.instances[ck].on('change', 
+			function() {
+				//alert('text changed!'+CKEDITOR.instances[ck].getData());
+				self.getEditInfo().update(CKEDITOR.instances[ck].getData());
+			}
+		);
+	} 
 };
+/*\
+BJ: the follow code is fro tw5 core, with some minor modifications
+*******************************************************************
+title: $:/core/modules/widgets/edit-html.js
+type: application/javascript
+module-type: widget
+
+Edit-html widget
+
+\*/
 /*
 Render this widget into the DOM
 */

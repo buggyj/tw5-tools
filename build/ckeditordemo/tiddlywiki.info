@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"tiddlywiki/ckeditor"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}

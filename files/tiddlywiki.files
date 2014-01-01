@@ -258,6 +258,14 @@
 			}
 		},
 		{
+			"file": "commonbuttons/removeformat.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/removeformat.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "commonbuttons/bidirtl.png",
 			"fields": {
 				"type": "image/png",
@@ -294,6 +302,14 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/block_pre.png",
+				"module-type": "library"
+			}
+		},
+				{
+			"file": "commonbuttons/bold.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bold.png",
 				"module-type": "library"
 			}
 		},
