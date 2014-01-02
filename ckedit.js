@@ -1,4 +1,11 @@
+/*\
+title: $:/plugins/tiddlywiki/TW5CKEditor/ckedit.js
+type: application/javascript
+module-type: widget
 
+ckeditor adaptor
+
+\*/
 (function(){
 
 /*jslint node: true, browser: true */
@@ -102,16 +109,11 @@ EditHtmlWidget.prototype.postRender = function() {
 		);
 	} 
 };
-/*\
-BJ: the follow code is fro tw5 core, with some minor modifications
+/*
+BJ the follow code is fro tw5 core, with some minor modifications
 *******************************************************************
-title: $:/core/modules/widgets/edit-html.js
-type: application/javascript
-module-type: widget
-
 Edit-html widget
-
-\*/
+*/
 /*
 Render this widget into the DOM
 */

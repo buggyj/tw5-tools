@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"tiddlywiki/ckeditor"
+		"tiddlywiki/TW5CKEditor"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
