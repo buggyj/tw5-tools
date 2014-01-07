@@ -945,6 +945,24 @@
 				"title": "$:/plugins/tiddlywiki/ckeditor/lang/en.js",
 				"module-type": "library"
 			}
+		},
+		{
+			"file": "styles.json",
+				
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/tiddlywiki/ckeditor/styles.json",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "extraplugins.tid",
+				
+			"fields": {
+				"type": "text/vnd.tiddlywiki",
+				"title": "$:/plugins/tiddlywiki/ckeditor/extraplugins.tid",
+				"module-type": "library"
+			}
 		}
 	]
 }

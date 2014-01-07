@@ -1,0 +1,18 @@
+ [
+			{ "name": "Blue Title",       "element": "h3",      "styles": { "color": "Blue" } },
+			{ "name": "Red Title",        "element": "h3",      "styles": { "color": "Red" } },
+
+			{ "name": "Marker: Yellow",   "element": "span",    "styles": { "background-color": "Yellow"} },
+			{ "name": "Marker: Green",    "element": "span",    "styles": { "background-color": "Lime" } },
+
+			{
+				"name": "Image on Left",
+				"element": "img",
+				"attributes": {
+					"style": "padding: 5px; margin-right: 5px",
+					"border": "2",
+					"align": "left"
+				}
+			}
+]
+

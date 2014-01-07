@@ -1,6 +1,9 @@
 {
-	"title": "$:/plugins/tiddlywiki/ckeditor",
-	"description": "ckeditor plugin",
+	"title": "$:/plugins/BJ/TW5CKEditor",
+	"description": "ckeditor adapter plugin",
 	"author": "JeffreyWilkinson",
-	"version": "0.1"
+	"version": "0.0.0",
+	"core-version": ">=5.0.0",
+	"source": "https://github.com/buggyj/TW5CKEditor",
+	"plugin-type": "plugin"
 }
