@@ -14,7 +14,7 @@ if [ ${x##*.} = "js" ]; then
 			"file": "%s",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ckeditor/%s",
+				"title": "$:/plugins/BJ/TW5CKEditor/%s",
 				"module-type": "library"
 			}
 		}' $x $x ;
@@ -27,7 +27,33 @@ elif [ ${x##*.} = "png" ]; then
 			"file": "%s",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/ckeditor/%s",
+				"title": "$:/plugins/BJ/TW5CKEditor/%s",
+				"module-type": "library"
+			}
+		}' $x $x ;
+elif [ ${x##*.} = "tid" ]; then 
+		if [ $comma = "y" ]; then printf ','
+		else	comma="y"
+		fi
+		printf '
+		{
+			"file": "%s",
+			"fields": {
+				"type": "text/vnd.tiddlywiki",
+				"title": "$:/plugins/BJ/TW5CKEditor/%s",
+				"module-type": "library"
+			}
+		}' $x ${x%.*};
+elif [ ${x##*.} = "json" ]; then 
+		if [ $comma = "y" ]; then printf ','
+		else	comma="y"
+		fi
+		printf '
+		{
+			"file": "%s",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/BJ/TW5CKEditor/%s",
 				"module-type": "library"
 			}
 		}' $x $x ;
@@ -39,7 +65,7 @@ elif [ ${x##*.} = "css" ]; then
 		{
 			"file": "%s",
 			"fields": {
-				"title": "$:/plugins/ckeditor/%s"
+				"title": "$:/plugins/BJ/TW5CKEditor/%s"
 			}
 		}' $x $x ;
 fi

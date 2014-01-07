@@ -14,25 +14,25 @@ ckeditor adaptor
 "use strict";
 
 if($tw.browser) {
-	require("$:/plugins/tiddlywiki/ckeditor/ckeditor.js");
+	require("$:/plugins/BJ/TW5CKEditor/ckeditor.js");
 	var dom=require("$:/core/modules/utils/dom.js");
  
-	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/editor.css"));
-	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/dialog.css"));
+	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/skins/moonodiv/editor.css"));
+	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/skins/moonodiv/dialog.css"));
 	if (typeof CKEDITOR != 'undefined')   {
-	CKEDITOR.stylesSet.add( 'default',$tw.wiki.getTiddlerData("$:/plugins/tiddlywiki/ckeditor/styles.json"));
+	CKEDITOR.stylesSet.add( 'default',$tw.wiki.getTiddlerData("$:/plugins/BJ/TW5CKEditor/styles.json"));
 	//BJ FixMe: figure out how to hide tw5 tags and macros from ckeditor
 		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
 		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
 		CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
 		CKEDITOR.config.entities = false;
-		CKEDITOR.config.extraPlugins = $tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/extraplugins");
+		//CKEDITOR.config.extraPlugins = $tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/extraplugins.tid");
 		var workfn= function(tiddler,title) {
 			var head_ext=title.split(".");
 				if (head_ext[1]==='png'){
 						var head = head_ext[0];//hack off .png
 						var headlist = head.split("/"); //filename is last
-						if (headlist[3] ==='ckeditor') {
+						if (headlist[3] ==='TW5CKEditor') {
 							var iconname = headlist[headlist.length-1];
 							//alert("icon"+iconname);
 							CKEDITOR.skin.icons[ iconname ] = { path: '); background-image: url(data:image/png;base64,'+
@@ -41,7 +41,7 @@ if($tw.browser) {
 				}else if (head_ext[1]==='js'){
 						var head = head_ext[0];//hack of .png
 						var headlist = head.split("/"); //filename is last
-						if (headlist[3] ==='ckeditor') {require(title);  }
+						if (headlist[3] ==='TW5CKEditor') {require(title);  }
 				}
 		}
 		$tw.utils.each($tw.wiki.shadowTiddlers,workfn);
@@ -82,8 +82,8 @@ EditHtmlWidget.prototype.postRender = function() {
 		this.domNodes[0].setAttribute("name",ck);
 		this.domNodes[0].setAttribute("id",ck);
 
-		CKEDITOR.replace(ck, { customConfig:"" ,
-			extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/tiddlywiki/ckeditor/extraplugins")});	
+		CKEDITOR.replace(ck, { customConfig:"" });//,
+			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/extraplugins.tid")});	
 		//BJ: note that we have statically loaded the style sheet already,
 		//therefore it is not possible to load a different skin here
 		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})

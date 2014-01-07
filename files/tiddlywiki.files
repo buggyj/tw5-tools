@@ -1,267 +1,10 @@
 {
 	"tiddlers": [
 		{
-			"file": "plugins/divarea/plugin.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/divarea/plugin.js",
-				"module-type": "library"
-			}
-		},
-
-
-		{
-			"file": "plugins/magicline/images/icon.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/magicline/images/icon.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/a11yhelp/dialogs/a11yhelp.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/a11yhelp/dialogs/lang/en.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/a11yhelp/dialogs/lang/en.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/pastefromword/filter/default.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/pastefromword/filter/default.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/table/dialogs/table.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/table/dialogs/table.js",
-				"module-type": "library"
-			}
-		},
-
-		{
-			"file": "plugins/about/dialogs/logo_ckeditor.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/about/dialogs/logo_ckeditor.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/about/dialogs/about.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/about/dialogs/about.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/clipboard/dialogs/paste.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/clipboard/dialogs/paste.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/image/dialogs/image.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/image/dialogs/image.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/image/images/noimage.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/image/images/noimage.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/tabletools/dialogs/tableCell.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/tabletools/dialogs/tableCell.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/dialog/dialogDefinition.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/dialog/dialogDefinition.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/scayt/dialogs/toolbar.css",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/scayt/dialogs/toolbar.css"
-			}
-		},
-		{
-			"file": "plugins/scayt/dialogs/options.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/scayt/dialogs/options.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/scayt/LICENSE.md",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/scayt/LICENSE.md"
-			}
-		},
-		{
-			"file": "plugins/scayt/README.md",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/scayt/README.md"
-			}
-		},
-		{
-			"file": "plugins/specialchar/dialogs/specialchar.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/specialchar/dialogs/specialchar.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/specialchar/dialogs/lang/en.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/specialchar/dialogs/lang/en.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/fakeobjects/images/spacer.gif",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/fakeobjects/images/spacer.gif"
-			}
-		},
-		{
-			"file": "plugins/icons.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/icons.png",
-				"module-type": "library"
-			}
-		},
-
-		{
-			"file": "plugins/link/dialogs/link.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/link/dialogs/link.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/link/dialogs/anchor.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/link/dialogs/anchor.js",
-				"module-type": "library"
-			}
-		},
-
-		{
-			"file": "plugins/link/images/anchor.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/plugins/link/images/anchor.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "skins/moonodiv/dialog.css",
-			"fields": {
-
-				"title": "$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/dialog.css"
-
-			}
-		},
-		{
-			"file": "skins/moono/editor_gecko.css",
-			"fields": {
-
-				"title": "$:/plugins/tiddlywiki/ckeditor/skins/moonodiv/editor.css"
-
-			}
-		},
-				{
-			"file": "skins/karma/editor.css",
-			"fields": {
-
-				"title": "$:/plugins/tiddlywiki/ckeditor/skins/karma/editor.css"
-				
-
-			}
-		},
-		{
-			"file": "LICENSE.md",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/LICENSE.md"
-			}
-		},
-		{
-			"file": "ckeditor.js",
-				
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/ckeditor.js",
-				"module-type": "library"
-			}
-		},
-				{
 			"file": "commonbuttons/print.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/print.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "commonbuttons/removeformat.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/removeformat.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/print.png",
 				"module-type": "library"
 			}
 		},
@@ -269,7 +12,7 @@
 			"file": "commonbuttons/bidirtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bidirtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bidirtl.png",
 				"module-type": "library"
 			}
 		},
@@ -277,7 +20,7 @@
 			"file": "commonbuttons/pagebreak.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pagebreak.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pagebreak.png",
 				"module-type": "library"
 			}
 		},
@@ -285,7 +28,7 @@
 			"file": "commonbuttons/source-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/source-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/source-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -293,7 +36,7 @@
 			"file": "commonbuttons/imagebutton.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/imagebutton.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/imagebutton.png",
 				"module-type": "library"
 			}
 		},
@@ -301,15 +44,7 @@
 			"file": "commonbuttons/block_pre.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/block_pre.png",
-				"module-type": "library"
-			}
-		},
-				{
-			"file": "commonbuttons/bold.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bold.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/block_pre.png",
 				"module-type": "library"
 			}
 		},
@@ -317,7 +52,7 @@
 			"file": "commonbuttons/outdent.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/outdent.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/outdent.png",
 				"module-type": "library"
 			}
 		},
@@ -325,7 +60,7 @@
 			"file": "commonbuttons/find.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/find.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/find.png",
 				"module-type": "library"
 			}
 		},
@@ -333,7 +68,7 @@
 			"file": "commonbuttons/bulletedlist.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bulletedlist.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bulletedlist.png",
 				"module-type": "library"
 			}
 		},
@@ -341,7 +76,7 @@
 			"file": "commonbuttons/copy.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/copy.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/copy.png",
 				"module-type": "library"
 			}
 		},
@@ -349,7 +84,7 @@
 			"file": "commonbuttons/superscript.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/superscript.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/superscript.png",
 				"module-type": "library"
 			}
 		},
@@ -357,7 +92,7 @@
 			"file": "commonbuttons/select.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/select.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/select.png",
 				"module-type": "library"
 			}
 		},
@@ -365,7 +100,7 @@
 			"file": "commonbuttons/scayt.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/scayt.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/scayt.png",
 				"module-type": "library"
 			}
 		},
@@ -373,7 +108,7 @@
 			"file": "commonbuttons/justifyright.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/justifyright.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/justifyright.png",
 				"module-type": "library"
 			}
 		},
@@ -381,7 +116,7 @@
 			"file": "commonbuttons/smiley.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/smiley.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/smiley.png",
 				"module-type": "library"
 			}
 		},
@@ -389,7 +124,7 @@
 			"file": "commonbuttons/docprops.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/docprops.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/docprops.png",
 				"module-type": "library"
 			}
 		},
@@ -397,7 +132,7 @@
 			"file": "commonbuttons/specialchar.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/specialchar.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/specialchar.png",
 				"module-type": "library"
 			}
 		},
@@ -405,7 +140,7 @@
 			"file": "commonbuttons/docprops-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/docprops-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/docprops-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -413,7 +148,7 @@
 			"file": "commonbuttons/find-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/find-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/find-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -421,7 +156,7 @@
 			"file": "commonbuttons/showblocks-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/showblocks-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/showblocks-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -429,7 +164,7 @@
 			"file": "commonbuttons/templates.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/templates.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/templates.png",
 				"module-type": "library"
 			}
 		},
@@ -437,7 +172,7 @@
 			"file": "commonbuttons/italic.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/italic.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/italic.png",
 				"module-type": "library"
 			}
 		},
@@ -445,7 +180,7 @@
 			"file": "commonbuttons/numberedlist-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/numberedlist-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/numberedlist-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -453,7 +188,7 @@
 			"file": "commonbuttons/pastefromword.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pastefromword.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pastefromword.png",
 				"module-type": "library"
 			}
 		},
@@ -461,7 +196,7 @@
 			"file": "commonbuttons/redo-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/redo-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/redo-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -469,7 +204,7 @@
 			"file": "commonbuttons/selectall.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/selectall.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/selectall.png",
 				"module-type": "library"
 			}
 		},
@@ -477,7 +212,7 @@
 			"file": "commonbuttons/save.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/save.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/save.png",
 				"module-type": "library"
 			}
 		},
@@ -485,7 +220,7 @@
 			"file": "commonbuttons/outdent-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/outdent-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/outdent-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -493,7 +228,7 @@
 			"file": "commonbuttons/copy-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/copy-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/copy-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -501,7 +236,7 @@
 			"file": "commonbuttons/form.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/form.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/form.png",
 				"module-type": "library"
 			}
 		},
@@ -509,22 +244,15 @@
 			"file": "commonbuttons/image.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/image.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/image.png",
 				"module-type": "library"
-			}
-		},
-		{
-			"file": "commonbuttons/list.but",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/list.but"
 			}
 		},
 		{
 			"file": "commonbuttons/button.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/button.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/button.png",
 				"module-type": "library"
 			}
 		},
@@ -532,7 +260,7 @@
 			"file": "commonbuttons/newpage.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/newpage.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/newpage.png",
 				"module-type": "library"
 			}
 		},
@@ -540,7 +268,7 @@
 			"file": "commonbuttons/textarea.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/textarea.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/textarea.png",
 				"module-type": "library"
 			}
 		},
@@ -548,7 +276,7 @@
 			"file": "commonbuttons/paste.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/paste.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/paste.png",
 				"module-type": "library"
 			}
 		},
@@ -556,7 +284,7 @@
 			"file": "commonbuttons/maximize.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/maximize.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/maximize.png",
 				"module-type": "library"
 			}
 		},
@@ -564,7 +292,7 @@
 			"file": "commonbuttons/anchor-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/anchor-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/anchor-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -572,7 +300,7 @@
 			"file": "commonbuttons/textcolor.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/textcolor.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/textcolor.png",
 				"module-type": "library"
 			}
 		},
@@ -580,7 +308,7 @@
 			"file": "commonbuttons/preview.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/preview.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/preview.png",
 				"module-type": "library"
 			}
 		},
@@ -588,7 +316,7 @@
 			"file": "commonbuttons/pagebreak-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pagebreak-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pagebreak-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -596,7 +324,7 @@
 			"file": "commonbuttons/showblocks.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/showblocks.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/showblocks.png",
 				"module-type": "library"
 			}
 		},
@@ -604,7 +332,7 @@
 			"file": "commonbuttons/cut.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/cut.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/cut.png",
 				"module-type": "library"
 			}
 		},
@@ -612,7 +340,15 @@
 			"file": "commonbuttons/block_blockquote.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/block_blockquote.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/block_blockquote.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/bold.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bold.png",
 				"module-type": "library"
 			}
 		},
@@ -620,7 +356,7 @@
 			"file": "commonbuttons/pastetext-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pastetext-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pastetext-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -628,7 +364,7 @@
 			"file": "commonbuttons/bidiltr.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bidiltr.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bidiltr.png",
 				"module-type": "library"
 			}
 		},
@@ -636,7 +372,7 @@
 			"file": "commonbuttons/subscript.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/subscript.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/subscript.png",
 				"module-type": "library"
 			}
 		},
@@ -644,7 +380,7 @@
 			"file": "commonbuttons/numberedlist.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/numberedlist.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/numberedlist.png",
 				"module-type": "library"
 			}
 		},
@@ -652,7 +388,7 @@
 			"file": "commonbuttons/unlink.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/unlink.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/unlink.png",
 				"module-type": "library"
 			}
 		},
@@ -660,7 +396,7 @@
 			"file": "commonbuttons/textfield-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/textfield-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/textfield-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -668,7 +404,7 @@
 			"file": "commonbuttons/iframe.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/iframe.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/iframe.png",
 				"module-type": "library"
 			}
 		},
@@ -676,7 +412,7 @@
 			"file": "commonbuttons/undo.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/undo.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/undo.png",
 				"module-type": "library"
 			}
 		},
@@ -684,7 +420,7 @@
 			"file": "commonbuttons/radio.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/radio.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/radio.png",
 				"module-type": "library"
 			}
 		},
@@ -692,7 +428,7 @@
 			"file": "commonbuttons/spellchecker.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/spellchecker.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/spellchecker.png",
 				"module-type": "library"
 			}
 		},
@@ -700,7 +436,7 @@
 			"file": "commonbuttons/preview-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/preview-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/preview-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -708,7 +444,7 @@
 			"file": "commonbuttons/table.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/table.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/table.png",
 				"module-type": "library"
 			}
 		},
@@ -716,7 +452,7 @@
 			"file": "commonbuttons/textfield.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/textfield.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/textfield.png",
 				"module-type": "library"
 			}
 		},
@@ -724,7 +460,7 @@
 			"file": "commonbuttons/anchor.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/anchor.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/anchor.png",
 				"module-type": "library"
 			}
 		},
@@ -732,7 +468,7 @@
 			"file": "commonbuttons/select-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/select-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/select-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -740,7 +476,7 @@
 			"file": "commonbuttons/indent.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/indent.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/indent.png",
 				"module-type": "library"
 			}
 		},
@@ -748,7 +484,15 @@
 			"file": "commonbuttons/blockquote.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/blockquote.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/blockquote.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/removeformat.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/removeformat.png",
 				"module-type": "library"
 			}
 		},
@@ -756,7 +500,7 @@
 			"file": "commonbuttons/underline.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/underline.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/underline.png",
 				"module-type": "library"
 			}
 		},
@@ -764,7 +508,7 @@
 			"file": "commonbuttons/pastefromword-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pastefromword-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pastefromword-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -772,7 +516,7 @@
 			"file": "commonbuttons/bgcolor.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bgcolor.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bgcolor.png",
 				"module-type": "library"
 			}
 		},
@@ -780,7 +524,7 @@
 			"file": "commonbuttons/justifyleft.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/justifyleft.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/justifyleft.png",
 				"module-type": "library"
 			}
 		},
@@ -788,7 +532,7 @@
 			"file": "commonbuttons/bulletedlist-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/bulletedlist-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/bulletedlist-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -796,7 +540,7 @@
 			"file": "commonbuttons/link.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/link.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/link.png",
 				"module-type": "library"
 			}
 		},
@@ -804,7 +548,7 @@
 			"file": "commonbuttons/cut-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/cut-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/cut-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -812,7 +556,7 @@
 			"file": "commonbuttons/templates-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/templates-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/templates-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -820,7 +564,7 @@
 			"file": "commonbuttons/paste-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/paste-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/paste-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -828,7 +572,7 @@
 			"file": "commonbuttons/justifyblock.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/justifyblock.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/justifyblock.png",
 				"module-type": "library"
 			}
 		},
@@ -836,7 +580,7 @@
 			"file": "commonbuttons/checkbox.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/checkbox.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/checkbox.png",
 				"module-type": "library"
 			}
 		},
@@ -844,7 +588,7 @@
 			"file": "commonbuttons/pastetext.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/pastetext.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/pastetext.png",
 				"module-type": "library"
 			}
 		},
@@ -852,7 +596,7 @@
 			"file": "commonbuttons/undo-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/undo-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/undo-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -860,7 +604,7 @@
 			"file": "commonbuttons/strike.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/strike.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/strike.png",
 				"module-type": "library"
 			}
 		},
@@ -868,7 +612,7 @@
 			"file": "commonbuttons/about.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/about.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/about.png",
 				"module-type": "library"
 			}
 		},
@@ -876,7 +620,7 @@
 			"file": "commonbuttons/newpage-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/newpage-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/newpage-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -884,7 +628,7 @@
 			"file": "commonbuttons/justifycenter.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/justifycenter.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/justifycenter.png",
 				"module-type": "library"
 			}
 		},
@@ -892,7 +636,7 @@
 			"file": "commonbuttons/source.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/source.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/source.png",
 				"module-type": "library"
 			}
 		},
@@ -900,7 +644,7 @@
 			"file": "commonbuttons/redo.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/redo.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/redo.png",
 				"module-type": "library"
 			}
 		},
@@ -908,7 +652,7 @@
 			"file": "commonbuttons/flash.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/flash.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/flash.png",
 				"module-type": "library"
 			}
 		},
@@ -916,7 +660,7 @@
 			"file": "commonbuttons/indent-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/indent-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/indent-rtl.png",
 				"module-type": "library"
 			}
 		},
@@ -924,7 +668,7 @@
 			"file": "commonbuttons/horizontalrule.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/horizontalrule.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/horizontalrule.png",
 				"module-type": "library"
 			}
 		},
@@ -932,35 +676,229 @@
 			"file": "commonbuttons/textarea-rtl.png",
 			"fields": {
 				"type": "image/png",
-				"title": "$:/plugins/tiddlywiki/ckeditor/commonbuttons/textarea-rtl.png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/textarea-rtl.png",
 				"module-type": "library"
 			}
 		},
-
 		{
-			"file": "lang/en.js",
-				
+			"file": "plugins/divarea/plugin.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/tiddlywiki/ckeditor/lang/en.js",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/divarea/plugin.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/magicline/images/icon.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/magicline/images/icon.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/a11yhelp.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/a11yhelp.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/en.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/en.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/pastefromword/filter/default.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/pastefromword/filter/default.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/table/dialogs/table.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/table/dialogs/table.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/about/dialogs/logo_ckeditor.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/about/dialogs/logo_ckeditor.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/about/dialogs/about.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/about/dialogs/about.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/clipboard/dialogs/paste.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/clipboard/dialogs/paste.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/image/dialogs/image.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/image/dialogs/image.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/image/images/noimage.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/image/images/noimage.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/tabletools/dialogs/tableCell.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/tabletools/dialogs/tableCell.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/dialog/dialogDefinition.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/dialog/dialogDefinition.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/scayt/dialogs/toolbar.css",
+			"fields": {
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/scayt/dialogs/toolbar.css"
+			}
+		},
+		{
+			"file": "plugins/scayt/dialogs/options.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/scayt/dialogs/options.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/specialchar.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/specialchar.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/en.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/en.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/icons.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/icons.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/link/dialogs/link.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/link/dialogs/link.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/link/dialogs/anchor.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/link/dialogs/anchor.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/link/images/anchor.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/link/images/anchor.png",
 				"module-type": "library"
 			}
 		},
 		{
 			"file": "styles.json",
-				
 			"fields": {
 				"type": "application/json",
-				"title": "$:/plugins/tiddlywiki/ckeditor/styles.json",
+				"title": "$:/plugins/BJ/TW5CKEditor/styles.json",
 				"module-type": "library"
 			}
 		},
 		{
+			"file": "skins/moono/editor_gecko.css",
+			"fields": {
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/editor_gecko.css"
+			}
+		},
+		{
+			"file": "skins/moonodiv/dialog.css",
+			"fields": {
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonodiv/dialog.css"
+			}
+		},
+		{
+			"file": "skins/moonodiv/editor.css",
+			"fields": {
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonodiv/editor.css"
+			}
+		},
+		{
+			"file": "skins/karma/editor.css",
+			"fields": {
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/karma/editor.css"
+			}
+		},
+		{
 			"file": "extraplugins.tid",
-				
 			"fields": {
 				"type": "text/vnd.tiddlywiki",
-				"title": "$:/plugins/tiddlywiki/ckeditor/extraplugins.tid",
+				"title": "$:/plugins/BJ/TW5CKEditor/extraplugins",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "ckeditor.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/ckeditor.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "lang/en.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/lang/en.js",
 				"module-type": "library"
 			}
 		}
