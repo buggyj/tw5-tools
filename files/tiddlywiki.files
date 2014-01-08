@@ -9,6 +9,14 @@
 			}
 		},
 		{
+			"file": "commonbuttons/lock.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/lock.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "commonbuttons/bidirtl.png",
 			"fields": {
 				"type": "image/png",
@@ -101,6 +109,14 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/scayt.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/lock-open.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/lock-open.png",
 				"module-type": "library"
 			}
 		},
@@ -293,6 +309,14 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/anchor-rtl.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/arrow.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/arrow.png",
 				"module-type": "library"
 			}
 		},
@@ -617,6 +641,14 @@
 			}
 		},
 		{
+			"file": "commonbuttons/close.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/close.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "commonbuttons/newpage-rtl.png",
 			"fields": {
 				"type": "image/png",
@@ -645,6 +677,14 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/redo.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/refresh.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/commonbuttons/refresh.png",
 				"module-type": "library"
 			}
 		},
@@ -681,10 +721,10 @@
 			}
 		},
 		{
-			"file": "plugins/divarea/plugin.js",
+			"file": "plugins/magicline/images/hidpi/icon.png",
 			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/BJ/TW5CKEditor/plugins/divarea/plugin.js",
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/magicline/images/hidpi/icon.png",
 				"module-type": "library"
 			}
 		},
@@ -705,10 +745,434 @@
 			}
 		},
 		{
+			"file": "plugins/a11yhelp/dialogs/lang/si.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/si.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ro.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ro.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/uk.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/uk.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sk.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sk.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/nb.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/nb.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/gl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/gl.js",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/a11yhelp/dialogs/lang/en.js",
 			"fields": {
 				"type": "application/javascript",
 				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/en.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/et.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/et.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/gu.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/gu.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ja.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ja.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/it.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/it.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ca.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ca.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ru.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ru.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/km.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/km.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/fa.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/fa.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/fi.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/fi.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sv.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sv.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/hu.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/hu.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/cy.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/cy.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/bg.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/bg.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/tr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/tr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/lv.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/lv.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/da.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/da.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/cs.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/cs.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/pl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/pl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sr-latn.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sr-latn.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/vi.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/vi.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/id.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/id.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/lt.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/lt.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/zh.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/zh.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/nl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/nl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sq.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sq.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/eo.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/eo.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/fr-ca.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/fr-ca.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/de.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/de.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/el.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/el.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/es.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/es.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/sr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/sr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/pt.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/pt.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/mn.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/mn.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ko.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ko.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/pt-br.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/pt-br.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/no.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/no.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/mk.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/mk.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ar.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ar.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ku.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ku.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/hi.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/hi.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/ug.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/ug.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/he.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/he.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/fr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/fr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/th.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/th.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/hr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/hr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/a11yhelp/dialogs/lang/zh-cn.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/a11yhelp/dialogs/lang/zh-cn.js",
 				"module-type": "library"
 			}
 		},
@@ -725,6 +1189,14 @@
 			"fields": {
 				"type": "application/javascript",
 				"title": "$:/plugins/BJ/TW5CKEditor/plugins/table/dialogs/table.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/about/dialogs/hidpi/logo_ckeditor.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/about/dialogs/hidpi/logo_ckeditor.png",
 				"module-type": "library"
 			}
 		},
@@ -785,24 +1257,58 @@
 			}
 		},
 		{
-			"file": "plugins/scayt/dialogs/toolbar.css",
-			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/plugins/scayt/dialogs/toolbar.css"
-			}
-		},
-		{
-			"file": "plugins/scayt/dialogs/options.js",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/BJ/TW5CKEditor/plugins/scayt/dialogs/options.js",
-				"module-type": "library"
-			}
-		},
-		{
 			"file": "plugins/specialchar/dialogs/specialchar.js",
 			"fields": {
 				"type": "application/javascript",
 				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/specialchar.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/si.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/si.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/uk.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/uk.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/sl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/sl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/sk.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/sk.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/nb.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/nb.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/gl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/gl.js",
 				"module-type": "library"
 			}
 		},
@@ -815,10 +1321,314 @@
 			}
 		},
 		{
+			"file": "plugins/specialchar/dialogs/lang/et.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/et.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ja.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ja.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/it.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/it.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ca.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ca.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ru.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ru.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/km.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/km.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/fa.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/fa.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/fi.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/fi.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/sv.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/sv.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/hu.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/hu.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/cy.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/cy.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/bg.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/bg.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/tr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/tr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/lv.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/lv.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/cs.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/cs.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/pl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/pl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/vi.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/vi.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/id.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/id.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/zh.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/zh.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/nl.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/nl.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/sq.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/sq.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/eo.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/eo.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/fr-ca.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/fr-ca.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/de.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/de.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/el.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/el.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/es.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/es.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/pt.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/pt.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/pt-br.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/pt-br.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/no.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/no.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ar.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ar.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ku.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ku.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/ug.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/ug.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/he.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/he.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/fr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/fr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/th.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/th.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/hr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/hr.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/specialchar/dialogs/lang/zh-cn.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/specialchar/dialogs/lang/zh-cn.js",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/icons.png",
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/BJ/TW5CKEditor/plugins/icons.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/icons_hidpi.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/icons_hidpi.png",
 				"module-type": "library"
 			}
 		},
@@ -839,6 +1649,14 @@
 			}
 		},
 		{
+			"file": "plugins/link/images/hidpi/anchor.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/BJ/TW5CKEditor/plugins/link/images/hidpi/anchor.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/link/images/anchor.png",
 			"fields": {
 				"type": "image/png",
@@ -855,27 +1673,23 @@
 			}
 		},
 		{
+			"file": "adapters/jquery.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/BJ/TW5CKEditor/adapters/jquery.js",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "skins/moono/editor_gecko.css",
 			"fields": {
 				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/editor_gecko.css"
 			}
 		},
 		{
-			"file": "skins/moonodiv/dialog.css",
+			"file": "skins/moono/dialog.css",
 			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonodiv/dialog.css"
-			}
-		},
-		{
-			"file": "skins/moonodiv/editor.css",
-			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonodiv/editor.css"
-			}
-		},
-		{
-			"file": "skins/karma/editor.css",
-			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/skins/karma/editor.css"
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/dialog.css"
 			}
 		},
 		{
