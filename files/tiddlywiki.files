@@ -1673,6 +1673,14 @@
 			}
 		},
 		{
+			"file": "config.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/BJ/TW5CKEditor/config.json",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "adapters/jquery.js",
 			"fields": {
 				"type": "application/javascript",
@@ -1690,14 +1698,6 @@
 			"file": "skins/moono/dialog.css",
 			"fields": {
 				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/dialog.css"
-			}
-		},
-		{
-			"file": "extraplugins.tid",
-			"fields": {
-				"type": "text/vnd.tiddlywiki",
-				"title": "$:/plugins/BJ/TW5CKEditor/extraplugins",
-				"module-type": "library"
 			}
 		},
 		{
