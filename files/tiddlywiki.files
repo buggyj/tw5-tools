@@ -1689,15 +1689,15 @@
 			}
 		},
 		{
-			"file": "skins/moono/editor_gecko.css",
+			"file": "skins/moonomod/editor_gecko.css",
 			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/editor_gecko.css"
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonomod/editor_gecko.css"
 			}
 		},
 		{
-			"file": "skins/moono/dialog.css",
+			"file": "skins/moonomod/dialog.css",
 			"fields": {
-				"title": "$:/plugins/BJ/TW5CKEditor/skins/moono/dialog.css"
+				"title": "$:/plugins/BJ/TW5CKEditor/skins/moonomod/dialog.css"
 			}
 		},
 		{

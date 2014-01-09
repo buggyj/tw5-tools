@@ -3,7 +3,7 @@
 			{ "name": "Red Title",        "element": "h3",      "styles": { "color": "Red" } },
 
 			{ "name": "Marker: Yellow",   "element": "span",    "styles": { "background-color": "Yellow"} },
-			{ "name": "Marker: Red",   "element": "span",    "styles": { "background-color": "red"} },
+			{ "name": "Marker: Red",   "element": "span",    "styles": { "background-color": "Red"} },
 			{ "name": "Marker: Green",    "element": "span",    "styles": { "background-color": "Lime" } },
 
 			{
