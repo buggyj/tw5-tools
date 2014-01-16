@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/BJ/TW5CKEditor/ckedit.js
+title: $:/plugins/bj/visualeditor/ckedit.js
 type: application/javascript
 module-type: widget
 
@@ -14,14 +14,14 @@ ckeditor adaptor
 "use strict";
 
 if($tw.browser) {
-	require("$:/plugins/BJ/TW5CKEditor/ckeditor.js");
+	require("$:/plugins/bj/visualeditor/ckeditor.js");
 	var dom=require("$:/core/modules/utils/dom.js");
     var sty;
-	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/skins/moonomod/editor_gecko.css"));
-	//dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/skins/moonomod/dialog.css"));
+	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"));
+	//dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
 	if (typeof CKEDITOR != 'undefined')   {
 	try {
-	 sty=$tw.wiki.getTiddlerData("$:/plugins/BJ/TW5CKEditor/styles.json");
+	 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
 	} catch(e){alert("invalid style format") ;}
 	if (!!sty) CKEDITOR.stylesSet.add( 'default',sty);
 	CKEDITOR.on( 'instanceReady', function( ev ) {
@@ -47,7 +47,7 @@ if($tw.browser) {
 		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
 		CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
 		CKEDITOR.config.entities = false;
-		//CKEDITOR.config.extraPlugins = $tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/extraplugins.tid");
+		//CKEDITOR.config.extraPlugins = $tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/extraplugins.tid");
 		var workfn= function(tiddler,title) {
 			var head_ext=title.split(".");
 				if (head_ext[1]==='png'){
@@ -68,8 +68,8 @@ if($tw.browser) {
 						var head = head_ext[0];//hack of .png
 						var headlist = head.split("/"); //filename is last
 						if (headlist[3] ==='TW5CKEditor') {
-							if (title !="$:/plugins/BJ/TW5CKEditor/skins/moonomod/editor_gecko.css"
-							&& title !="$:/plugins/BJ/TW5CKEditor/skins/moonomod/dialog.css"){
+							if (title !="$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"
+							&& title !="$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"){
 								//dom.applyStyleSheet("ckedit"+headlist[length-1],
 									//				 $tw.wiki.getTiddlerText(title));
 													 }
@@ -81,7 +81,7 @@ if($tw.browser) {
 		//for non shadow tiddlers 
 		var extensions =  $tw.wiki.getTiddlersWithTag("CKExtension");
 		for (var i = 0; i<extensions.length;i++) {workfn(null,extensions[i])};
-	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/skins/moonomod/dialog.css"));
+	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
 
 	}
 }
@@ -116,8 +116,8 @@ EditHtmlWidget.prototype.postRender = function() {
 		this.domNodes[0].setAttribute("name",ck);
 		this.domNodes[0].setAttribute("id",ck);
 
-		CKEDITOR.replace(ck, $tw.wiki.getTiddlerData("$:/plugins/BJ/TW5CKEditor/config.json"));//,
-			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/BJ/TW5CKEditor/extraplugins.tid")});	
+		CKEDITOR.replace(ck, $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json"));//,
+			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/extraplugins.tid")});	
 		//BJ: note that we have statically loaded the style sheet already,
 		//therefore it is not possible to load a different skin here
 		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})

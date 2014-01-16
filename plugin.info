@@ -1,5 +1,5 @@
 {
-	"title": "$:/plugins/BJ/TW5CKEditor",
+	"title": "$:/plugins/bj/visualeditor",
 	"description": "ckeditor adapter plugin",
 	"author": "JeffreyWilkinson",
 	"version": "0.0.0",
