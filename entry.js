@@ -20,7 +20,7 @@ Information about this macro
 diary demo
 */
 
-exports.name = "diary";
+exports.name = "calendar";
 
 exports.params = [
 	{ name: "year" },{ name: "month" },{ name: "opts" }
@@ -31,8 +31,8 @@ Run the macro
 
 exports.run = function(year, month,opts) {
 if (!opts) opts="default";
-var options = $tw.wiki.getTiddlerData("$:/plugins/buggyj/Calendar/config.json")[opts]||
-				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightDay:""};
+var options = $tw.wiki.getTiddlerData("$:/plugins/bj/Calendar/config.json")[opts]||
+				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightThisDay:"",highlightThisDate:""};
 var createMonth;
 try {
 	createMonth = require(options.formatter).createMonth;
@@ -47,9 +47,9 @@ var boldtitle=(options.titlebold=='yes')?'!':'';
 var day_of_week = $tw.config.dateFormats.shortDays;
 var month_of_year = $tw.config.dateFormats.months; 
 var Calendar = new Date();
-var thisyear = Calendar.getFullYear();      // Returns year
-var thismonth = Calendar.getMonth();	// Returns month (0-11)
-var thisday = Calendar.getDay();        // Returns day (0-6)
+var thisyear = Calendar.getFullYear();  //  year (xxxx)
+var thismonth = Calendar.getMonth();	//  month (0-11)
+var thisday = Calendar.getDay();        //  day (0-6)
 var WEEKFIN = parseInt(options.lastDayOfWeek);               
 var MONTHS_IN_YEAR=12;					
                            
@@ -58,19 +58,19 @@ var cal='<div>'+lf;
 var ayear=thisyear;
 if (!!month) {
 	if (!!year) {
-		cal+=calendar (month-1,year);
+		cal+=calendar (month-1,year,options);
 	} else {
-		cal+=calendar (month-1,thisyear);
+		cal+=calendar (month-1,thisyear,options);
 	}
 } else {
 	if (!!year) ayear=year; 
 	for(var i=0; i<MONTHS_IN_YEAR; i+=2)
-		cal+=splicetable(calendar (i,ayear),calendar (i+1,ayear));
+		cal+=splicetable(calendar (i,ayear,options),calendar (i+1,ayear,options));
 }
 return cal+lf+'</div>';
 
-function calendar (mnth,year){
-    var month =	createMonth(mnth,year);
+function calendar (mnth,year,options){
+    var month =	createMonth(mnth,year,options);
     var blankdays = (firstDayInMonth(mnth,year)+13-WEEKFIN)%7;
 	return titleOfMonth(mnth,year)+createWeekHeading()+
 	       formatAsMonth(month,blankdays);
@@ -94,7 +94,7 @@ function formatAsMonth(month,blankdays){
 function createWeekHeading(){
 		var daystitle=[],weekdays= day_of_week.slice(0);
 		// highlight today's day of week
-		if (options.highlightDay=='yes')weekdays[thisday] ='!'+weekdays[thisday];
+		if (options.highlightThisDay=='yes')weekdays[thisday] ='!'+weekdays[thisday];
 		for (var i=0;i < weekdays.length; i++) daystitle[i] =centre(weekdays[(i+1+WEEKFIN)%7]);
 		return '|'+daystitle.join('|')+'|'+lf; 
 }

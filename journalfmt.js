@@ -1,5 +1,5 @@
 /*\
-title: $:/macros/buggyj/Calendar/journalfmt.js
+title: $:/macros/bj/Calendar/journalfmt.js
 type: application/javascript
 module-type: global
 \*/
@@ -11,18 +11,18 @@ module-type: global
 
 /*
 Information about this macro
-diary demo
+calendar demo
 */
 var Calendar=new Date();
-var createMonth= function(mnth,year){
+var createMonth= function(mnth,year,options){
 	var month=[];
-	for (var i=1;i < 1+daysInMonth(mnth,year);i++) month[i] = createDate(i,mnth,year);
+	for (var i=1;i < 1+daysInMonth(mnth,year);i++) month[i] = createDate(i,mnth,year,options);
 	return month;
 }
-function createDate(i,mnth,year){
+function createDate(i,mnth,year,options){
 	var strong='';
 	var date=(new Date(year, mnth, i));
-	if (date.toDateString()===Calendar.toDateString()) strong ='!';
+	if (date.toDateString()===Calendar.toDateString()&&options.highlightThisDate=="yes") strong ='!';
 	return centre(strong+'[['+i+'|'+date.getDate()+
 	              ' '+$tw.config.dateFormats.months[date.getMonth()]+' '+date.getFullYear()+']]');
 }

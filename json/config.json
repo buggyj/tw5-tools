@@ -2,14 +2,16 @@
 {
 	"journals":{
 		"lastDayOfWeek":"1",
-		"formatter":"$:/macros/buggyj/Calendar/journalfmt.js",
+		"formatter":"$:/macros/bj/Calendar/journalfmt.js",
 		"titlebold":"no",
-		"highlightDay":"no"
+		"highlightThisDay":"no",
+		"highlightThisDate":"yes"
 	},
 	"default":{
 		"lastDayOfWeek":"2",
 		"formatter":"",
 		"titlebold":"yes",
-		"highlightDay":"yes"
+		"highlightThisDay":"yes",
+		"highlightThisDate":"no"
 	}
 }
