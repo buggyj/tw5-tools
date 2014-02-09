@@ -1,0 +1,12 @@
+{
+	"tiddlers": [
+		{
+			"file": "config.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/buggyj/Calendar/config.json",
+				"module-type": "library"
+			}
+		}
+	]
+}

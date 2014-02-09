@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"buggyj/Calendar"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}

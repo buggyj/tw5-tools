@@ -1,0 +1,9 @@
+{
+	"title": "$:/plugins/buggyj/Calendar",
+	"description": "ckeditor adapter plugin",
+	"author": "JeffreyWilkinson",
+	"version": "0.0.0",
+	"core-version": ">=5.0.0",
+	"source": "https://github.com/buggyj/TW5-Calendar",
+	"plugin-type": "plugin"
+}
