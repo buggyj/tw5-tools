@@ -17,7 +17,7 @@ Options:$:/macros/diary/options.json
 
 /*
 Information about this macro
-diary demo
+CAL demo
 */
 
 exports.name = "calendar";
@@ -31,7 +31,7 @@ Run the macro
 
 exports.run = function(year, month,opts) {
 if (!opts) opts="default";
-var options = $tw.wiki.getTiddlerData("$:/plugins/bj/Calendar/config.json")[opts]||
+var options = $tw.wiki.getTiddlerData("$:/plugins/bj/Calendar/json/config.json")[opts]||
 				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightThisDay:"",highlightThisDate:""};
 var createMonth;
 try {
@@ -63,6 +63,8 @@ if (!!month) {
 		cal+=calendar (month-1,thisyear,options);
 	}
 } else {
+	options.seperateYearHeading = 'yes';
+	cal+=titleOfYear(year); 
 	if (!!year) ayear=year; 
 	for(var i=0; i<MONTHS_IN_YEAR; i+=2)
 		cal+=splicetable(calendar (i,ayear,options),calendar (i+1,ayear,options));
@@ -76,7 +78,15 @@ function calendar (mnth,year,options){
 	       formatAsMonth(month,blankdays);
 }
 function titleOfMonth(mth,year) {
-	return '|>|>|>|'+ centre(boldtitle+ month_of_year[mth]  + '  ' + year) +'|<|<|<|'+lf;
+	if (!!options.seperateYearHeading ) {
+		return '|>|>|>|'+ centre(boldtitle+ month_of_year[mth]) +'|<|<|<|'+lf;
+	} else {
+		return '|>|>|>|'+ centre(boldtitle+ month_of_year[mth]  + '  ' + year) +'|<|<|<|'+lf;
+	}
+}
+
+function titleOfYear(year) {
+		return '|>|>|>|>|>|>|>|'+ centre('!'+year) +'|<|<|<|<|<|<|<|'+lf;
 }
 function centre (x){ return ' '+x+' ';}
 
