@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"buggyj/Calendar"
+		"bj/Calendar"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
