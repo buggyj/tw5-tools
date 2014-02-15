@@ -12,12 +12,9 @@ Extend the dropzone widget to allow other widget to handle drop events
 /*global $tw: false */
 "use strict";
 
-if($tw.browser) {
-    require("$:/plugins/tiddlywiki/codemirror/codemirror.js");
-}
 
 var DropZoneWidget = require("$:/core/modules/widgets/dropzone.js")["dropzone"];
-
+var Widget = require("$:/core/modules/widgets/widget.js").widget;
 /*
 The edit-text widget calls this method just after inserting its dom nodes
 */
@@ -39,4 +36,5 @@ DropZoneWidget.prototype.handleDropHandled = function(event) {
 	$tw.utils.removeClass(this.domNodes[0],"tw-dragover");
 	return false;
 };
+
 })();
