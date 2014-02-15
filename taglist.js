@@ -18,10 +18,10 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 The list widget creates list element sub-widgets that reach back into the list widget for their configuration
 */
 
-var ListWidget = function(parseTreeNode,options) {
+var TagListWidget = function(parseTreeNode,options) {
 	// Initialise the storyviews if they've not been done already
 	if(!this.storyViews) {
-		ListWidget.prototype.storyViews = {};
+		TagListWidget.prototype.storyViews = {};
 		$tw.modules.applyMethods("storyview",this.storyViews);
 	}
 	// Main initialisation inherited from widget.js
@@ -31,30 +31,26 @@ var ListWidget = function(parseTreeNode,options) {
 /*
 Inherit from the base widget class
 */
-ListWidget.prototype = new Widget();
+TagListWidget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-ListWidget.prototype.render = function(parent,nextSibling) {
+TagListWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
 	this.renderChildren(parent,nextSibling);
-	// Construct the storyview
-	var StoryView = this.storyViews[this.storyViewName];
-	this.storyview = StoryView ? new StoryView(this) : null;
 };
 
 /*
 Compute the internal state of the widget
 */
-ListWidget.prototype.execute = function() {
+TagListWidget.prototype.execute = function() {
 	// Get our attributes
 	this.template = this.getAttribute("template");
 	this.editTemplate = this.getAttribute("editTemplate");
 	this.variableName = this.getAttribute("variable","currentTiddler");
-	this.storyViewName = this.getAttribute("storyview");
 
 	this.listtag=this.getAttribute("targeTtag",this.getVariable("currentTiddler"));
 	// Compose the list elements
@@ -73,15 +69,16 @@ ListWidget.prototype.execute = function() {
 	this.makeChildWidgets(members);
 };
 
-ListWidget.prototype.getTiddlerList = function() {
+TagListWidget.prototype.getTiddlerList = function() {
 	var defaultFilter = "[tag["+this.listtag+"]]";
 	return this.wiki.filterTiddlers(this.getAttribute("filter",defaultFilter),this.getVariable("currentTiddler"));
 };
-ListWidget.prototype.setTiddlerList = function(what,where) {
+TagListWidget.prototype.setTiddlerList = function(what,where) {
 	var self = this;
 	var update = function(value) {
-		var tiddler = self.wiki.getTiddler(self.listtag),
+		var tiddler = self.wiki.getTiddler(self.listtag)||{title:self.listtag},
 			updateFields = {};
+		
 		updateFields["list"] = value;
 		self.wiki.addTiddler(new $tw.Tiddler(self.wiki.getCreationFields(),tiddler,updateFields,
 		self.wiki.getModificationFields()));
@@ -101,7 +98,7 @@ ListWidget.prototype.setTiddlerList = function(what,where) {
 	update(newlist);
 };
 
-ListWidget.prototype.getEmptyMessage = function() {
+TagListWidget.prototype.getEmptyMessage = function() {
 	var emptyMessage = this.getAttribute("emptyMessage",""),
 		parser = this.wiki.parseText("text/vnd.tiddlywiki",emptyMessage,{parseAsInline: true});
 	if(parser) {
@@ -114,7 +111,7 @@ ListWidget.prototype.getEmptyMessage = function() {
 /*
 Compose the template for a list item
 */
-ListWidget.prototype.makeItemTemplate = function(title) {
+TagListWidget.prototype.makeItemTemplate = function(title) {
 	// Check if the tiddler is a draft
 	var tiddler = this.wiki.getTiddler(title),
 		isDraft = tiddler && tiddler.hasField("draft.of"),
@@ -143,7 +140,7 @@ ListWidget.prototype.makeItemTemplate = function(title) {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-ListWidget.prototype.refresh = function(changedTiddlers) {
+TagListWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
 	// Completely refresh if any of our attributes have changed
 	if(changedAttributes.filter || changedAttributes.template || changedAttributes.editTemplate || changedAttributes.emptyMessage || changedAttributes.storyview ) {
@@ -160,7 +157,7 @@ ListWidget.prototype.refresh = function(changedTiddlers) {
 /*
 Process any changes to the list
 */
-ListWidget.prototype.handleListChanges = function(changedTiddlers) {
+TagListWidget.prototype.handleListChanges = function(changedTiddlers) {
 	// Get the new list
 	var prevList = this.list;
 	this.list = this.getTiddlerList();//alert(this.list);
@@ -221,7 +218,7 @@ ListWidget.prototype.handleListChanges = function(changedTiddlers) {
 /*
 Find the list item with a given title, starting from a specified position
 */
-ListWidget.prototype.findListItem = function(startIndex,title) {
+TagListWidget.prototype.findListItem = function(startIndex,title) {
 	while(startIndex < this.children.length) {
 		if(this.children[startIndex].parseTreeNode.itemTitle === title) {
 			return startIndex;
@@ -234,7 +231,7 @@ ListWidget.prototype.findListItem = function(startIndex,title) {
 /*
 Insert a new list item at the specified index
 */
-ListWidget.prototype.insertListItem = function(index,title) {
+TagListWidget.prototype.insertListItem = function(index,title) {
 	// Create, insert and render the new child widgets
 	var widget = this.makeChildWidget(this.makeItemTemplate(title));
 	widget.parentDomNode = this.parentDomNode; // Hack to enable findNextSiblingDomNode() to work
@@ -251,7 +248,7 @@ ListWidget.prototype.insertListItem = function(index,title) {
 /*
 Remove the specified list item
 */
-ListWidget.prototype.removeListItem = function(index) {
+TagListWidget.prototype.removeListItem = function(index) {
 	var widget = this.children[index];
 	// Animate the removal if required
 	if(this.storyview && this.storyview.remove) {
@@ -263,24 +260,25 @@ ListWidget.prototype.removeListItem = function(index) {
 	this.children.splice(index,1);
 };
 
-exports.taglist = ListWidget;
+exports.taglist = TagListWidget;
 
-var ListItemWidget = function(parseTreeNode,options) {
+var TagListItemWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-ListItemWidget.prototype = new Widget();
-ListItemWidget.prototype.addTag = function (tidname) {
+TagListItemWidget.prototype = new Widget();
+TagListItemWidget.prototype.addTag = function (tidname) {
 		var tiddler = this.wiki.getTiddler(tidname),
 			updateFields = {};
-		updateFields["tags"] = (!!tiddler.fields.tags)?tiddler.fields.tags:'' + " " +this.parseTreeNode.listtag;
+		updateFields["tags"] = ((!!tiddler.fields.tags)?tiddler.fields.tags:'') + " " +this.parseTreeNode.listtag;
 		this.wiki.addTiddler(new $tw.Tiddler(this.wiki.getCreationFields(),tiddler,updateFields,
-		this.wiki.getModificationFields()));	
+		this.wiki.getModificationFields()));
+			
 }
-ListItemWidget.prototype.handleDropEvent  = function(event) {
+TagListItemWidget.prototype.handleDropEvent  = function(event) {
 	var self = this,
 		dataTransfer = event.dataTransfer,
 		returned = this.nameandOnListTag(dataTransfer);
@@ -298,7 +296,7 @@ ListItemWidget.prototype.handleDropEvent  = function(event) {
 	 }
 	 //else let the event fall thru
 };
-ListItemWidget.prototype.importDataTypes = [
+TagListItemWidget.prototype.importDataTypes = [
 	{type: "text/vnd.tiddler", IECompatible: false, convertToFields: function(data) {
 		return JSON.parse(data);
 	}},
@@ -340,7 +338,7 @@ ListItemWidget.prototype.importDataTypes = [
 		};
 	}}
 ];
-ListItemWidget.prototype.cancelAction =function(event) {
+TagListItemWidget.prototype.cancelAction =function(event) {
 	// Try each provided data type in turn
 		{
 	var self = this,
@@ -352,7 +350,7 @@ ListItemWidget.prototype.cancelAction =function(event) {
 };
 
 
-ListItemWidget.prototype.nameandOnListTag = function(dataTransfer) {
+TagListItemWidget.prototype.nameandOnListTag = function(dataTransfer) {
 	// Try each provided data type in turn
 	var self = this;
 	for(var t=0; t<this.importDataTypes.length; t++) {
@@ -384,7 +382,7 @@ ListItemWidget.prototype.nameandOnListTag = function(dataTransfer) {
 /*
 Render this widget into the DOM
 */
-ListItemWidget.prototype.render = function(parent,nextSibling) {
+TagListItemWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
@@ -402,7 +400,7 @@ var domNode = this.document.createElement("div");
 /*
 Compute the internal state of the widget
 */
-ListItemWidget.prototype.execute = function() {
+TagListItemWidget.prototype.execute = function() {
 	// Set the current list item title
 	this.setVariable(this.parseTreeNode.variableName,this.parseTreeNode.itemTitle);
 	// Construct the child widgets
@@ -412,10 +410,10 @@ ListItemWidget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-ListItemWidget.prototype.refresh = function(changedTiddlers) {
+TagListItemWidget.prototype.refresh = function(changedTiddlers) {
 	return this.refreshChildren(changedTiddlers);
 };
 
-exports.taglistitem = ListItemWidget;
+exports.taglistitem = TagListItemWidget;
 
 })();
