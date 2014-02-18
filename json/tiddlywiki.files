@@ -4,7 +4,7 @@
 			"file": "config.json",
 			"fields": {
 				"type": "application/json",
-				"title": "$:/plugins/bj/Calendar/json/config.json",
+				"title": "$:/config/bj/Calendar.json",
 				"module-type": "library"
 			}
 		}
