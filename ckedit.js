@@ -12,12 +12,31 @@ ckeditor adaptor
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
-
+var applyStyleSheet = function(id,css) {
+	var el = document.getElementById(id);
+	if(document.createStyleSheet) { // Older versions of IE
+		if(el) {
+			el.parentNode.removeChild(el);
+		}
+		document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeEnd",
+			'&nbsp;<style id="' + id + '" type="text/css">' + css + '</style>'); // fails without &nbsp;
+	} else { // Modern browsers
+		if(el) {
+			el.replaceChild(document.createTextNode(css), el.firstChild);
+		} else {
+			el = document.createElement("style");
+			el.type = "text/css";
+			el.id = id;
+			el.appendChild(document.createTextNode(css));
+			document.getElementsByTagName("head")[0].appendChild(el);
+		}
+	}
+};
 if($tw.browser) {
 	require("$:/plugins/bj/visualeditor/ckeditor.js");
 	var dom=require("$:/core/modules/utils/dom.js");
     var sty;
-	dom.applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"));
+	applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"));
 	//dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
 	if (typeof CKEDITOR != 'undefined')   {
 	try {
@@ -53,7 +72,7 @@ if($tw.browser) {
 				if (head_ext[1]==='png'){
 						var head = head_ext[0];//hack off .png
 						var headlist = head.split("/"); //filename is last
-						if (headlist[3] ==='TW5CKEditor') {
+						if (headlist[3] ==='visualeditor') {
 							var iconname = headlist[headlist.length-1];
 							//alert("icon"+iconname);
 							if (headlist[headlist.length-2]!="hidpi")
@@ -63,11 +82,11 @@ if($tw.browser) {
 				}else if (head_ext[1]==='js'){
 						var head = head_ext[0];//hack of .png
 						var headlist = head.split("/"); //filename is last
-						if (headlist[3] ==='TW5CKEditor') {require(title);  }
+						if (headlist[3] ==='visualeditor') {require(title);  }
 				}else if (head_ext[1]==='css'){
 						var head = head_ext[0];//hack of .png
 						var headlist = head.split("/"); //filename is last
-						if (headlist[3] ==='TW5CKEditor') {
+						if (headlist[3] ==='visualeditor') {
 							if (title !="$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"
 							&& title !="$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"){
 								//dom.applyStyleSheet("ckedit"+headlist[length-1],
@@ -81,10 +100,17 @@ if($tw.browser) {
 		//for non shadow tiddlers 
 		var extensions =  $tw.wiki.getTiddlersWithTag("CKExtension");
 		for (var i = 0; i<extensions.length;i++) {workfn(null,extensions[i])};
-	dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
+	    applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
 
 	}
 }
+		var atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/html");
+		if (atiddler==undefined) {
+				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/html"] = {
+					source: "$:/config/EditorTypeMappings/text/html",
+					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/html"},{text:"html"})
+				};
+		}
 
 })();
 
@@ -355,6 +381,5 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 };
 
 exports["edit-html"] = EditHtmlWidget;
-
 })();
 
