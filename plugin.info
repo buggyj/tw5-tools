@@ -1,9 +1,9 @@
 {
-	"title": "$:/plugins/bj/Dev",
-	"description": "Dev tool plugin",
-	"author": "JeffreyWilkinson",
+	"title": "$:/plugins/bj/taglist",
+	"description": "re-orderable list on a tag",
+	"author": "Jeffrey Wilkinson",
 	"version": "0.0.0",
 	"core-version": ">=5.0.0",
-	"source": "https://github.com/buggyj/TW5-Dev",
+	"source": "https://github.com/buggyj/TW5-taglist",
 	"plugin-type": "plugin"
 }
