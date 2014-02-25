@@ -1,6 +1,6 @@
 {
 	"title": "$:/plugins/bj/Calendar",
-	"description": "ckeditor adapter plugin",
+	"description": "calendar with date formatter addons",
 	"author": "JeffreyWilkinson",
 	"version": "0.0.0",
 	"core-version": ">=5.0.0",

@@ -20,11 +20,14 @@ var createMonth= function(mnth,year,options){
 	return month;
 }
 function createDate(i,mnth,year,options){
-	var strong='';
+	var strong='',tiddlerDate;
 	var date=(new Date(year, mnth, i));
 	if (date.toDateString()===Calendar.toDateString()&&options.highlightThisDate=="yes") strong ='!';
-	return centre(strong+'[['+i+'|'+date.getDate()+
-	              ' '+$tw.config.dateFormats.months[date.getMonth()]+' '+date.getFullYear()+']]');
+	tiddlerDate=date.getDate()+
+	              ' '+$tw.config.dateFormats.months[date.getMonth()]+' '+date.getFullYear();
+   
+	if ($tw.wiki.getTiddler(tiddlerDate)!==undefined)  strong ='!';
+	return centre(strong+'[['+i+'|'+tiddlerDate+']]');
 }
 function daysInMonth(iMonth, iYear){
 		return 32 - new Date(iYear, iMonth, 32).getDate();

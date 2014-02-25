@@ -31,7 +31,7 @@ Run the macro
 
 exports.run = function(year, month,opts) {
 if (!opts) opts="default";
-var options = $tw.wiki.getTiddlerData("$:/plugins/bj/Calendar/json/config.json")[opts]||
+var options = $tw.wiki.getTiddlerData("$:/config/bj/Calendar.json")[opts]||
 				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightThisDay:"",highlightThisDate:""};
 var createMonth;
 try {
