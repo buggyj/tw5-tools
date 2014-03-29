@@ -721,6 +721,14 @@
 			}
 		},
 		{
+			"file": "verbatim.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/bj/visualeditor/verbatim.json",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/magicline/images/hidpi/icon.png",
 			"fields": {
 				"type": "image/png",
@@ -733,6 +741,62 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/bj/visualeditor/plugins/magicline/images/icon.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/images/transformToUpper.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformToUpper.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/images/transformcapitalize.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformcapitalize.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/images/transformtexttouppercase.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformtexttouppercase.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/images/transformSwitcher.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformSwitcher.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/plugin.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/plugin.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/lang/en.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/lang/en.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/texttransform/lang/tr.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/lang/tr.js",
 				"module-type": "library"
 			}
 		},

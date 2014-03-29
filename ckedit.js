@@ -12,6 +12,14 @@ ckeditor adaptor
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
+var hasClass=function (e,theClass)
+{
+	if(e.getAttribute('class')) {
+		if(e.getAttribute('class').split(" ").indexOf(theClass) != -1)
+			return true;
+	}
+	return false;
+}
 var applyStyleSheet = function(id,css) {
 	var el = document.getElementById(id);
 	if(document.createStyleSheet) { // Older versions of IE
@@ -43,14 +51,15 @@ if($tw.browser) {
 	 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
 	} catch(e){alert("invalid style format") ;}
 	if (!!sty) CKEDITOR.stylesSet.add( 'default',sty);
+	CKEDITOR.addCss($tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/verbatim.json").verbatim);
 	CKEDITOR.on( 'instanceReady', function( ev ) {
 		var blockTags = ['div','h1','h2','h3','h4','h5','h6','p','pre','li','blockquote','ul','ol',
   'table','thead','tbody','tfoot','td','th',];
 		var rules = {
 		indent : false,
 		breakBeforeOpen : true,
-		breakAfterOpen : true,
-		breakBeforeClose : true,
+		breakAfterOpen : false,
+		breakBeforeClose : false,
 		breakAfterClose : true
 	};
 
@@ -60,6 +69,28 @@ if($tw.browser) {
 
 
 	});
+		CKEDITOR.on( 'instanceLoaded', function( ev ) {
+			var findContainer= function(e) {
+				while(e && !hasClass(e,"tw-ckeditor-instance"))
+					e = e.getParent();
+				if (e) return e.getFirst().getAttribute('id');
+				return "no";
+			};
+			var editor = ev.editor;
+			var doc = new CKEDITOR.dom.document( document );
+			var icons = doc.find( '.cke_button_icon');
+
+			for ( i = 0; i < icons.count(); i++ ) {
+				var icon = icons.getItem( i );
+				if (editor.name ==findContainer(icon)) {
+					var name =icon.getAttribute('class');
+					name = name.replace(/.*__(.*)_icon.*/,"$1");
+					//we rewrite the icons images as some addons try and write external files
+					//that dont exist anymore, and we are left with blank icons
+					icon.setAttribute( 'style',CKEDITOR.skin.getIconStyle( name, ( CKEDITOR.lang.dir == 'rtl' ) ));
+				}
+			}
+		});
 	//BJ FixMe: figure out how to hide tw5 tags and macros from ckeditor
 		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
 		CKEDITOR.config.protectedSource.push(/<<[^<]*>>/g);
@@ -73,9 +104,11 @@ if($tw.browser) {
 						var head = head_ext[0];//hack off .png
 						var headlist = head.split("/"); //filename is last
 						if (headlist[3] ==='visualeditor') {
-							var iconname = headlist[headlist.length-1];
+							var iconname = headlist[headlist.length-1].toLowerCase();
 							//alert("icon"+iconname);
+							//note we cannot call CKEDITOR.skin.addIcon() - this does not allow overwriting
 							if (headlist[headlist.length-2]!="hidpi")
+							    //hack path - complete the url thats going to be created with ')' and add our own
 								CKEDITOR.skin.icons[ iconname ] = { path: '); background-image: url(data:image/png;base64,'+
 							   $tw.wiki.getTiddlerText(title)+');', offset: 0 } ;
 						}
@@ -136,20 +169,49 @@ EditHtmlWidget.prototype = new Widget();
 EditHtmlWidget.prototype.postRender = function() {
 	var self = this,
 		cm;
+	var toWiki = function(text) {
+		//if($tw.browser) alert("in towiki "+text)
+
+		//BJ FIXME - in theory the attribs can be in any order, so this may fail as it is
+		var newtext="";
+
+		 newtext=text.replace(/^<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/,
+		function(m,key,offset,str){
+			return $tw.utils.htmlDecode(key)+"<!-- verbatim -->";
+		});
+		newtext =
+		newtext.replace(/<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/g,
+		function(m,key,offset,str){
+			return "\n<!-- nl verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
+		});
+		newtext =
+		newtext.replace(/<span class=\"verbatim\".*?>([\s\S]*?)<\/span>/g,
+		function(m,key,offset,str){
+			return "<!-- verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
+		});
+		//if($tw.browser) alert(newtext);
+		return newtext;
+	}
+
 	if($tw.browser && window.CKEDITOR && this.editTag === "textarea") {
 		
 		var ck ="editor"+ Math.random();
-		this.domNodes[0].setAttribute("name",ck);
-		this.domNodes[0].setAttribute("id",ck);
+		this.domNodes[0].firstChild.setAttribute("name",ck);
+		this.domNodes[0].firstChild.setAttribute("id",ck);
 
 		CKEDITOR.replace(ck, $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json"));//,
 			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/extraplugins.tid")});	
 		//BJ: note that we have statically loaded the style sheet already,
 		//therefore it is not possible to load a different skin here
 		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})
+
 		CKEDITOR.instances[ck].on('change', 
 			function() {
-				self.getEditInfo().update(CKEDITOR.instances[ck].getData());
+				if (this.edittype == 'text/x-visual') {
+					self.saveChanges(toWiki(CKEDITOR.instances[ck].getData()));
+				} else {
+					self.saveChanges(CKEDITOR.instances[ck].getData());
+				} 
 			}
 		);
 	} 
@@ -170,7 +232,29 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	// Execute our logic
 	this.execute();
+	var fromWiki = function(text) {
+		var preAmble='<span class="verbatim">';
+		var index=1;
+		//seperate the /define .../end section
+		text = text.split("<\!-- verbatim -->");
+		if (text.length==1) //no preamble defined
+			index=0;
+		else
+			text[0]= preAmble+$tw.utils.htmlEncode(text[0])+'</span>'
+		text[index] = 	text[index].replace(/^<\!-- nl verb -->([\s\S]*?)<\!-- atim -->/mg,
+		function(m,key,offset,str){//alert(key);
+			return '<p>'+preAmble+$tw.utils.htmlEncode(key)+'</span>'+'</p>';
+		});alert ("newtext "+text[index]);
+		text[index] = 	text[index].replace(/<\!-- verb -->([\s\S]*?)<\!-- atim -->/g,
+		function(m,key,offset,str){//alert(key);
+			return preAmble+$tw.utils.htmlEncode(key)+'</span>';
+		});
+		alert ("newtext "+text.join(""));
+		return text.join("");
+	}
 	// Create our element
+	var outerDomNode = this.document.createElement('div');
+		outerDomNode.className = "tw-ckeditor-instance";
 	var domNode = this.document.createElement(this.editTag);
 	if(this.editType) {
 		domNode.setAttribute("type",this.editType);
@@ -185,14 +269,18 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	// Set the text
 	var editInfo = this.getEditInfo();
 	if(this.editTag === "textarea") {
-		domNode.appendChild(this.document.createTextNode(editInfo.value));
+		if (this.edittype == 'text/x-visual') {
+			domNode.appendChild(this.document.createTextNode(fromWiki(editInfo.value)));
+		} else  {
+			domNode.appendChild(this.document.createTextNode(editInfo.value));
+		} 
 	} else {
 		domNode.setAttribute("value",editInfo.value)
 	}
-
+    outerDomNode.appendChild(domNode);
 	// Insert the element into the DOM
-	parent.insertBefore(domNode,nextSibling);
-	this.domNodes.push(domNode);
+	parent.insertBefore(outerDomNode,nextSibling);
+	this.domNodes.push(outerDomNode);
 	if(this.postRender) {
 		this.postRender();
 	}
@@ -265,6 +353,14 @@ EditHtmlWidget.prototype.execute = function() {
 	this.editPlaceholder = this.getAttribute("placeholder");
 	this.editFocusPopup = this.getAttribute("focusPopup");
 	this.onkeyupdate = this.getAttribute("onkeyupdate","yes"); 
+		// Get the content type of the thing we're editing
+	this.edittype;
+	if(this.editField === "text") {
+		var tiddler = this.wiki.getTiddler(this.editTitle);
+		if(tiddler) {
+			this.edittype = tiddler.fields.type;
+		}
+	}
 	// Get the editor element tag and type
 	var tag,type;
 	if(this.editField === "text") {
@@ -314,7 +410,7 @@ Update the editor dom node with new text
 */
 EditHtmlWidget.prototype.updateEditorDomNode = function(text) {
 	// Replace the edit value if the tiddler we're editing has changed
-	var domNode = this.domNodes[0];
+	var domNode = this.domNodes[0].firstChild;
 	if(!domNode.isTiddlyWikiFakeDom) {
 		if(this.document.activeElement !== domNode) {
 			domNode.value = text;
@@ -356,7 +452,7 @@ EditHtmlWidget.prototype.fixHeight = function() {
 Handle a dom "input" event
 */
 EditHtmlWidget.prototype.handleInputEvent = function(event) {
-	this.saveChanges(this.domNodes[0].value);
+	this.saveChanges(this.domNodes[0].firstChild.value);
 	this.fixHeight();
 	return true;
 };
@@ -364,7 +460,7 @@ EditHtmlWidget.prototype.handleInputEvent = function(event) {
 EditHtmlWidget.prototype.handleFocusEvent = function(event) {
 	if(this.editFocusPopup) {
 		$tw.popup.triggerPopup({
-			domNode: this.domNodes[0],
+			domNode: this.domNodes[0].firstChild,
 			title: this.editFocusPopup,
 			wiki: this.wiki,
 			force: true
@@ -381,5 +477,8 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 };
 
 exports["edit-html"] = EditHtmlWidget;
+$tw.utils.registerFileType("text/htmlp","utf8",".htmlp");
+exports["edit-htmlp"] = EditHtmlWidget;
+
 })();
 
