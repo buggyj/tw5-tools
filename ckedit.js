@@ -42,15 +42,20 @@ var applyStyleSheet = function(id,css) {
 };
 if($tw.browser) {
 	require("$:/plugins/bj/visualeditor/ckeditor.js");
-	var dom=require("$:/core/modules/utils/dom.js");
+	if (typeof CKEDITOR != 'undefined')   {
+	var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-htmlp")!='undefined');
+
     var sty;
 	applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"));
-	//dom.applyStyleSheet("ckeditdialog",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/dialog.css"));
-	if (typeof CKEDITOR != 'undefined')   {
+
 	try {
 	 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
-	} catch(e){alert("invalid style format") ;}
-	if (!!sty) CKEDITOR.stylesSet.add( 'default',sty);
+	} catch(e){ //alert("invalid style format") 
+		sty=[];
+	}
+	if (PLUSMODE) sty.push({ "name": "verbatim","element": "span","attributes": {"class": "verbatim"}});
+
+	CKEDITOR.stylesSet.add( 'default',sty);
 	CKEDITOR.addCss($tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/verbatim.json").verbatim);
 	CKEDITOR.on( 'instanceReady', function( ev ) {
 		var blockTags = ['div','h1','h2','h3','h4','h5','h6','p','pre','li','blockquote','ul','ol',
@@ -60,7 +65,7 @@ if($tw.browser) {
 		breakBeforeOpen : true,
 		breakAfterOpen : false,
 		breakBeforeClose : false,
-		breakAfterClose : true
+		breakAfterClose : false
 	};
 
 	for (var i=0; i<blockTags.length; i++) {
@@ -144,7 +149,13 @@ if($tw.browser) {
 					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/html"},{text:"html"})
 				};
 		}
-
+		atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-htmlp");
+		if (atiddler==undefined) {
+				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/x-htmlp"] = {
+					source: "$:/config/EditorTypeMappings/text/x-htmlp",
+					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/x-htmlp"},{text:"x-htmlp"})
+				};
+		}
 })();
 
 (function(){
@@ -160,6 +171,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 var EditHtmlWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
+var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-htmlp")!='undefined');
 
 /*
 Inherit from the base widget class
@@ -206,8 +218,8 @@ EditHtmlWidget.prototype.postRender = function() {
 		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})
 
 		CKEDITOR.instances[ck].on('change', 
-			function() {
-				if (this.edittype == 'text/x-visual') {
+			function() { 
+				if (PLUSMODE && self.edittype == 'text/x-htmlp') {
 					self.saveChanges(toWiki(CKEDITOR.instances[ck].getData()));
 				} else {
 					self.saveChanges(CKEDITOR.instances[ck].getData());
@@ -244,12 +256,12 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 		text[index] = 	text[index].replace(/^<\!-- nl verb -->([\s\S]*?)<\!-- atim -->/mg,
 		function(m,key,offset,str){//alert(key);
 			return '<p>'+preAmble+$tw.utils.htmlEncode(key)+'</span>'+'</p>';
-		});alert ("newtext "+text[index]);
+		});//alert ("newtext "+text[index]);
 		text[index] = 	text[index].replace(/<\!-- verb -->([\s\S]*?)<\!-- atim -->/g,
 		function(m,key,offset,str){//alert(key);
 			return preAmble+$tw.utils.htmlEncode(key)+'</span>';
 		});
-		alert ("newtext "+text.join(""));
+		//alert ("newtext "+text.join(""));
 		return text.join("");
 	}
 	// Create our element
@@ -269,7 +281,7 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	// Set the text
 	var editInfo = this.getEditInfo();
 	if(this.editTag === "textarea") {
-		if (this.edittype == 'text/x-visual') {
+		if (PLUSMODE && this.edittype == 'text/x-htmlp') {
 			domNode.appendChild(this.document.createTextNode(fromWiki(editInfo.value)));
 		} else  {
 			domNode.appendChild(this.document.createTextNode(editInfo.value));
@@ -477,8 +489,8 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 };
 
 exports["edit-html"] = EditHtmlWidget;
-$tw.utils.registerFileType("text/htmlp","utf8",".htmlp");
-exports["edit-htmlp"] = EditHtmlWidget;
+$tw.utils.registerFileType("text/x-htmlp","utf8",".htmlp");
+exports["edit-x-htmlp"] = EditHtmlWidget;
 
 })();
 
