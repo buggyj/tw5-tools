@@ -189,7 +189,7 @@ EditHtmlWidget.prototype.postRender = function() {
 
 		 newtext=text.replace(/^<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/,
 		function(m,key,offset,str){
-			return $tw.utils.htmlDecode(key)+"<!-- verbatim -->";
+			return $tw.utils.htmlDecode(key)+"\n<!-- verbatim -->";
 		});
 		newtext =
 		newtext.replace(/<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/g,

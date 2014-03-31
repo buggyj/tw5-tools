@@ -1,6 +1,5 @@
 {
-"extraPlugins": "texttransform",
-"removePlugins":"wsc, scayt",
+"removePlugins":"wsc,scayt",
 "customConfig":"",
 "language" : "en",
 "defaultLanguage" : "en",
