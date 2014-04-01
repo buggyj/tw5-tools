@@ -65,6 +65,14 @@
 			}
 		},
 		{
+			"file": "commonbuttons/replace.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/commonbuttons/replace.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "commonbuttons/find.png",
 			"fields": {
 				"type": "image/png",
@@ -141,6 +149,14 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/bj/visualeditor/commonbuttons/docprops.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "commonbuttons/creatediv.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/commonbuttons/creatediv.png",
 				"module-type": "library"
 			}
 		},
@@ -745,62 +761,6 @@
 			}
 		},
 		{
-			"file": "plugins/texttransform/images/transformToUpper.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformToUpper.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/images/transformcapitalize.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformcapitalize.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/images/transformtexttouppercase.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformtexttouppercase.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/images/transformSwitcher.png",
-			"fields": {
-				"type": "image/png",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/images/transformSwitcher.png",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/plugin.js",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/plugin.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/lang/en.js",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/lang/en.js",
-				"module-type": "library"
-			}
-		},
-		{
-			"file": "plugins/texttransform/lang/tr.js",
-			"fields": {
-				"type": "application/javascript",
-				"title": "$:/plugins/bj/visualeditor/plugins/texttransform/lang/tr.js",
-				"module-type": "library"
-			}
-		},
-		{
 			"file": "plugins/a11yhelp/dialogs/a11yhelp.js",
 			"fields": {
 				"type": "application/javascript",
@@ -1241,6 +1201,94 @@
 			}
 		},
 		{
+			"file": "plugins/showblocks/images/block_h3.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h3.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_pre.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_pre.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_div.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_div.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_p.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_p.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_h6.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h6.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_address.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_address.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_h1.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h1.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_h4.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h4.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_blockquote.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_blockquote.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_h5.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h5.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/showblocks/images/block_h2.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/showblocks/images/block_h2.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/pastefromword/filter/default.js",
 			"fields": {
 				"type": "application/javascript",
@@ -1253,6 +1301,52 @@
 			"fields": {
 				"type": "application/javascript",
 				"title": "$:/plugins/bj/visualeditor/plugins/table/dialogs/table.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/iframe/dialogs/iframe.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/iframe/dialogs/iframe.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/iframe/images/placeholder.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/iframe/images/placeholder.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/div/dialogs/div.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/div/dialogs/div.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/templates/templates/default.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/templates/templates/default.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/templates/dialogs/templates.css",
+			"fields": {
+				"title": "$:/plugins/bj/visualeditor/plugins/templates/dialogs/templates.css"
+			}
+		},
+		{
+			"file": "plugins/templates/dialogs/templates.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/templates/dialogs/templates.js",
 				"module-type": "library"
 			}
 		},
@@ -1317,6 +1411,20 @@
 			"fields": {
 				"type": "application/javascript",
 				"title": "$:/plugins/bj/visualeditor/plugins/dialog/dialogDefinition.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/scayt/dialogs/toolbar.css",
+			"fields": {
+				"title": "$:/plugins/bj/visualeditor/plugins/scayt/dialogs/toolbar.css"
+			}
+		},
+		{
+			"file": "plugins/scayt/dialogs/options.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/scayt/dialogs/options.js",
 				"module-type": "library"
 			}
 		},
@@ -1681,6 +1789,206 @@
 			}
 		},
 		{
+			"file": "plugins/find/dialogs/find.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/find/dialogs/find.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/flash/dialogs/flash.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/flash/dialogs/flash.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/flash/images/placeholder.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/flash/images/placeholder.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/dialogs/smiley.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/dialogs/smiley.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/whatchutalkingabout_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/whatchutalkingabout_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/embarrassed_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/embarrassed_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/devil_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/devil_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/lightbulb.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/lightbulb.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/angel_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/angel_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/sad_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/sad_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/tongue_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/tongue_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/thumbs_down.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/thumbs_down.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/wink_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/wink_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/kiss.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/kiss.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/angry_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/angry_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/broken_heart.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/broken_heart.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/omg_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/omg_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/heart.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/heart.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/envelope.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/envelope.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/shades_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/shades_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/thumbs_up.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/thumbs_up.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/cry_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/cry_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/confused_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/confused_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/teeth_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/teeth_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/smiley/images/regular_smile.png",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/visualeditor/plugins/smiley/images/regular_smile.png",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "plugins/icons.png",
 			"fields": {
 				"type": "image/png",
@@ -1693,6 +2001,86 @@
 			"fields": {
 				"type": "image/png",
 				"title": "$:/plugins/bj/visualeditor/plugins/icons_hidpi.png",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/colordialog/dialogs/colordialog.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/colordialog/dialogs/colordialog.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/button.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/button.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/textarea.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/textarea.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/select.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/select.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/radio.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/radio.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/form.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/form.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/textfield.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/textfield.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/hiddenfield.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/hiddenfield.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/forms/dialogs/checkbox.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/forms/dialogs/checkbox.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "plugins/liststyle/dialogs/liststyle.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/visualeditor/plugins/liststyle/dialogs/liststyle.js",
 				"module-type": "library"
 			}
 		},

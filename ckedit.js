@@ -50,7 +50,8 @@ if($tw.browser) {
 
 	try {
 	 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
-	} catch(e){ //alert("invalid style format") 
+	} catch(e){ 
+		alert("invalid style format");
 		sty=[];
 	}
 	if (PLUSMODE) sty.push({ "name": "verbatim","element": "span","attributes": {"class": "verbatim"}});
@@ -210,8 +211,14 @@ EditHtmlWidget.prototype.postRender = function() {
 		var ck ="editor"+ Math.random();
 		this.domNodes[0].firstChild.setAttribute("name",ck);
 		this.domNodes[0].firstChild.setAttribute("id",ck);
-
-		CKEDITOR.replace(ck, $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json"));//,
+		var config;
+		try {
+		    config= $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json");
+		} catch(e) {
+			alert("invalid config format");
+			config = [];
+		}
+		CKEDITOR.replace(ck, config);//,
 			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/extraplugins.tid")});	
 		//BJ: note that we have statically loaded the style sheet already,
 		//therefore it is not possible to load a different skin here

@@ -1,8 +1,9 @@
 {
-"removePlugins":"wsc,scayt",
+"removePlugins":"smiley,wsc,scayt,forms",
 "customConfig":"",
 "language" : "en",
 "defaultLanguage" : "en",
 "contentsCss" : "",
+"disableNativeSpellChecker" : false,
 "resize_enabled" : false 
 }
