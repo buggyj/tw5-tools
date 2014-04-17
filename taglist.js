@@ -271,11 +271,11 @@ Inherit from the base widget class
 */
 TagListItemWidget.prototype = new Widget();
 TagListItemWidget.prototype.addTag = function (tidname) {
-		var tiddler = this.wiki.getTiddler(tidname),
-			updateFields = {};
-		updateFields["tags"] = ((!!tiddler.fields.tags)?tiddler.fields.tags:'') + " " +this.parseTreeNode.listtag;
-		this.wiki.addTiddler(new $tw.Tiddler(this.wiki.getCreationFields(),tiddler,updateFields,
-		this.wiki.getModificationFields()));
+		var tiddler = this.wiki.getTiddler(tidname);
+		var modification = this.wiki.getModificationFields();
+		modification.tags = (tiddler.fields.tags || []).slice(0);
+		$tw.utils.pushTop(modification.tags,this.parseTreeNode.listtag);
+		this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));
 			
 }
 TagListItemWidget.prototype.handleDropEvent  = function(event) {
