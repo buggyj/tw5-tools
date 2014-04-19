@@ -134,7 +134,10 @@ if($tw.browser) {
   }
 				}
 		}
-		$tw.utils.each($tw.wiki.shadowTiddlers,workfn);
+		var Aray= $tw.wiki.allShadowTitles();
+		for (var i=0; i <Aray.length; i++) {
+			workfn(null,Aray[i])
+		}
 
 		//for non shadow tiddlers 
 		var extensions =  $tw.wiki.getTiddlersWithTag("CKExtension");
@@ -145,17 +148,13 @@ if($tw.browser) {
 }
 		var atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/html");
 		if (atiddler==undefined) {
-				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/html"] = {
-					source: "$:/config/EditorTypeMappings/text/html",
-					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/html"},{text:"html"})
-				};
+					$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
+					{title:"$:/config/EditorTypeMappings/text/html", text:"html"}));
 		}
 		atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-perimental");
-		if (atiddler==undefined) {
-				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/x-perimental"] = {
-					source: "$:/config/EditorTypeMappings/text/x-perimental",
-					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/x-perimental"},{text:"x-perimental"})
-				};
+		if (atiddler==undefined) {	
+					$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
+						{title:"$:/config/EditorTypeMappings/text/x-perimental", text:"x-perimental"}));
 		}
 })();
 
