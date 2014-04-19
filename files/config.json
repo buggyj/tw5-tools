@@ -1,5 +1,5 @@
 {
-"removePlugins":"smiley,wsc,scayt,forms",
+"removePlugins":"smiley,wsc,scayt,forms,save,preview,print",
 "customConfig":"",
 "language" : "en",
 "defaultLanguage" : "en",

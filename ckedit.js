@@ -43,7 +43,7 @@ var applyStyleSheet = function(id,css) {
 if($tw.browser) {
 	require("$:/plugins/bj/visualeditor/ckeditor.js");
 	if (typeof CKEDITOR != 'undefined')   {
-	var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-htmlp")!='undefined');
+	var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
     var sty;
 	applyStyleSheet("ckeditmain",$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/skins/moonomod/editor_gecko.css"));
@@ -150,11 +150,11 @@ if($tw.browser) {
 					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/html"},{text:"html"})
 				};
 		}
-		atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-htmlp");
+		atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-perimental");
 		if (atiddler==undefined) {
-				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/x-htmlp"] = {
-					source: "$:/config/EditorTypeMappings/text/x-htmlp",
-					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/x-htmlp"},{text:"x-htmlp"})
+				$tw.wiki.shadowTiddlers["$:/config/EditorTypeMappings/text/x-perimental"] = {
+					source: "$:/config/EditorTypeMappings/text/x-perimental",
+					tiddler: new $tw.Tiddler({title:"$:/config/EditorTypeMappings/text/x-perimental"},{text:"x-perimental"})
 				};
 		}
 })();
@@ -172,7 +172,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 var EditHtmlWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
-var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-htmlp")!='undefined');
+var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
 /*
 Inherit from the base widget class
@@ -188,19 +188,31 @@ EditHtmlWidget.prototype.postRender = function() {
 		//BJ FIXME - in theory the attribs can be in any order, so this may fail as it is
 		var newtext="";
 
-		 newtext=text.replace(/^<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/,
+		 newtext=text.replace(/^<p><span class=\"verbatim\".*?>([^<]*)<\/span><\/p>/,
 		function(m,key,offset,str){
-			return $tw.utils.htmlDecode(key)+"\n<!-- verbatim -->";
+                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+					return m;
+				}
+				return $tw.utils.htmlDecode(key)+"\n<!-- verbatim -->";
+
 		});
 		newtext =
-		newtext.replace(/<p><span class=\"verbatim\".*?>([\s\S]*?)<\/span><\/p>/g,
+		newtext.replace(/<p><span class=\"verbatim\".*?>([^<]*)<\/span><\/p>/g,
 		function(m,key,offset,str){
-			return "\n<!-- nl verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
+                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+					return m;
+				}
+				return "\n<!-- nl verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
+
+			
 		});
 		newtext =
-		newtext.replace(/<span class=\"verbatim\".*?>([\s\S]*?)<\/span>/g,
+		newtext.replace(/<span class=\"verbatim\".*?>([^<]*)<\/span>/g,
 		function(m,key,offset,str){
-			return "<!-- verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
+                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+					return m;
+				}
+				return "<!-- verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
 		});
 		//if($tw.browser) alert(newtext);
 		return newtext;
@@ -226,7 +238,7 @@ EditHtmlWidget.prototype.postRender = function() {
 
 		CKEDITOR.instances[ck].on('change', 
 			function() { 
-				if (PLUSMODE && self.edittype == 'text/x-htmlp') {
+				if (PLUSMODE && self.edittype == 'text/x-perimental') {
 					self.saveChanges(toWiki(CKEDITOR.instances[ck].getData()));
 				} else {
 					self.saveChanges(CKEDITOR.instances[ck].getData());
@@ -288,7 +300,7 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	// Set the text
 	var editInfo = this.getEditInfo();
 	if(this.editTag === "textarea") {
-		if (PLUSMODE && this.edittype == 'text/x-htmlp') {
+		if (PLUSMODE && this.edittype == 'text/x-perimental') {
 			domNode.appendChild(this.document.createTextNode(fromWiki(editInfo.value)));
 		} else  {
 			domNode.appendChild(this.document.createTextNode(editInfo.value));
@@ -496,8 +508,8 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 };
 
 exports["edit-html"] = EditHtmlWidget;
-$tw.utils.registerFileType("text/x-htmlp","utf8",".htmlp");
-exports["edit-x-htmlp"] = EditHtmlWidget;
+$tw.utils.registerFileType("text/x-perimental","utf8",".perimental");
+exports["edit-x-perimental"] = EditHtmlWidget;
 
 })();
 
