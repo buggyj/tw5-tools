@@ -21,8 +21,11 @@ The edit-text widget calls this method just after inserting its dom nodes
 /*
 overload the base widget class initialise
 */
-DropZoneWidget.prototype.initialise = function(parseTreeNode,options) {
-	Widget.prototype.initialise.call(this,parseTreeNode,options);
+DropZoneWidget.prototype.bjDropzoneExtend ={};
+DropZoneWidget.prototype.bjDropzoneExtend.initialise = DropZoneWidget.prototype.initialise;
+
+DropZoneWidget.prototype.initialise = function (parseTreeNode,options) {
+	DropZoneWidget.prototype.bjDropzoneExtend.initialise.call(this,parseTreeNode,options);
 	this.addEventListeners([
 		{type: "tw-dropHandled", handler: "handleDropHandled"}]);
 };

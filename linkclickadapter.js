@@ -13,10 +13,11 @@ Extend the link widget to allow click when there is a drag over (option)
 "use strict";
 
 var LinkWidget = require("$:/core/modules/widgets/link.js")["link"];
+LinkWidget.prototype.bjDragExtend ={};
+LinkWidget.prototype.bjDragExtend.renderLink = LinkWidget.prototype.renderLink;
 
-LinkWidget.prototype.renderLinkold = LinkWidget.prototype.renderLink;
 LinkWidget.prototype.renderLink = function (parent,nextSibling) {
-	LinkWidget.prototype.renderLinkold.call(this,parent,nextSibling);
+	LinkWidget.prototype.bjDragExtend.renderLink.call(this,parent,nextSibling);
 	if (this.dragoverclick==="yes") { 
 		$tw.utils.addEventListeners(this.domNodes[0],[
 			{name: "dragover", handlerObject: this, handlerMethod: "handleDragOverEvent"}
@@ -27,9 +28,9 @@ LinkWidget.prototype.renderLink = function (parent,nextSibling) {
 /*
 add option
 */
-LinkWidget.prototype.executeold = LinkWidget.prototype.execute;
+LinkWidget.prototype.bjDragExtend.execute = LinkWidget.prototype.execute;
 LinkWidget.prototype.execute = function() {
-	LinkWidget.prototype.executeold.call(this);
+	LinkWidget.prototype.bjDragExtend.execute.call(this);
 	this.dragoverclick=this.getAttribute("dragoverclic","no");
 };
 /*
