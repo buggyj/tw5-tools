@@ -23,20 +23,25 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 */
-
+//BJ todo - there is no way to remove an instance this will cause a memory leak - the callbacks need to 
+//          be added programmatically to the form, releasing the instance from its dependency on JSONeditor(via buildInstance)
 JSONeditor={
+	instances:0,
+	buildInstance:[],
+	treeDivNames:[],
 	start:function(treeDivName,formDivName,json,showExamples){
 		if(this.examples.length<6){
-			var e=this.treeBuilder.JSONstring.make(this)
-			eval("this.examples[5]={JSONeditor:"+e+"}")
+			//var e=JSONeditor.treeBuilder.JSONstring.make(this)
+			//eval("this.examples[5]={JSONeditor:"+e+"}")
 		}
+		
 		this.treeDivName=treeDivName
-		var t=this.treeBuilder, $=t.$
-		treeBuilder=t
+		var t=new this.treeBuilder(this.instances), $=t.$
+		this.buildInstance[this.instances]=t
 		var s=$(treeDivName).style
 		var f=$(formDivName)
 		var fs=f.style
-		f.innerHTML=this.formHTML
+		f.innerHTML="<form name=\"jsoninput"+this.instances+"\" onsubmit=\" JSONeditor.jsonChange(this); return false\">"+this.formHTML
 		if(!showExamples){$('jExamples').style.display="none"}
 		fs.fontSize=s.fontSize="11px"
 		fs.fontFamily=s.fontFamily="Verdana,Arial,Helvetica,sans-serif"
@@ -47,15 +52,77 @@ JSONeditor={
 				s.fontSize="11px"
 				s.fontFamily="Verdana,Arial,Helvetica,sans-serif"
 			}
+			//add the instance
+			e[i].instance=this.instances.toString();
 		}
 		json=json||{}
-		t.JSONbuild(treeDivName,json)
+		t=new this.treeBuilder(this.instances,f.firstChild)
+		this.buildInstance[this.instances]=t
+		t.JSONbuild(treeDivName,json)//sets up the instance 
+		this.treeDivNames[this.instances]=treeDivName;
+		this.instances++
 	},
-	loadExample:function(x){
-		treeBuilder.hasRunJSONbuildOnce=false
-		treeBuilder.JSONbuild(this.treeDivName,this.examples[x/1])
+	loadExample:function(x,node){ alert(node.instance)
+		this.buildInstance[node.instance].hasRunJSONbuildOnce=false
+		this.buildInstance[node.instance].JSONbuild(this.treeDivNames[node.instance],this.examples[x/1])
 	},
-	formHTML:"<form name=\"jsoninput\" onsubmit=\"return treeBuilder.jsonChange(this)\"><div id=\"jExamples\">Load an example:&nbsp;<select name=\"jloadExamples\" onchange=\"JSONeditor.loadExample(this.value)\"><option value=\"0\">None/empty</option><option value=\"1\">Employee data</option><option value=\"2\">Sample Konfabulator Widget</option><option value=\"3\">Member data</option><option value=\"4\">A menu system</option><option value=\"5\">The source code of this JSON editor</option></select><br><br></div>\nLabel:<br><input name=\"jlabel\" type=\"text\" value=\"\" size=\"60\" style=\"width:400px\"><br><br>\nValue: <br><textarea name=\"jvalue\" rows=\"10\" cols=\"50\" style=\"width:400px\"></textarea><br><br>\nData type: <select onchange=\"treeBuilder.changeJsonDataType(this.value,this.parentNode)\" name=\"jtype\">\n<option value=\"object\">object</option>\n<option value=\"array\">array</option>\n<option value=\"function\">function</option>\n<option value=\"string\">string</option>\n<option value=\"number\">number</option>\n<option value=\"boolean\">boolean</option>\n<option value=\"null\">null</option>\n<option value=\"undefined\">undefined</option>\n</select>&nbsp;&nbsp;&nbsp;&nbsp;\n<input name=\"orgjlabel\" type=\"hidden\" value=\"\" size=\"50\" style=\"width:300px\">\n<input onfocus=\"this.blur()\" type=\"submit\" value=\"Save\">&nbsp;\n<br><br>\n<input name=\"jAddChild\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonAddChild(this.parentNode)\" value=\"Add child\">\n<input name=\"jAddSibling\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonAddSibling(this.parentNode)\" value=\"Add sibling\">\n<br><br>\n<input name=\"jRemove\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonRemove(this.parentNode)\" value=\"Delete\">&nbsp;\n<input name=\"jRename\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonRename(this.parentNode)\" value=\"Rename\">&nbsp;\n<input name=\"jCut\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonCut(this.parentNode)\" value=\"Cut\">&nbsp;\n<input name=\"jCopy\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonCopy(this.parentNode)\" value=\"Copy\">&nbsp;\n<input name=\"jPaste\" onfocus=\"this.blur()\" type=\"button\" onclick=\"treeBuilder.jsonPaste(this.parentNode)\" value=\"Paste\">&nbsp;\n<br><br>\n<input type=\"checkbox\" name=\"jbefore\">Add children first/siblings before\n<br>\n<input type=\"checkbox\" name=\"jPasteAsChild\">Paste as child on objects & arrays\n<br><br><div id=\"jformMessage\"></div>\n</form>",
+	jsonChange:function(node) 	{alert(node.instance)
+		this.buildInstance[node.instance].jsonChange(node) 
+		return false
+	},
+	changeJsonDataType:function(value, node) {
+		this.buildInstance[node.instance].changeJsonDataType(value, node)
+	},
+	jsonAddChild:function(node) {
+		this.buildInstance[node.instance].jsonAddChild(node)
+	},
+	jsonAddSibling:function(node) {
+		this.buildInstance[node.instance].jsonAddSibling(node)
+	},
+	jsonRemove:function(node) {
+		this.buildInstance[node.instance].jsonRemove(node)
+	},
+	jsonRename:function(node) {
+		this.buildInstance[node.instance].jsonRename(node)
+	},
+	jsonCut:function(node) {
+		this.buildInstance[node.instance].jsonCut(node)
+	},
+	jsonCopy:function(node) {
+		this.buildInstance[node.instance].jsonCopy(node)
+	},
+	jsonPaste:function(node) {
+		this.buildInstance[node.instance].jsonPaste(node)
+	},
+	formHTML:				
+				"<div id=\"jExamples\">Load an example:&nbsp;"+
+				"<select name=\"jloadExamples\" onchange=\"JSONeditor.loadExample(this.value,this)\">"+
+				"<option value=\"0\">None/empty</option><option value=\"1\">Employee data</option>"+
+				"<option value=\"2\">Sample Konfabulator Widget</option>"+
+				"<option value=\"3\">Member data</option>"+
+				"<option value=\"4\">A menu system</option><option value=\"5\">The source code of this JSON editor</option>"+
+				"</select><br><br></div>\nLabel:<br>"+
+				"<input name=\"jlabel\" type=\"text\" value=\"\" size=\"60\" style=\"width:400px\">"+
+				"<br><br>\nValue: <br>"+
+				"<textarea name=\"jvalue\" rows=\"10\" cols=\"50\" style=\"width:400px\"></textarea>"+
+				"<br><br>\nData type: "+
+				"<select onchange=\"JSONeditor.changeJsonDataType(this.value,this.parentNode)\" name=\"jtype\">"+
+				"\n<option value=\"object\">object</option>\n<option value=\"array\">array</option>"+
+				"\n<option value=\"function\">function</option>\n<option value=\"string\">string</option>"+
+				"\n<option value=\"number\">number</option>\n<option value=\"boolean\">boolean</option>"+
+				"\n<option value=\"null\">null</option>\n<option value=\"undefined\">undefined</option>"+
+				"\n</select>&nbsp;&nbsp;&nbsp;&nbsp;"+
+				"\n<input name=\"orgjlabel\" type=\"hidden\" value=\"\" size=\"50\" style=\"width:300px\">"+
+				"\n<input onfocus=\"this.blur()\" type=\"submit\" value=\"Save\">&nbsp;\n<br><br>"+
+				"\n<input name=\"jAddChild\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonAddChild(this.parentNode)\" value=\"Add child\">"+
+				"\n<input name=\"jAddSibling\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonAddSibling(this.parentNode)\" value=\"Add sibling\">\n<br><br>"+
+				"\n<input name=\"jRemove\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonRemove(this.parentNode)\" value=\"Delete\">&nbsp;"+
+				"\n<input name=\"jRename\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonRename(this.parentNode)\" value=\"Rename\">&nbsp;"+
+				"\n<input name=\"jCut\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonCut(this.parentNode)\" value=\"Cut\">&nbsp;"+
+				"\n<input name=\"jCopy\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonCopy(this.parentNode)\" value=\"Copy\">&nbsp;"+
+				"\n<input name=\"jPaste\" onfocus=\"this.blur()\" type=\"button\" onclick=\"JSONeditor.jsonPaste(this.parentNode)\" value=\"Paste\">&nbsp;\n<br><br>"+
+				"\n<input type=\"checkbox\" name=\"jbefore\">Add children first/siblings before\n<br>"+
+				"\n<input type=\"checkbox\" name=\"jPasteAsChild\">Paste as child on objects & arrays\n<br><br><div id=\"jformMessage\"></div>\n</form>",
 	examples:[{},
 {employee:{gid:102, companyID:121, defaultActionID:444,names:{firstName:"Stive", middleInitial:"Jr",lastName:"Martin"},address:{city:"Albany",state:"NY",zipCode:"14410-585",addreess:"41 State Street"},job:{departmentID:102,jobTitleID:100,hireDate:"1/02/2000",terminationDate:"1/12/2007"},contact:{phoneHome:"12-123-2133", beeper:"5656",email1:"info@soft-amis.com",fax:"21-321-23223",phoneMobile:"32-434-3433",phoneOffice:"82-900-8993"},login:{employeeID:"eID102",password:"password",superUser:true,lastLoginDate:"1/12/2007",text:"text", regexp:/^mmm/, date: new Date() },comment:{PCDATA:"comment"},roles:[{role:102},{role:103}]}},
 {"widget": {"debug": true,"window": {"title": "Sample Konfabulator Widget","name": "main_window","width": 500,"height": 500},"Pairs": [ {"src": "Images/Sun.png","name": "sun1"},{"hOffset": 250,"vOffset": 200},null,{"alignment": "center"}],"text": {"a very long item label here": "Click Here","size": 36,"style": "null","name": "text1","hOffset": 250,"vOffset": 100,"alignment": "center","onmouseover": function(){alert("Hello World");},"onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"}}},
@@ -69,9 +136,11 @@ JSONeditor={
 treeBuilder v 1.00 + a lot of json stuff added...
 copyright 2007 Thomas Frank
 */
-JSONeditor.treeBuilder={
-	stateMem:{},
-	images:{
+JSONeditor.treeBuilder=function(num, form){
+	this.form = form;
+	this.num=num
+	this.stateMem={}
+	this.images={
 		folderNode:'',
 		folderNodeOpen:'',
 		folderNodeLast:'',
@@ -86,11 +155,12 @@ JSONeditor.treeBuilder={
 		folderNodeOpenFirst:'',
 		folderNodeLastFirst:'',
 		folderNodeOpenLastFirst:'',
-		path:'treeBuilderImages/',
+		path:'JSONeditor_example_files/',
 		nodeWidth:16
-	},
-	$:function(x){return document.getElementById(x)},
-	preParse:function(x){
+	}
+}
+	JSONeditor.treeBuilder.prototype.$=function(x){return document.getElementById(x)}
+	JSONeditor.treeBuilder.prototype.preParse=function(x){
 		var x=x.innerHTML.split("\n");
 		var d=[];
 		for(var i=0;i<x.length;i++){
@@ -103,37 +173,37 @@ JSONeditor.treeBuilder={
 			}
 		};
 		return d
-	},
-	isArray:function(x){
+	}
+	JSONeditor.treeBuilder.prototype.isArray=function(x){
 		return x.constructor==Array
-	},
-	jSyncTree:function(x){
+	}
+	JSONeditor.treeBuilder.prototype.jSyncTree=function(x){
 		var d=this.$(this.baseDiv).getElementsByTagName('div')
 		for(var i=0;i<d.length;i++){
 			
-			treeBuilder.maniClick="giveItBack"
+			this.maniClick="giveItBack"
 			var p=d[i].onclick()
 			if(p==x){
 				var t=d[i]
-				treeBuilder.maniClick="selectIt"
+				this.maniClick="selectIt"
 				t.onclick()
 				t=t.parentNode
 				while(t.id!=this.baseDiv){if(t.style){this.openAndClose(t.id,"open")};t=t.parentNode}
 			}
 		}
-		treeBuilder.maniClick=false
-	},
-	jsonResponder:function(x){
+		this.maniClick=false
+	}
+	JSONeditor.treeBuilder.prototype.jsonResponder=function(x){
 		this.jTypeChanged=false
-		treeBuilder.jSyncTree(x)
-		var t=treeBuilder
-		eval("var a=treeBuilder."+x)
-		eval("var ap=treeBuilder."+treeBuilder.jsonParent(x))
+		this.jSyncTree(x)
+		var t=this
+		eval("var a=this."+x)
+		eval("var ap=this."+this.jsonParent(x))
 		var b=t.JSONstring.make(a)
-		var t=(a && treeBuilder.isArray(a))?"array":typeof a
-		var tp=(ap && treeBuilder.isArray(ap))?"array":typeof ap
+		var t=(a && this.isArray(a))?"array":typeof a
+		var tp=(ap && this.isArray(ap))?"array":typeof ap
 		if(a===null){t="null"}
-		var f=document.forms.jsoninput
+		var f=this.form
 		if(t=="string"){eval("b="+b)}
 		f.jlabel.value=x
 		f.orgjlabel.value=x
@@ -145,26 +215,26 @@ JSONeditor.treeBuilder={
 		f.jAddSibling.disabled=f.jlabel.disabled
 		f.jRename.disabled=f.jlabel.disabled || tp=="array"
 		f.jAddChild.disabled=t!="array" && t!="object"
-		f.jPaste.disabled=!treeBuilder.jClipboard
+		f.jPaste.disabled=!this.jClipboard
 		f.jCut.disabled=f.jlabel.disabled
-	},
-	jsonParent:function(x){          
+	}
+	JSONeditor.treeBuilder.prototype.jsonParent=function(x){          
 		// inmproved thanks to \x000
-		if(x=="json"){return "treeBuilder"} 
+		if(x=="json"){return "this"} 
 		if (x.charAt(x.length-1)==']') {return x.substring(0,x.lastIndexOf('['))}                  
 		return x.substring(0,x.lastIndexOf('.'))     
-	},	
-	jsonChild:function(el1){
+	}	
+	JSONeditor.treeBuilder.prototype.jsonChild=function(el1){
 		var p=this.jsonParent(el1)
 		el1=el1.split(p).join("")
 		if(el1.charAt(0)=="."){el1=el1.substring(1)}
 		if(el1.charAt(0)=="["){el1=el1.substring(2,el1.length-2)}
 		return el1
-	},
-	jsonRemove:function(f){
+	}
+	JSONeditor.treeBuilder.prototype.jsonRemove=function(f){
 		this.jsonChange(f,true)
-	},
-	jsonAlreadyExists:function(o,l){
+	}
+	JSONeditor.treeBuilder.prototype.jsonAlreadyExists=function(o,l){
 		if(o[l]!==undefined){
 			var co=2
 			while(o[l+"_"+co]!==undefined){co++}
@@ -174,8 +244,8 @@ JSONeditor.treeBuilder={
 			if(p){l=p}
 		}
 		return l
-	},
-	jsonAddChild:function(f,label){
+	}
+	JSONeditor.treeBuilder.prototype.jsonAddChild=function(f,label){
 		var first=f.jbefore.checked
 		var l=f.orgjlabel.value
 		eval('var o=this.'+l)
@@ -205,8 +275,8 @@ JSONeditor.treeBuilder={
 		this.JSONbuild(this.baseDiv,this.json)
 		for(var i in this.stateMem){this.openAndClose(i,true)}
 		this.jsonResponder(n)
-	},
-	jsonAddSibling:function(f,label){
+	}
+	JSONeditor.treeBuilder.prototype.jsonAddSibling=function(f,label){
 		var before=f.jbefore.checked
 		var l=f.orgjlabel.value
 		var r=Math.random()
@@ -240,8 +310,8 @@ JSONeditor.treeBuilder={
 		this.JSONbuild(this.baseDiv,this.json)
 		for(var i in this.stateMem){this.openAndClose(i,true)}
 		this.jsonResponder(lp)
-	},
-	jSaveFirst:function(f,a){
+	}
+	JSONeditor.treeBuilder.prototype.jSaveFirst=function(f,a){
 		var l=f.orgjlabel.value
 		eval("var orgj=this."+l)
 		orgj=this.JSONstring.make(orgj)
@@ -252,8 +322,8 @@ JSONeditor.treeBuilder={
 			var k=confirm("Save before "+a+"?")
 			if(k){this.jsonChange(f)}
 		}
-	},
-	jsonRename:function(f){
+	}
+	JSONeditor.treeBuilder.prototype.jsonRename=function(f){
 		this.jSaveFirst(f,"renaming")
 		var orgl=l=f.orgjlabel.value
 		l=this.jsonChild(l)
@@ -263,8 +333,8 @@ JSONeditor.treeBuilder={
 		var nl=nl.replace(/\w/g,'')===""?"."+nl:'["'+nl+'"]'
 		f.jlabel.value=this.jsonParent(orgl)+nl
 		this.jsonChange(f,false,true)
-	},
-	jsonSwitchPlace:function(p,el1,el2){
+	}
+	JSONeditor.treeBuilder.prototype.jsonSwitchPlace=function(p,el1,el2){
 		var orgel1=el1, orgel2=el2
 		eval("var o=this."+p)
 		if(this.isArray(o)){
@@ -283,14 +353,14 @@ JSONeditor.treeBuilder={
 		}
 		eval("this."+p+"=o2")
 		return orgel2
-	},
-	jsonCut:function(f){
+	}
+	JSONeditor.treeBuilder.prototype.jsonCut=function(f){
 		this.jSaveFirst(f,"cutting")
 		this.jsonCopy(f,true)
 		this.jsonChange(f,true)
 		this.setJsonMessage('Cut to clipboard!')
-	},
-	jsonCopy:function(f,r){
+	}
+	JSONeditor.treeBuilder.prototype.jsonCopy=function(f,r){
 		if(!r){this.jSaveFirst(f,"copying")}
 		var l=f.orgjlabel.value
 		eval("var v=this."+l)
@@ -299,8 +369,8 @@ JSONeditor.treeBuilder={
 		this.jClipboard={label:l,jvalue:v}
 		this.jsonResponder(f.jlabel.value)
 		if(!r){this.setJsonMessage('Copied to clipboard!')}
-	},
-	jsonPaste:function(f,r){
+	}
+	JSONeditor.treeBuilder.prototype.jsonPaste=function(f,r){
 		var t=f.jtype.value
 		var sibling=t!="object" && t!="array"
 		if(!f.jPasteAsChild.checked){sibling=true}
@@ -312,12 +382,13 @@ JSONeditor.treeBuilder={
 		this.jsonResponder(l)
 		this.jsonChange(f)
 		if(!r){this.setJsonMessage('Pasted!')}
-	},
-	setJsonMessage:function(x){
+	}
+	JSONeditor.treeBuilder.prototype.setJsonMessage=function(x){
+		self = this;
 		this.$('jformMessage').innerHTML=x
-		setTimeout("treeBuilder.$('jformMessage').innerHTML=''",1500)
-	},
-	changeJsonDataType:function(x,f){
+		setTimeout("self.$('jformMessage').innerHTML=''",1500)
+	}
+	JSONeditor.treeBuilder.prototype.changeJsonDataType=function(x,f){
 		this.jTypeChanged=true
 		var v=f.jvalue.value
 		var orgv=v;
@@ -334,8 +405,8 @@ JSONeditor.treeBuilder={
 		v=x=='null'?'null':v
 		v=x=='undefined'?'undefined':v
 		f.jvalue.value=v		
-	},
-	jsonChange:function(f,remove,rename){
+	}
+	JSONeditor.treeBuilder.prototype.jsonChange=function(f,remove,rename){
 		try {
 			var l=f.jlabel.value
 			var orgl=f.orgjlabel.value||"json.not1r2e3a4l"
@@ -396,8 +467,8 @@ JSONeditor.treeBuilder={
 			alert(err+"\n\n"+"Save error!")
 		}
 		return false
-	},
-	JSONbuild:function(divName,x,y,z){
+	}
+	JSONeditor.treeBuilder.prototype.JSONbuild=function(divName,x,y,z){
 		if(!z){
 			this.partMem=[]
 			this.JSONmem=[]
@@ -429,8 +500,8 @@ JSONeditor.treeBuilder={
 			if(!this.hasRunJSONbuildOnce){this.jsonResponder('json')}
 			this.hasRunJSONbuildOnce=true
 		}
-	},
-	build:function(divName,todoFunc,data){
+	}
+	JSONeditor.treeBuilder.prototype.build=function(divName,todoFunc,data){
 		//
 		// divName is the id of the div we'll build the tree inside
 		//
@@ -439,6 +510,7 @@ JSONeditor.treeBuilder={
 		// data should be an array of objects
 		// each object should contain label,todo + level or id and pid (parentId)
 		//
+		var self = this;
 		var d=data, n=divName, $=this.$, lastlevel=0, levelmem=[], im=this.images;
 		this.treeBaseDiv=divName
 		if(!d){
@@ -471,18 +543,18 @@ JSONeditor.treeBuilder={
 			a.style.display=(d[i].pid==divName)?'':'none';
 			a.id=d[i].id;
 			a.t=t;
-			var f=function(){
+			(function(){
 				var todo=d[i].todo;
-				var func=todoFunc;
+				//var func=todoFunc;
 				a.onclick=function(e){
-					if(treeBuilder.maniClick=="giveItBack"){return todo}
-					if(treeBuilder.selectedElement){
-						treeBuilder.selectedElement.style.fontWeight=""
+					if(self.maniClick=="giveItBack"){return todo}
+					if(self.selectedElement){
+						self.selectedElement.style.fontWeight=""
 					}
 					this.style.fontWeight="bold"
-					treeBuilder.selectedElement=this
-					if(treeBuilder.maniClick=="selectIt"){return}
-					func(todo);
+					self.selectedElement=this
+					if(self.maniClick=="selectIt"){return}
+					self.jsonResponder.call(self,todo);
 					if (!e){e=window.event};
 					e.cancelBubble = true;
 					if(e.stopPropagation){e.stopPropagation()};
@@ -499,17 +571,17 @@ JSONeditor.treeBuilder={
 					e.cancelBubble = true;
 					if(e.stopPropagation){e.stopPropagation()};
 				};
-			};
-			f();
+			}
+			)();
 			$(d[i].pid).appendChild(a);
 			if(d[i].pid==divName && !a.previousSibling){a.first=true};
 		};
 		// calculate necessary element looks before initial display
 		for(var i=0;i<d.length;i++){var x=$(d[i].id);if(x && x.style.display!="none"){this.setElementLook(x)}};
 		$(divName).style.display="";
-	},
-	setElementLook:function(m){
-		var $=this.$, im=this.images
+	}
+	JSONeditor.treeBuilder.prototype.setElementLook=function(m){
+		var $=this.$, im=this.images, self = this
 		if(!m.inited){
 			var co=0
 			for(var j in im){
@@ -523,7 +595,7 @@ JSONeditor.treeBuilder={
 					img.id=m.id+"_"+j;
 					if(j.indexOf('folderNode')==0){
 						img.onclick=function(e){
-							treeBuilder.openAndClose(this);
+							self.openAndClose.call(self,this);
 							if (!e){e=window.event};
 							e.cancelBubble = true;
 							if(e.stopPropagation){e.stopPropagation()};
@@ -558,8 +630,8 @@ JSONeditor.treeBuilder={
 			m.style.backgroundImage='url('+bg+')';
 			m.style.backgroundRepeat='repeat-y'
 		};
-	},
-	openAndClose:function(x,remem){
+	}
+	JSONeditor.treeBuilder.prototype.openAndClose=function(x,remem){
 		var o, div=remem?this.$(x):x.parentNode;
 		if(!div){return}
 		if(remem){o=this.stateMem[div.id]}
@@ -574,7 +646,7 @@ JSONeditor.treeBuilder={
 		};
 		this.setElementLook(div)
 	}
-}
+
 
 
 
@@ -586,13 +658,13 @@ Based on Steve Yen's implementation:
 http://trimpath.com/project/wiki/JsonLibrary
 */
 
-JSONeditor.treeBuilder.JSONstring={
+JSONeditor.treeBuilder.prototype.JSONstring={
 	compactOutput:false, 		
 	includeProtos:false, 	
 	includeFunctions: true,
 	detectCirculars:false,
 	restoreCirculars:false,
-	make:function(arg,restore) {
+	make:function(arg,restore) { return JSON.stringify(arg);
 		this.restore=restore;
 		this.mem=[];this.pathMem=[];
 		return this.toJsonStringArray(arg).join('');
