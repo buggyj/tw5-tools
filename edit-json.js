@@ -41,6 +41,7 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	// Create our element
 	var editInfo = this.getEditInfo();
 	var domNode = this.document.createElement("div");
+	var domNode2 = this.document.createElement("div");
 	if(this.editType) {
 		domNode.setAttribute("type",this.editType);
 	}
@@ -51,28 +52,115 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	if(this.editClass) {
 		domNode.className = this.editClass;
 	}
-
-	domNode.innerHTML = '<span><div style="font-size: 11px; font-family: Verdana,Arial,Helvetica,sans-serif;" id="jsoneditortree'+newid+'"></div>'+
-						'<div style="font-size: 11px; font-family: Verdana,Arial,Helvetica,sans-serif;" id="jsoneditorform'+newid+'"></div></span>';
+	var domNode2 = this.document.createElement("div");
+	domNode.innerHTML = '<div style="font-size: 11px; font-family: Verdana,Arial,Helvetica,sans-serif;" id="jsoneditortree'+newid+'"></div>';
+	domNode2.innerHTML 	=	this.formHTML;
+	
 	// Add an input event handler
 	//$tw.utils.addEventListeners(domNode,[
 	//	{name: "focus", handlerObject: this, handlerMethod: "handleFocusEvent"},
 	//	{name: "input", handlerObject: this, handlerMethod: "handleInputEvent"}
 	//]);
 	// Insert the element into the DOM
-	parent.insertBefore(domNode,nextSibling);
-	this.instance=JSONeditor.start('jsoneditortree'+newid,'jsoneditorform'+newid,JSON.parse(editInfo.value),false);
+	parent.insertBefore(domNode2,nextSibling);
+	parent.insertBefore(domNode,domNode2);
+
+	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),false);
+	
 	newid++;
 	this.domNodes.push(domNode);
+	this.domNodes.push(domNode2);
 	if(this.postRender) {
 		this.postRender();
 	}
+	this.formsetup(domNode2.firstChild);
 	this.instance.forSaving=function(){
 		self.saveChanges(JSON.stringify(this.json));
 	}
-
 };
 
+EditJsonWidget.prototype.formHTML=	
+	'<div style="font-size: 11px; font-family: Verdana,Arial,Helvetica,sans-serif;" ">'+
+	"<form name=\"jsoninput\" >"	+
+	"\nLabel:<br>"+
+	"<input name=\"jlabel\" type=\"text\" value=\"\" size=\"60\" style=\"width:400px\">"+
+	"<br><br>\nValue: <br>"+
+	"<textarea name=\"jvalue\" rows=\"10\" cols=\"50\" style=\"width:400px\"></textarea>"+
+	"<br><br>\nData type: "+
+	"<select  name=\"jtype\">"+
+	"\n<option value=\"object\">object</option>\n<option value=\"array\">array</option>"+
+	"\n<option value=\"string\">string</option>"+
+	"\n<option value=\"number\">number</option>\n<option value=\"boolean\">boolean</option>"+
+	"\n<option value=\"null\">null</option>\n<option value=\"undefined\">undefined</option>"+
+	"\n</select>&nbsp;&nbsp;&nbsp;&nbsp;"+
+	"\n<input name=\"orgjlabel\" type=\"hidden\" value=\"\" size=\"50\" style=\"width:300px\">"+
+	"\n<input onfocus=\"this.blur()\" type=\"submit\" value=\"Set value\">&nbsp;\n<br><br>"+
+	"\n<input name=\"jsonAddChild\" onfocus=\"this.blur()\" type=\"button\"  value=\"Add child\">"+
+	"\n<input name=\"jsonAddSibling\" onfocus=\"this.blur()\" type=\"button\"  value=\"Add sibling\">\n<br><br>"+
+	"\n<input name=\"jsonRemove\" onfocus=\"this.blur()\" type=\"button\"  value=\"Delete\">&nbsp;"+
+	"\n<input name=\"jsonRename\" onfocus=\"this.blur()\" type=\"button\"  value=\"Rename\">&nbsp;"+
+	"\n<input name=\"jsonCut\" onfocus=\"this.blur()\" type=\"button\" value=\"Cut\">&nbsp;"+
+	"\n<input name=\"jsonCopy\" onfocus=\"this.blur()\" type=\"button\"  value=\"Copy\">&nbsp;"+
+	"\n<input name=\"jsonPaste\" onfocus=\"this.blur()\" type=\"button\" value=\"Paste\">&nbsp;\n<br><br>"+
+	"\n<input type=\"checkbox\" name=\"jbefore\">Add children first/siblings before\n<br>"+
+	"\n<input type=\"checkbox\" name=\"jPasteAsChild\">Paste as child on objects & arrays\n<br><br><div id=\"jformMessage\"></div>\n</form></div>";
+				
+EditJsonWidget.prototype.formsetup = function(f) {
+	var instance = this.instance
+	var fs=f.style
+	fs.fontSize=fs.fontSize="11px"
+	fs.fontFamily=fs.fontFamily="Verdana,Arial,Helvetica,sans-serif"
+	var e=f.getElementsByTagName("*");
+	for(var i=0;i<e.length;i++){
+		var s=e[i].style
+		if(!!s){
+			s.fontSize="11px"
+			s.fontFamily="Verdana,Arial,Helvetica,sans-serif"
+		}
+		var cb= e[i].name
+		if (!!cb ) switch (cb) {
+			case 'jsoninput': e[i].addEventListener("submit", function (e) {
+				e.preventDefault();
+				instance.jsonChange(e.target);
+				return false;
+			});
+			break;
+			case 'jtype': e[i].addEventListener("change", function (e) {
+				instance.changeJsonDataType(e.target.value,e.target.parentNode);
+			});
+			break;
+			case 'jsonAddChild':e[i].addEventListener("click", function (e) {
+				instance.jsonAddChild(e.target.parentNode);
+			});
+			break;
+			case 'jsonAddSibling': e[i].addEventListener("click", function (e) {
+				instance.jsonAddSibling(e.target.parentNode);
+			});
+			break;
+			case 'jsonRemove': e[i].addEventListener("click", function (e) {
+				instance.jsonRemove(e.target.parentNode);
+			});
+			break;
+			case 'jsonRename': e[i].addEventListener("click", function (e) {
+				instance.jsonRename(e.target.parentNode);
+			});
+			break;
+			case 'jsonCut': e[i].addEventListener("click", function (e) {
+				instance.jsonCut(e.target.parentNode);
+			});
+			break;
+			case 'jsonCopy':e[i].addEventListener("click", function (e) {
+				instance.jsonCopy(e.target.parentNode);
+			});
+			break;
+			case 'jsonPaste': e[i].addEventListener("click", function (e) {
+				instance.jsonPaste(e.target.parentNode);
+			});
+			break;
+			default:
+		}
+	}
+}
 /*
 Get the tiddler being edited and current value
 */
