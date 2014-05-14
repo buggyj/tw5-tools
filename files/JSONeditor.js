@@ -61,14 +61,32 @@ JSONeditor.treeBuilder=function(treeDivName,formDivName,json){
 				self.changeJsonDataType(this.value,this.parentNode);
 			}
 			break;
-			case 'jsonAddChild':
-			case 'jsonAddSibling': 
-			case 'jsonRemove': 
-			case 'jsonRename': 
-			case 'jsonCut': 
-			case 'jsonCopy':
+			case 'jsonAddChild':e[i].onclick = function () {
+				self.jsonAddChild(this.parentNode);
+			}
+			break;
+			case 'jsonAddSibling': e[i].onclick = function () {
+				self.jsonAddSibling(this.parentNode);
+			}
+			break;
+			case 'jsonRemove': e[i].onclick = function () {
+				self.jsonRemove(this.parentNode);
+			}
+			break;
+			case 'jsonRename': e[i].onclick = function () {
+				self.jsonRename(this.parentNode);
+			}
+			break;
+			case 'jsonCut': e[i].onclick = function () {
+				self.jsonCut(this.parentNode);
+			}
+			break;
+			case 'jsonCopy':e[i].onclick = function () {
+				self.jsonCopy(this.parentNode);
+			}
+			break;
 			case 'jsonPaste': e[i].onclick = function () {
-				self[cb](this.parentNode);
+				self.jsonPaste(this.parentNode);
 			}
 			break;
 			default:
@@ -107,7 +125,7 @@ JSONeditor.treeBuilder=function(treeDivName,formDivName,json){
 				"<br><br>\nData type: "+
 				"<select  name=\"jtype\">"+
 				"\n<option value=\"object\">object</option>\n<option value=\"array\">array</option>"+
-				"\n<option value=\"function\">function</option>\n<option value=\"string\">string</option>"+
+				"\n<option value=\"string\">string</option>"+
 				"\n<option value=\"number\">number</option>\n<option value=\"boolean\">boolean</option>"+
 				"\n<option value=\"null\">null</option>\n<option value=\"undefined\">undefined</option>"+
 				"\n</select>&nbsp;&nbsp;&nbsp;&nbsp;"+
@@ -362,7 +380,6 @@ JSONeditor.treeBuilder=function(treeDivName,formDivName,json){
 			v=x=='object'?'{}':v
 			v=x=='array'?'[]':v
 		}
-		v=x=='function'?'function(){'+v+'}':v
 		v=x=='string'?v:v
 		v=x=='number'?v/1:v
 		v=x=='boolean'?!!v:v
@@ -613,109 +630,8 @@ JSONeditor.treeBuilder=function(treeDivName,formDivName,json){
 
 
 
-
-/*
-JSONstring v 1.0
-copyright 2006 Thomas Frank
-
-Based on Steve Yen's implementation:
-http://trimpath.com/project/wiki/JsonLibrary
-*/
-
 JSONeditor.treeBuilder.prototype.JSONstring={
-	compactOutput:false, 		
-	includeProtos:false, 	
-	includeFunctions: true,
-	detectCirculars:false,
-	restoreCirculars:false,
-	make:function(arg,restore) { return JSON.stringify(arg);
-		this.restore=restore;
-		this.mem=[];this.pathMem=[];
-		return this.toJsonStringArray(arg).join('');
-	},
-	toObject:function(x){
-		eval("this.myObj="+x);
-		if(!this.restoreCirculars || !alert){return this.myObj};
-		this.restoreCode=[];
-		this.make(this.myObj,true);
-		var r=this.restoreCode.join(";")+";";
-		eval('r=r.replace(/\\W([0-9]{1,})(\\W)/g,"[$1]$2").replace(/\\.\\;/g,";")');
-		eval(r);
-		return this.myObj
-	},
-	toJsonStringArray:function(arg, out) {
-		if(!out){this.path=[]};
-		out = out || [];
-		var u; // undefined
-		switch (typeof arg) {
-		case 'object':
-			this.lastObj=arg;
-			if(this.detectCirculars){
-				var m=this.mem; var n=this.pathMem;
-				for(var i=0;i<m.length;i++){
-					if(arg===m[i]){
-						out.push('"JSONcircRef:'+n[i]+'"');return out
-					}
-				};
-				m.push(arg); n.push(this.path.join("."));
-			};
-			if (arg) {
-				if (arg.constructor == Array) {
-					out.push('[');
-					for (var i = 0; i < arg.length; ++i) {
-						this.path.push(i);
-						if (i > 0)
-							out.push(',\n');
-						this.toJsonStringArray(arg[i], out);
-						this.path.pop();
-					}
-					out.push(']');
-					return out;
-				} else if (typeof arg.toString != 'undefined') {
-					out.push('{');
-					var first = true;
-					for (var i in arg) {
-						if(!this.includeProtos && arg[i]===arg.constructor.prototype[i]){continue};
-						this.path.push(i);
-						var curr = out.length; 
-						if (!first)
-							out.push(this.compactOutput?',':',\n');
-						this.toJsonStringArray(i, out);
-						out.push(':');                    
-						this.toJsonStringArray(arg[i], out);
-						if (out[out.length - 1] == u)
-							out.splice(curr, out.length - curr);
-						else
-							first = false;
-						this.path.pop();
-					}
-					out.push('}');
-					return out;
-				}
-				return out;
-			}
-			out.push('null');
-			return out;
-		case 'unknown':
-		case 'undefined':
-		case 'function':
-			try {eval('var a='+arg)}
-			catch(e){arg='function(){alert("Could not convert the real function to JSON, due to a browser bug only found in Safari. Let us hope it will get fixed in future versions of Safari!")}'}
-			out.push(this.includeFunctions?arg:u);
-			return out;
-		case 'string':
-			if(this.restore && arg.indexOf("JSONcircRef:")==0){
-				this.restoreCode.push('this.myObj.'+this.path.join(".")+"="+arg.split("JSONcircRef:").join("this.myObj."));
-			};
-			out.push('"');
-			var a=['\n','\\n','\r','\\r','"','\\"'];
-			arg+=""; for(var i=0;i<6;i+=2){arg=arg.split(a[i]).join(a[i+1])};
-			out.push(arg);
-			out.push('"');
-			return out;
-		default:
-			out.push(String(arg));
-			return out;
-		}
+	make:function(arg,restore) { 
+		return JSON.stringify(arg);
 	}
 }
