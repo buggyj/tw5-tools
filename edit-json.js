@@ -248,6 +248,12 @@ EditJsonWidget.prototype.execute = function() {
 	// Get the rest of our parameters
 	this.editTag = this.getAttribute("tag",tag);
 	this.editType = this.getAttribute("type",type);
+	try {
+	 this.onkeyupdate=$tw.wiki.getTiddlerData("$:/plugins/bj/jsoneditor/options.json")['onkeyupdate'];
+	} catch(e){ 
+		alert("invalid style format");
+		this.onkeyupdate="yes";
+	}
 };
 
 /*
