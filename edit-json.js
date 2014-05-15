@@ -57,16 +57,18 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	domNode2.innerHTML 	=	this.formHTML;
 	
 	// Add an input event handler
-	//$tw.utils.addEventListeners(domNode,[
+	//$tw.utils.addEventListeners(domNode2,[
 	//	{name: "focus", handlerObject: this, handlerMethod: "handleFocusEvent"},
 	//	{name: "input", handlerObject: this, handlerMethod: "handleInputEvent"}
 	//]);
+
 	// Insert the element into the DOM
 	parent.insertBefore(domNode2,nextSibling);
 	parent.insertBefore(domNode,domNode2);
 
-	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),false);
-	
+	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),'$:/plugins/bj/jsoneditor/');
+	var instance = this.instance;
+
 	newid++;
 	this.domNodes.push(domNode);
 	this.domNodes.push(domNode2);
@@ -94,7 +96,7 @@ EditJsonWidget.prototype.formHTML=
 	"\n<option value=\"null\">null</option>\n<option value=\"undefined\">undefined</option>"+
 	"\n</select>&nbsp;&nbsp;&nbsp;&nbsp;"+
 	"\n<input name=\"orgjlabel\" type=\"hidden\" value=\"\" size=\"50\" style=\"width:300px\">"+
-	"\n<input onfocus=\"this.blur()\" type=\"submit\" value=\"Set value\">&nbsp;\n<br><br>"+
+	"\n<input name=\"jsonUpdate\" onfocus=\"this.blur()\" type=\"submit\" value=\"Set value\">&nbsp;\n<br><br>"+
 	"\n<input name=\"jsonAddChild\" onfocus=\"this.blur()\" type=\"button\"  value=\"Add child\">"+
 	"\n<input name=\"jsonAddSibling\" onfocus=\"this.blur()\" type=\"button\"  value=\"Add sibling\">\n<br><br>"+
 	"\n<input name=\"jsonRemove\" onfocus=\"this.blur()\" type=\"button\"  value=\"Delete\">&nbsp;"+
@@ -119,11 +121,26 @@ EditJsonWidget.prototype.formsetup = function(f) {
 		}
 		var cb= e[i].name
 		if (!!cb ) switch (cb) {
-			case 'jsoninput': e[i].addEventListener("submit", function (e) {
+			case 'jsoninput': if (this.onkeyupdate!=="yes") e[i].addEventListener("submit", function (e) {
 				e.preventDefault();
 				instance.jsonChange(e.target);
 				return false;
 			});
+
+			break;
+			case 'jlabel': if (this.onkeyupdate==="yes") e[i].addEventListener("input", function (e) {
+				//e.preventDefault();
+				instance.jsonChange(e.target.parentNode);
+				return false;
+			});
+			break;
+			case 'jvalue': if (this.onkeyupdate==="yes") e[i].addEventListener("input", function (e) {
+				//e.preventDefault();
+				instance.jsonChange(e.target.parentNode);
+				return false;
+			});
+			break;
+			case 'jsonUpdate': if (this.onkeyupdate==="yes") e[i].style.display = 'none';
 			break;
 			case 'jtype': e[i].addEventListener("change", function (e) {
 				instance.changeJsonDataType(e.target.value,e.target.parentNode);
@@ -212,6 +229,7 @@ EditJsonWidget.prototype.execute = function() {
 	this.editClass = this.getAttribute("class");
 	this.editPlaceholder = this.getAttribute("placeholder");
 	this.editFocusPopup = this.getAttribute("focusPopup");
+	this.onkeyupdate = this.getAttribute("onkeyupdate","yes"); 
 	// Get the editor element tag and type
 	var tag,type;
 	if(this.editField === "text") {
@@ -253,8 +271,7 @@ EditJsonWidget.prototype.refresh = function(changedTiddlers) {
 Handle a dom "input" event
 */
 EditJsonWidget.prototype.handleInputEvent = function(event) {
-	this.saveChanges(this.domNodes[0].value);
-	this.fixHeight();
+	this.saveChanges(JSON.stringify(this.json));
 	return true;
 };
 

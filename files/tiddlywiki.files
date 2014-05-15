@@ -81,6 +81,14 @@
 			}
 		},
 		{
+			"file": "vertLine.gif",
+			"fields": {
+				"type": "image/png",
+				"title": "$:/plugins/bj/jsoneditor/vertLine.gif",
+				"module-type": "library"
+			}
+		},
+		{
 			"file": "JSONeditor.js",
 			"fields": {
 				"type": "application/javascript",
