@@ -71,7 +71,7 @@ TagListWidget.prototype.execute = function() {
 
 TagListWidget.prototype.getTiddlerList = function() {
 	var defaultFilter = "[tag["+this.listtag+"]]";
-	return this.wiki.filterTiddlers(this.getAttribute("filter",defaultFilter),this.getVariable("currentTiddler"));//BJ FIXME should not allow user defined filters
+	return this.wiki.filterTiddlers(this.getAttribute("filter",defaultFilter),this);//BJ FIXME should not allow user defined filters
 };
 TagListWidget.prototype.setTiddlerList = function(what,where) {
 	var self = this;
