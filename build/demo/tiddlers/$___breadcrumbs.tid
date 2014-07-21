@@ -1,0 +1,25 @@
+created: 20140202104437684
+creator: TonGerner
+modified: 20140720175228740
+modifier: BJ
+tags: topmenu $:/tags/TopLeftBar
+title: $:/_breadcrumbs
+type: text/vnd.tiddlywiki
+
+<div class="story-river" style ="padding: 0px 40px 0px 0px;">
+<div  class="tw-tab-buttons">
+<$list filter="[list[$:/StoryList]]" variable="currentTab">
+<$reveal type="match" state="$:/HistoryList!!current-tiddler" text=<<currentTab>>>
+<$button to=<<currentTab>> class="tw-tab-selected">
+<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+</$button><$button message="tw-close-tiddler" param=<<currentTab>> class="tw-tab-selected">&times;</$button></$reveal>
+<$reveal type="nomatch" state="$:/HistoryList!!current-tiddler" text=<<currentTab>>>
+<$button to=<<currentTab>>  dragoverclick="yes">
+<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+
+</$button><$button message="tw-close-tiddler" param=<<currentTab>>>&times;</$button></$reveal>
+</$list>
+</div><div class="tw-tab-divider"/>
+
+</div>
+
