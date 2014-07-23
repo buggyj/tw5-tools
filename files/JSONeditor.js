@@ -25,9 +25,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 */
 
 JSONeditor={
-	start:function(treeDivName,formDivName,json,imagepath){
+	start:function(treeDivName,formDivName,json,imagepath,format){
 
-		return new this.treeBuilder(treeDivName,formDivName,json,imagepath)
+		return new this.treeBuilder(treeDivName,formDivName,json,imagepath,format)
 	}
 }
 
@@ -35,7 +35,7 @@ JSONeditor={
 treeBuilder v 1.00 + a lot of json stuff added...
 copyright 2007 Thomas Frank
 */
-JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
+JSONeditor.treeBuilder=function(treeDivName,f,json,imagepath,format){
 	var self = this,$=this.$
 	var s=$(treeDivName).style
 	
@@ -62,6 +62,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 		path:imagepath,
 		nodeWidth:16
 	}
+	this.format = format;
 	this.JSONbuild(treeDivName,json)//sets up the instance 
 }
 
@@ -105,7 +106,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 		var t=this
 		eval("var a=this."+x)
 		eval("var ap=this."+this.jsonParent(x))
-		var b=t.JSONstring.make(a)
+		var b=t.JSONstring(a)
 		var t=(a && this.isArray(a))?"array":typeof a
 		var tp=(ap && this.isArray(ap))?"array":typeof ap
 		if(a===null){t="null"}
@@ -188,7 +189,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 		var r=Math.random()
 		eval('var temp=this.'+l)
 		eval('this.'+l+"=r")
-		var s=this.JSONstring.make(this.json)
+		var s=this.JSONstring(this.json)
 		s=s.split(r+",")
 		if(s.length<2){s=s[0].split(r)}
 		var lp=this.jsonParent(l)
@@ -220,9 +221,9 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 	JSONeditor.treeBuilder.prototype.jSaveFirst=function(f,a){
 		var l=f.orgjlabel.value
 		eval("var orgj=this."+l)
-		orgj=this.JSONstring.make(orgj)
+		orgj=this.JSONstring(orgj)
 		var v=f.jvalue.value
-		v=f.jtype.value=="string"?this.JSONstring.make(v):v
+		v=f.jtype.value=="string"?this.JSONstring(v):v
 		v=v.split("\r").join("")
 		if(orgj!=v || f.orgjlabel.value!=f.jlabel.value || this.jTypeChanged){
 			var k=confirm("Save before "+a+"?")
@@ -270,7 +271,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 		if(!r){this.jSaveFirst(f,"copying")}
 		var l=f.orgjlabel.value
 		eval("var v=this."+l)
-		v=this.JSONstring.make(v)
+		v=this.JSONstring(v)
 		var l=this.jsonChild(l)
 		this.jClipboard={label:l,jvalue:v}
 		this.jsonResponder(f.jlabel.value)
@@ -323,7 +324,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 			}
 			var v=f.jvalue.value.split("\r").join("")
 			if(f.jtype.value=="string"){
-				v=this.JSONstring.make(v)
+				v=this.JSONstring(v)
 			}
 			if(l=="json"){
 				eval("v="+v)
@@ -332,7 +333,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 				this.setJsonMessage('Saved!')
 				return false
 			}
-			eval("var json="+this.JSONstring.make(this.json))
+			eval("var json="+this.JSONstring(this.json))
 			var randi=Math.random()
 			eval(orgl+'='+randi)
 			var paname=this.jsonParent(orgl)
@@ -555,8 +556,6 @@ JSONeditor.treeBuilder=function(treeDivName,f,json, imagepath){
 
 
 
-JSONeditor.treeBuilder.prototype.JSONstring={
-	make:function(arg,restore) { 
-		return JSON.stringify(arg);
-	}
+JSONeditor.treeBuilder.prototype.JSONstring=function(arg,restore) { 
+		return JSON.stringify(arg,null,this.format );
 }

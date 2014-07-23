@@ -66,7 +66,7 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	parent.insertBefore(domNode2,nextSibling);
 	parent.insertBefore(domNode,domNode2);
 
-	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),'$:/plugins/bj/jsoneditor/');
+	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),'$:/plugins/bj/jsoneditor/',this.format);
 	var instance = this.instance;
 
 	newid++;
@@ -77,7 +77,7 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	}
 	this.formsetup(domNode2.firstChild);
 	this.instance.forSaving=function(){
-		self.saveChanges(JSON.stringify(this.json));
+		self.saveChanges(JSON.stringify(this.json,null,this.format));
 	}
 };
 
@@ -249,10 +249,13 @@ EditJsonWidget.prototype.execute = function() {
 	this.editTag = this.getAttribute("tag",tag);
 	this.editType = this.getAttribute("type",type);
 	try {
-	 this.onkeyupdate=$tw.wiki.getTiddlerData("$:/plugins/bj/jsoneditor/options.json")['onkeyupdate'];
+	 var data=$tw.wiki.getTiddlerData("$:/plugins/bj/jsoneditor/options.json");
+	 this.onkeyupdate=(data['onkeyupdate'])?data['onkeyupdate']:'yes';
+	 this.format=(data['format'])?data['format']:'';
 	} catch(e){ 
 		alert("invalid style format");
 		this.onkeyupdate="yes";
+		this.format='';
 	}
 };
 
