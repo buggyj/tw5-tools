@@ -25,9 +25,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 */
 
 JSONeditor={
-	start:function(treeDivName,formDivName,json,imagepath,format){
+	start:function(treeDivName,formDivName,json,imagepath,format,updater){
 
-		return new this.treeBuilder(treeDivName,formDivName,json,imagepath,format)
+		return new this.treeBuilder(treeDivName,formDivName,json,imagepath,format,updater)
 	}
 }
 
@@ -35,14 +35,17 @@ JSONeditor={
 treeBuilder v 1.00 + a lot of json stuff added...
 copyright 2007 Thomas Frank
 */
-JSONeditor.treeBuilder=function(treeDivName,f,json,imagepath,format){
+JSONeditor.treeBuilder=function(treeDivName,f,json,imagepath,format,updater){
 	var self = this,$=this.$
 	var s=$(treeDivName).style
 	
 	json=json||{}
 	
 	this.form = f
-
+	this.forSaving=function(){
+		//updating can be done externally, so this function may be null
+		if(!!updater) updater(this.JSONstring(this.json,null,this.format));
+	}
 	this.stateMem={}
 	this.images={
 		folderNode:'',

@@ -65,8 +65,11 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 	// Insert the element into the DOM
 	parent.insertBefore(domNode2,nextSibling);
 	parent.insertBefore(domNode,domNode2);
-
-	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),'$:/plugins/bj/jsoneditor/',this.format);
+	var updater =function(x){
+		self.saveChanges(x);
+	}
+	this.instance=JSONeditor.start('jsoneditortree'+newid,domNode2.firstChild.firstChild,JSON.parse(editInfo.value),
+									'$:/plugins/bj/jsoneditor/',this.format,updater);
 	var instance = this.instance;
 
 	newid++;
@@ -76,9 +79,6 @@ EditJsonWidget.prototype.render = function(parent,nextSibling) {
 		this.postRender();
 	}
 	this.formsetup(domNode2.firstChild);
-	this.instance.forSaving=function(){
-		self.saveChanges(JSON.stringify(this.json,null,this.format));
-	}
 };
 
 EditJsonWidget.prototype.formHTML=	
