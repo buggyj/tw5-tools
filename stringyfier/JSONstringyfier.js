@@ -1,3 +1,9 @@
+/*\
+title: $:/macros/bj/jsoneditor/stringyfier.js
+type: application/javascript
+module-type: global
+\*/
+(function(){
 /*
 JSONstring v 1.02
 copyright 2006-2010 Thomas Frank
@@ -133,3 +139,4 @@ JSONstring={
 		}
 	}
 };
+export.stringyfier=JSONstring.make;
