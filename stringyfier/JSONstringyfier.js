@@ -140,5 +140,4 @@ JSONstring={
 	}
 };
 export.stringyfier=JSONstring.make;
-exports.createMonth = createMonth;
 })();
