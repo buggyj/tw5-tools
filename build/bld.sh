@@ -39,7 +39,7 @@ rm $TW5_BUILD_OUTPUT/static/*
 node ../../../../tiddlywiki.js \
 	./demo \
 	--verbose \
-	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/demo.html text/plain \
+	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/jsoneditor.html text/plain \
 	|| exit 1
 
 
