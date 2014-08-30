@@ -1,0 +1,9 @@
+{
+	"title": "$:/plugins/bj/flexitype",
+	"description": "flexible types",
+	"author": "Jeffrey Wilkinson",
+	"version": "0.0.1",
+	"core-version": ">=5.0.15",
+	"source": "https://github.com/buggyj/TW5-flexitype",
+	"plugin-type": "plugin"
+}
