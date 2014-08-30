@@ -1,0 +1,13 @@
+created: 20140126171344128
+modified: 20140410012354138
+title: htmlp
+type: application/json
+
+{
+"parserrules":{
+"pragmaRuleList":[],
+"blockRuleList":[ "html"],
+"inlineRuleList":[ "html",  "prettylink",  "transcludeinline", "entity", "wikilink"]
+},
+"parseAsInline":true
+}
