@@ -2,8 +2,9 @@
 	"title": "$:/plugins/bj/flexitype",
 	"description": "flexible types",
 	"author": "Jeffrey Wilkinson",
-	"version": "0.0.1",
-	"core-version": ">=5.0.15",
+	"version": "0.0.2",
+	"list": "readme license",
+	"core-version": ">=5.0.17-beta",
 	"source": "https://github.com/buggyj/TW5-flexitype",
 	"plugin-type": "plugin"
 }
