@@ -1,5 +1,5 @@
 /*\
-title: $:/macros/bj/Calendar/journalfmt.js
+title: $:/macros/bj/Calendar/journalslinked.js
 type: application/javascript
 module-type: global
 \*/
@@ -21,16 +21,16 @@ var createMonth= function(mnth,year,options){
 }
 function createDate(i,mnth,year,options){
 	var strong='',tiddlerDate;
-	var date=(new Date(year, mnth, i));
-	if (date.toDateString()===Calendar.toDateString()&&options.highlightThisDate=="yes") strong ='!';
-	tiddlerDate=date.getDate()+
-	              ' '+$tw.language.getString("Date/Long/Month/" + (date.getMonth()))+' '+date.getFullYear();
+	var date=(new Date(year, mnth-1, i));
+	if (options.highlightLinks=="yes") strong ='!';
+	tiddlerDate=date.getDate()+ $tw.utils.getDaySuffix(date)+
+	              ' '+$tw.language.getString("Date/Long/Month/" + (date.getMonth()+1))+' '+date.getFullYear();
    
-	if ($tw.wiki.getTiddler(tiddlerDate)!==undefined)  strong ='!';
-	return centre(strong+'[['+i+'|'+tiddlerDate+']]');
+	if ($tw.wiki.getTiddler(tiddlerDate))return centre(strong+'[['+i+'|'+tiddlerDate+']]');
+	return i;
 }
 function daysInMonth(iMonth, iYear){
-		return 32 - new Date(iYear, iMonth, 32).getDate();
+		return 32 - new Date(iYear, iMonth-1, 32).getDate();
 	}
 function centre (x){ return ' '+x+' ';}
 exports.createMonth = createMonth;

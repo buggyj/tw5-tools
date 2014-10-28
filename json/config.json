@@ -8,6 +8,13 @@
 		"highlightThisDate":"yes"
 	},
 	"default":{
+		"lastDayOfWeek":"1",
+		"formatter":"$:/macros/bj/Calendar/journalslinked.js",
+		"titlebold":"yes",
+		"highlightThisDay":"no",
+		"highlightLinks":"yes"
+	},
+	"plain":{
 		"lastDayOfWeek":"2",
 		"formatter":"",
 		"titlebold":"yes",
