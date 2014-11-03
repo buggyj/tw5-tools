@@ -3,9 +3,9 @@ title: $:/macros/buggyj/Calendar/entry.js
 type: application/javascript
 module-type: macro
 
-<<diary year month>>
-<<diary year>> - year calendar
-<<diary>> - this month
+<<calendar year month>>
+<<calendar year>> - year calendar
+<<calendar>> - this month
 
 Options:$:/macros/diary/options.json
 \*/

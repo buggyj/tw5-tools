@@ -83,27 +83,23 @@ Run the macro
 */
 
 exports.run = function(year, month,opts,changedTiddlers) {
- var Calendar = new Date();
- var key="", found = false;
-  if (!!month) {
-	  key = $tw.language.getString("Date/Long/Month/" + month);
-	if (!!year) {
-		key = key + " " + year;
-	} else {
-		key = key+ " " + Calendar.getFullYear(); 
-	}
-} else {
-	if (!!year) {
-		key =year;
-	} else {
-		key =Calendar.getFullYear(); 
-	}
-}; 
+
+	var found = false;
+	var journaltag = "Journal";
+	
 	$tw.utils.each(changedTiddlers,function(attribute,name) {
-		if(name.indexOf(key)!=-1) {
+		if (attribute.deleted) {
+			return;
+		}
+		var tiddler = $tw.wiki.getTiddler(name);
+		var tags = (tiddler.fields.tags || []).slice(0);
+		
+		if(tags.indexOf(journaltag) != -1) {
 			found = true;	
 		}
 	});
-	if (found) return "found"	;
+	if (found) return "found";
+	return ""; 
 } 
+
 })();

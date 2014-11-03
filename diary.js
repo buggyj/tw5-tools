@@ -1,5 +1,5 @@
 /*\
-title: $:/macros/bj/Calendar/journalslinked.js
+title: $:/macros/bj/Calendar/diary.js
 type: application/javascript
 module-type: global
 \*/
@@ -27,7 +27,7 @@ function createDate(i,mnth,year,options){
 	tiddlerDate = $tw.utils.formatDateString(date,format);
    
 	if ($tw.wiki.getTiddler(tiddlerDate))return centre(strong+'[['+i+'|'+tiddlerDate+']]');
-	return i;
+	return  centre('[['+i+'|'+tiddlerDate+']]');
 }
 function daysInMonth(iMonth, iYear){
 		return 32 - new Date(iYear, iMonth-1, 32).getDate();

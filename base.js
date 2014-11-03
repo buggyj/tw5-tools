@@ -109,9 +109,9 @@ function formatAsMonth(month,blankdays){
 	for(var i=1; i < month.length;i++){//first '0' month element is not used
 		cal+='|'+month[i];
 		theday=(i+blankdays-1)%7;
-		if (theday== 6) cal +='|'+lf; 
+		if (theday == 6) cal += '|' + lf; 
 	}
-	cal+=blank[7-theday]+(7-theday>1?lf:'');//pad out rest of week, if no blanks then lf was added in loop
+	if (theday !== 6) cal += blank[7 - theday] + lf;//pad out rest of week, if needed
 	return cal ;
 }
 function createWeekHeading(){
