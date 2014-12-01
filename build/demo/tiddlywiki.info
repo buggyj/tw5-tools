@@ -1,0 +1,9 @@
+{
+	"plugins": [
+		"bj/typestemplate"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	]
+}
