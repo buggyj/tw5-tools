@@ -51,7 +51,8 @@ TagListWidget.prototype.execute = function() {
 	this.template = this.getAttribute("template");
 	this.editTemplate = this.getAttribute("editTemplate");
 	this.variableName = this.getAttribute("variable","currentTiddler");
-
+	this.nodrop = this.getAttribute("nodrop");
+	this.static = this.getAttribute("static"); 
 	this.listtag=this.getAttribute("targeTtag",this.getVariable("currentTiddler"));
 	// Compose the list elements
 	this.list = this.getTiddlerList();
@@ -75,6 +76,7 @@ TagListWidget.prototype.getTiddlerList = function() {
 };
 TagListWidget.prototype.setTiddlerList = function(what,where) {
 	var self = this;
+	if (this.nodrop || this.static) return;
 	var update = function(value) {
 		var tiddler = self.wiki.getTiddler(self.listtag)||{title:self.listtag},
 			updateFields = {};
@@ -134,6 +136,7 @@ TagListWidget.prototype.makeItemTemplate = function(title) {
 		}
 	}
 	// Return the list item
+	if (this.nodrop) return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:null};
 	return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:this.listtag};
 };
 
@@ -143,7 +146,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 TagListWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
 	// Completely refresh if any of our attributes have changed
-	if(changedAttributes.filter || changedAttributes.template || changedAttributes.editTemplate || changedAttributes.emptyMessage || changedAttributes.storyview ) {
+	if(changedAttributes.filter || changedAttributes.template || changedAttributes.editTemplate || changedAttributes.emptyMessage || changedAttributes.storyview || changedAttributes.targeTtag) {
 		this.refreshSelf();
 		return true;
 	} else {
@@ -264,6 +267,7 @@ exports.taglist = TagListWidget;
 
 var TagListItemWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
+	this.nodrop = this.parseTreeNode.listtag;
 };
 
 /*
@@ -282,7 +286,11 @@ TagListItemWidget.prototype.handleDropEvent  = function(event) {
 	var self = this,
 		dataTransfer = event.dataTransfer,
 		returned = this.nameandOnListTag(dataTransfer);
-	
+	if (!this.nodrop) {
+		this.cancelAction(event);
+		self.dispatchEvent({type: "tm-dropHandled", param: null});
+		return;
+	}
 	if (!!returned.name) { //only handle tiddler drops
 		 if (!returned.onList) { //this means tiddler does not have the tag
 			 this.addTag(returned.name);
@@ -291,7 +299,7 @@ TagListItemWidget.prototype.handleDropEvent  = function(event) {
 
 		 //cancel normal action
 		 this.cancelAction(event);
-		 self.dispatchEvent({type: "tw-dropHandled", param: null});
+		 self.dispatchEvent({type: "tm-dropHandled", param: null});
 
 	 }
 	 //else let the event fall thru

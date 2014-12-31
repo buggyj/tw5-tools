@@ -42,7 +42,7 @@ ButtonWidget.prototype.handleDragOverEvent  = function(event) {
 	// Send the drag as click  as a navigate event
 	var bounds = this.domNodes[0].getBoundingClientRect();
 	this.dispatchEvent({
-		type: "tw-navigate",
+		type: "tm-navigate",
 		navigateTo: this.to,
 		navigateFromTitle: this.getVariable("storyTiddler"),
 		navigateFromNode: this,

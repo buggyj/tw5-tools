@@ -8,8 +8,8 @@ title: taglisttemplate
 type: text/vnd.tiddlywiki
 
 <$linkcatcher  set=loop1 setTo={{!!title}} >
-<$reveal state=loop1 text={{!!title}} type="match"><$button class="tw-taglist" set=loop1 setTo="">[x]</$button></$reveal>
-<$link><span class="tw-taglist"><$view field="title"/></span></$link></$linkcatcher><$link>@</$link>
+<$reveal state=loop1 text={{!!title}} type="match"><$button class="tc-taglist" set=loop1 setTo="">[x]</$button></$reveal>
+<$link><span class="tc-taglist"><$view field="title"/></span></$link></$linkcatcher><$link>@</$link>
 <$reveal state=loop1 text={{!!title}} type="match">
 <$transclude mode="block">
 </$reveal>

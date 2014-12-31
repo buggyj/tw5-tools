@@ -27,7 +27,7 @@ DropZoneWidget.prototype.bjDropzoneExtend.initialise = DropZoneWidget.prototype.
 DropZoneWidget.prototype.initialise = function (parseTreeNode,options) {
 	DropZoneWidget.prototype.bjDropzoneExtend.initialise.call(this,parseTreeNode,options);
 	this.addEventListeners([
-		{type: "tw-dropHandled", handler: "handleDropHandled"}]);
+		{type: "tm-dropHandled", handler: "handleDropHandled"}]);
 };
 /*
 handle drophandled message
@@ -36,7 +36,7 @@ DropZoneWidget.prototype.handleDropHandled = function(event) {
 	// Reset the enter count
 	this.dragEnterCount = 0;
 	// Remove highlighting
-	$tw.utils.removeClass(this.domNodes[0],"tw-dragover");
+	$tw.utils.removeClass(this.domNodes[0],"tc-dragover");
 	return false;
 };
 

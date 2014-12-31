@@ -4,7 +4,7 @@ tags: $:/tags/stylesheet
 title: $:_stylesheettaglist
 type: text/plain
 
-.tw-taglist { 
+.tc-taglist { 
    background-color    : lightgreen; 
      -webkit-border-top-left-radius: 0.3em;
      -webkit-border-bottom-left-radius: 0.3em;
@@ -24,7 +24,7 @@ type: text/plain
 
 
 
-.tw-taglist:hover {
+.tc-taglist:hover {
      background-color: yellow;
 }
 
