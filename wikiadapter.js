@@ -35,7 +35,7 @@ returns preparser, baseparser type and parserrules
 wiki.makeparsers=function(type,text,options){
 	var returns={};
 		
-		var typeParts = type.split("<");
+		var typeParts = type.split(";flexibility=");
 		if (typeParts.length >1) {
 			var typeDialog =typeParts[1];//alert(typeDialog);
 			var  readdata=$tw.wiki.getTiddlerData(typeDialog);
