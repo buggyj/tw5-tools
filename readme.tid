@@ -1,0 +1,14 @@
+title: $:/plugins/bj/visualeditor/readme
+
+
+the tiddler
+`
+$:/plugin/bj/visualeditor/includelib
+`
+needs to contain the location of the ckeditor lib. The default is
+`
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
+`
+`
+<script src="file:///path/to/ckeditor.js"></script>
+`
