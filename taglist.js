@@ -310,7 +310,7 @@ TagListItemWidget.prototype.importDataTypes = [
 	}},
 	{type: "URL", IECompatible: true, convertToFields: function(data) {
 		// Check for tiddler data URI
-		var match = decodeURI(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
+		var match = decodeURIComponent(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
 		if(match) {
 			return JSON.parse(match[1]);
 		} else {
@@ -321,7 +321,7 @@ TagListItemWidget.prototype.importDataTypes = [
 	}},
 	{type: "text/x-moz-url", IECompatible: false, convertToFields: function(data) {
 		// Check for tiddler data URI
-		var match = decodeURI(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
+		var match = decodeURIComponent(data).match(/^data\:text\/vnd\.tiddler,(.*)/i);
 		if(match) {
 			return JSON.parse(match[1]);
 		} else {
@@ -370,7 +370,6 @@ TagListItemWidget.prototype.nameandOnListTag = function(dataTransfer) {
 			if(data !== "" && data !== null) {
 				var tiddlerFields = dataType.convertToFields(data);
 				if(!tiddlerFields.title) {
-					
 					break;
 				}
 				if (tiddlerFields.tags && $tw.utils.parseStringArray(tiddlerFields.tags).indexOf(self.parseTreeNode.listtag) !== -1) {
@@ -383,7 +382,7 @@ TagListItemWidget.prototype.nameandOnListTag = function(dataTransfer) {
 				//return false; 
 				}
 			}
-		}
+		}else alert("not found");
 	};
 	return  {name:null, onList:false};
 };
@@ -397,14 +396,22 @@ TagListItemWidget.prototype.render = function(parent,nextSibling) {
 var domNode = this.document.createElement("div");
 	// Add event handlers
 	$tw.utils.addEventListeners(domNode,[
+		{name: "dragover", handlerObject: this, handlerMethod: "handleDragOverEvent"},		
 		{name: "drop", handlerObject: this, handlerMethod: "handleDropEvent"}
 		]);
 	// Insert element
 	parent.insertBefore(domNode,nextSibling);
 	this.renderChildren(domNode,null);
-	//this.domNodes.push(domNode);
+	this.domNodes.push(domNode);
 };
 
+
+TagListItemWidget.prototype.handleDragOverEvent  = function(event) {
+//alert("OVER")
+	// Tell the browser that we're still interested in the drop
+	event.preventDefault();
+	event.dataTransfer.dropEffect = "copy";
+};
 /*
 Compute the internal state of the widget
 */
