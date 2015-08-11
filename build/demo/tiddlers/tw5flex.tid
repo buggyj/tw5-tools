@@ -1,0 +1,10 @@
+created: 20150720165923385
+modified: 20150721122006824
+tags: 
+title: tw5flex
+type: application/json
+
+{
+  "baserules": "",
+  "preparser": "text/vnd.tiddlywiki>text/plain"
+}

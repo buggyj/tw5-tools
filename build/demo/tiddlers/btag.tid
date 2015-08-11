@@ -1,0 +1,13 @@
+created: 20150721114551856
+modified: 20150811182351329
+tags: 
+title: btag
+type: text/html;flexibility=tw5flex
+
+<!-- This template is provided for backwards compatibility with older versions of TiddlyWiki -->
+
+<$set name="exportFilter" value="[!is[system]tag[btag]]">
+
+{{$:/core/templates/exporters/StaticRiver}}
+
+</$set>    
