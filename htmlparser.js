@@ -13,7 +13,7 @@ The HTML parser displays text as raw HTML
 "use strict";
 
 var HtmlParser = function(type,text,options) {
-	var src,sandbox;//alert(JSON.stringify(options));
+	var src,sandbox;
 	if(options._canonical_uri) {
 		src = options._canonical_uri;
 	} else if(text) {
