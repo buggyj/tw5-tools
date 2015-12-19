@@ -52,8 +52,10 @@ TagListWidget.prototype.execute = function() {
 	this.editTemplate = this.getAttribute("editTemplate");
 	this.variableName = this.getAttribute("variable","currentTiddler");
 	this.nodrop = this.getAttribute("nodrop");
+	this.htmltag = this.getAttribute("htmltag");
 	this.static = this.getAttribute("static"); 
 	this.listtag=this.getAttribute("targeTtag",this.getVariable("currentTiddler"));
+	this.listtag=this.getAttribute("targettag",this.listtag);
 	// Compose the list elements
 	this.list = this.getTiddlerList();
 	var members = [],
@@ -137,7 +139,7 @@ TagListWidget.prototype.makeItemTemplate = function(title) {
 	}
 	// Return the list item
 	if (this.nodrop) return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:null};
-	return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:this.listtag};
+	return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:this.listtag, htmltag:this.htmltag};
 };
 
 /*
@@ -392,8 +394,12 @@ Render this widget into the DOM
 TagListItemWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
-	this.execute();
-var domNode = this.document.createElement("div");
+	this.execute();	
+	var tag = "div";
+	if(this.parseTreeNode.htmltag && $tw.config.htmlUnsafeElements.indexOf(this.revealTag) === -1) {
+		tag = this.parseTreeNode.htmltag;
+	}
+var domNode = this.document.createElement(tag);
 	// Add event handlers
 	$tw.utils.addEventListeners(domNode,[
 		{name: "dragover", handlerObject: this, handlerMethod: "handleDragOverEvent"},		
