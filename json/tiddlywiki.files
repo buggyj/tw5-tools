@@ -1,0 +1,12 @@
+{
+	"tiddlers": [
+		{
+			"file": "config.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/config/bj/Calendar.json",
+				"module-type": "library"
+			}
+		}
+	]
+}
