@@ -1,0 +1,29 @@
+{
+	"tiddlers": [
+		{
+
+			"file": "styles.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/bj/visualeditor/styles.json",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "config.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/bj/visualeditor/config.json",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "verbatim.json",
+			"fields": {
+				"type": "application/json",
+				"title": "$:/plugins/bj/visualeditor/verbatim.json",
+				"module-type": "library"
+			}
+		}
+	]
+}
