@@ -4,7 +4,8 @@
 		"tiddlywiki/filesystem",
 		"bj/plug-and-play",
 		"bj/visualeditor",
-		"bj/calendar"
+		"bj/calendar",
+		"bj/typestemplate"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
