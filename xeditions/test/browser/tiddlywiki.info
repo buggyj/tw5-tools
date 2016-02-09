@@ -1,6 +1,8 @@
 {
 	"plugins": [
-		"bj/python"
+		"bj/plug-and-play",
+		"bj/visualeditor",
+		"bj/calendar"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

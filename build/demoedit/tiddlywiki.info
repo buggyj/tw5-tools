@@ -2,18 +2,16 @@
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
 		"tiddlywiki/filesystem",
-		"bj/plug-and-play",
-		"bj/visualeditor",
-		"bj/calendar"
+		"bj/typestemplate"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
 		"tiddlywiki/snowwhite"
 	],
 	"includeWikis": [
-		"../browser"
+		"../demo"
 	],
 	"config": {
-		"default-tiddler-location": "../browser/tiddlers"
+		"default-tiddler-location": "../demo/tiddlers"
 	}
 }
