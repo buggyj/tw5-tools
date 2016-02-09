@@ -1,0 +1,30 @@
+created: 20140314121725119
+modified: 20140314124653259
+tags: $:/tags/stylesheet
+title: $:_stylesheettaglist
+type: text/plain
+
+.tc-taglist { 
+   background-color    : lightgreen; 
+     -webkit-border-top-left-radius: 0.3em;
+     -webkit-border-bottom-left-radius: 0.3em;
+     -moz-border-radius-topleft: 0.3em;
+     -moz-border-radius-bottomleft: 0.3em;
+     border-top-left-radius: 0.3em;
+     border-bottom-left-radius: 0.3em;
+
+     -webkit-border-top-right-radius: 0.3em;
+     -webkit-border-bottom-right-radius: 0.3em;
+     -moz-border-radius-topright: 0.3em;
+     -moz-border-radius-bottomright: 0.3em;
+     border-top-right-radius: 0.3em;
+     border-bottom-right-radius: 0.3em;
+
+}
+
+
+
+.tc-taglist:hover {
+     background-color: yellow;
+}
+
