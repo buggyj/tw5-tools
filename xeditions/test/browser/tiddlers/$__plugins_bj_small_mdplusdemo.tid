@@ -1,0 +1,44 @@
+author: JeffreyWilkinson
+core-version: >=5.1.5
+created: 20141214163647778
+dependents: 
+description: demo tw with md
+list: readme license
+plugin-type: plugin
+source: https://github.com/buggyj/TW5-small
+title: $:/plugins/bj/small/mdplusdemo
+type: application/json
+version: 0.0.1
+
+{
+    "tiddlers": {
+        "MDplus": {
+            "created": "20140126171344128",
+            "modified": "20141214003340457",
+            "title": "MDplus",
+            "type": "application/json",
+            "text": "{\n  \"parserrules\": {\n    \"pragmaRuleList\": [],\n    \"blockRuleList\": [\n      \"html\"\n    ],\n    \"inlineRuleList\": [\n      \"html\",\n      \"prettylink\",\n      \"transcludeinline\",\n      \"wikilink\"\n    ]\n  },\n  \"baserules\": \"\",\n  \"preparser\": \"text/x-PostMd;flexibility=PostMarkdown>text/plain\"\n}\n"
+        },
+        "PostMarkdown": {
+            "created": "20140126102231764",
+            "modified": "20141213224936643",
+            "title": "PostMarkdown",
+            "type": "application/json",
+            "text": "{\n  \"parserrules\": {\n    \"leftOfMacro\": \"\\\\[\\\\=\\\\[\",\n    \"rightOfMacro\": \"\\\\]\\\\=\\\\]\"\n  },\n  \"preparser\": \"text/x-markdown>text/html\"\n}"
+        },
+        "$:/plugins/bj/other/mdplusdemo/license": {
+            "title": "$:/plugins/bj/other/mdplusdemo/license",
+            "text": "The MIT License (MIT)\n\nCopyright (c) 2014 Jeffrey Wikinson aka buggyj\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+        },
+        "$:/plugins/bj/small/mdplusdemo/parsers/PostMd.js": {
+            "text": "/*\\\ntitle: $:/plugins/bj/small/mdplusdemo/parsers/PostMd.js\ntype: application/javascript\nmodule-type: parser\n\nto support inclusions\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar PostMd = function(type,text,options) {\n       var left = \"\\[\\=\\[\", right = \"\\]\\=\\]\";\n\tif (!!options.parserrules) {\n\t\tvar leftreg =  new RegExp(options.parserrules.leftOfMacro||left,\"mg\");\n\t\tvar rightreg =  new RegExp(options.parserrules.rightOfMacro||right,\"mg\");\n\t\ttext = \ttext.replace(leftreg,\"<<\").replace(rightreg,\">>\");\n\t}\n\n\tthis.tree = [{\n\t\ttype: \"element\",\n\t\ttag: \"pre\",\n\t\tchildren: [{\n\t\t\ttype: \"text\",\n\t\t\ttext: text\n\t\t}]\n\t}];\n};\n\nexports[\"text/x-PostMd\"] = PostMd;\n\n})();\n\n",
+            "title": "$:/plugins/bj/small/mdplusdemo/parsers/PostMd.js",
+            "type": "application/javascript",
+            "module-type": "parser"
+        },
+        "$:/plugins/bj/small/mdplusdemo/readme": {
+            "title": "$:/plugins/bj/small/mdplusdemo/readme",
+            "text": "\n!!Usage\n\nenables tw macros in markdown\n"
+        }
+    }
+}

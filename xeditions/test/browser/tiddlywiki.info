@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/python"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}

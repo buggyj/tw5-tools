@@ -1,0 +1,19 @@
+created: 20140507134653289
+dependents: 
+description: null editor
+modified: 20140515174146462
+plugin-type: plugin
+title: $:/plugins/bj/nulleditor
+type: application/json
+version: 0.0.0
+
+{
+    "tiddlers": {
+        "$:/core/modules/widgets/edit-none.js": {
+            "text": "/*\\\ntitle: $:/core/modules/widgets/edit-none.js\ntype: application/javascript\nmodule-type: widget\n\n\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar Widget = require(\"$:/core/modules/widgets/widget.js\").widget;\n\nvar nullWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nnullWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nnullWidget.prototype.render = function(parent,nextSibling) {\n\n};\n\n/*\nCompute the internal state of the widget\n*/\nnullWidget.prototype.execute = function() {\n\n};\n\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nnullWidget.prototype.refresh = function(changedTiddlers) {\n\n\t\treturn false;\t\t\n\n};\n\nexports[\"edit-none\"] = nullWidget;\n\n})();\n",
+            "title": "$:/core/modules/widgets/edit-none.js",
+            "type": "application/javascript",
+            "module-type": "widget"
+        }
+    }
+}

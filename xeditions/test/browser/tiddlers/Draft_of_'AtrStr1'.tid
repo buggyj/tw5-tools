@@ -1,0 +1,24 @@
+created: 20150915215720431
+draft.of: AtrStr1
+draft.title: AtrStr1
+modified: 20150915220404062
+path: M 100 200 C 200 100 300   0 400 100 
+path2: C 500 200 600 300 700 200 C 800 100 900 100 900 100
+tags: 
+title: Draft of 'AtrStr1'
+type: text/vnd.tiddlywiki
+
+
+<svg width="100%" height="100%" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background:white;">
+<defs>
+<path id="MyPath7" d={{AtrStr1!!path}}{{AtrStr1!!path}}/>
+</defs>
+<use xlink:href="#MyPath7" fill="none" stroke="#ddd"/>plain
+<text font-family="'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif" font-size="42.5">
+<textPath xlink:href="#MyPath7">
+====To The  Top=====on the bottom=======================
+</textPath>
+</text>
+</svg>
+
+

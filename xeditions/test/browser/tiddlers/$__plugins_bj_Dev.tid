@@ -1,0 +1,19 @@
+created: 20140216122815882
+dependents: 
+description: Dev tool plugin
+modified: 20140216122815882
+plugin-type: plugin
+title: $:/plugins/bj/Dev
+type: application/json
+version: 0.0.0
+
+{
+    "tiddlers": {
+        "$:/plugins/bj/Dev/trace.js": {
+            "text": "/*\\\ntitle: $:/plugins/bj/Dev/trace.js\ntype: application/javascript\nmodule-type: wikimethod\nDisplay stacktrace if supported by browser\n\\*/\nif($tw.browser) {  \n\t$tw.utils.error2 = function (message, file, line, column, errorObj)\n\t{\n\t\tif (!!errorObj &&!!errorObj.stack) {\n\t\t\talert(errorObj.stack);\n\t\t} else {\n\t\t\t$tw.utils.error(message, file, line);\n\t\t}    \n\t}\n\twindow.onerror = $tw.utils.error2;\n}\n",
+            "title": "$:/plugins/bj/Dev/trace.js",
+            "type": "application/javascript",
+            "module-type": "wikimethod"
+        }
+    }
+}
