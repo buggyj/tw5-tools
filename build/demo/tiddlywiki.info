@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/TW5-flexitype"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+	"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}
