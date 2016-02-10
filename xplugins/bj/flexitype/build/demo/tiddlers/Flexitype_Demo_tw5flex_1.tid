@@ -1,9 +1,7 @@
 created: 20160111124436445
-draft.of: Flexitype Demo tw5flex 1
-draft.title: Flexitype Demo tw5flex 1
-modified: 20160111142328363
+modified: 20160210082705263
 tags: 
-title: Draft of 'Flexitype Demo tw5flex 1'
+title: Flexitype Demo tw5flex 1
 type: text/vnd.twbase;flexibility=htmlp
 
 <h1>Example illustrating the use of 'flexitype'</h1>
@@ -13,3 +11,6 @@ type: text/vnd.twbase;flexibility=htmlp
 !!Only links are wikified
 
 ##Only links are wikified
+
+<h3>htmlp contains</h3>
+{{htmlp}}

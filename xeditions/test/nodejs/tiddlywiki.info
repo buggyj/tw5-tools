@@ -5,7 +5,8 @@
 		"bj/plug-and-play",
 		"bj/visualeditor",
 		"bj/calendar",
-		"bj/typestemplate"
+		"bj/typestemplate",
+		"bj/flexitype"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
