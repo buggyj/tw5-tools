@@ -79,7 +79,7 @@ Parse a block of text of a specified MIME type
 Options include:
 	parseAsInline: if true, the text of the tiddler will be parsed as an inline run
 */
-wiki.old_parseText = function(type,text,options) {
+wiki.parseText = function(type,text,options) {
 	options = options || {};
 	var parserdata;
 	// Select a parser
@@ -103,6 +103,7 @@ wiki.old_parseText = function(type,text,options) {
 	return new Parser(type,text,{
 		parseAsInline: options.parseAsInline,
 		wiki: this,
+		_canonical_uri: options._canonical_uri,
 		parserrules:(type !== undefined)?parserdata.parserrules:null 
 	});
 };

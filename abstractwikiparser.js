@@ -30,12 +30,13 @@ var AbstrWikiParser = function(specifier) {
 	this.blockRules = this.instantiateRules(this.blockRuleClasses,"block",0);
 	this.inlineRules = this.instantiateRules(this.inlineRuleClasses,"inline",0);
 	// Parse any pragmas
-	this.tree = this.parsePragmas();
+	this.tree = [];
+	var topBranch = this.parsePragmas();
 	// Parse the text into inline runs or blocks
 	if(this.options.parseAsInline) {
-		this.tree.push.apply(this.tree,this.parseInlineRun());
+		topBranch.push.apply(topBranch,this.parseInlineRun());
 	} else {
-		this.tree.push.apply(this.tree,this.parseBlocks());
+		topBranch.push.apply(topBranch,this.parseBlocks());
 	}
 	// Return the parse tree
 };

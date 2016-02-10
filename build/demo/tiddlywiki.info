@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"bj/flexitype"
+		"bj/TW5-flexitype"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
