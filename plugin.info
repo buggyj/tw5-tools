@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/bj/jsoneditor",
+	"description": "editor of json!",
+	"author": "Jeffrey Wilkinson (BJ)",
+	"version": "0.0.5",
+	"list": "readme license",
+	"core-version": ">=5.0.13",
+	"source": "https://github.com/buggyj/TW5-jsoneditor",
+	"plugin-type": "plugin"
+}
