@@ -6,7 +6,9 @@
 		"bj/visualeditor",
 		"bj/calendar",
 		"bj/typestemplate",
-		"bj/flexitype"
+		"bj/flexitype",
+		"bj/jsoneditor",
+		"bj/marked"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
