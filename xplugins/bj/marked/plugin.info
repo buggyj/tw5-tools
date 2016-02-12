@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/bj/plugins/marked",
+	"description": "alternative markdown",
+	"author": "JeffreyWilkinson",
+	"version": "0.0.2",
+	"list": "readme license",
+	"core-version": ">=5.1.9",
+	"source": "https://github.com/buggyj/Tw5-plugins",
+	"plugin-type": "plugin"
+}

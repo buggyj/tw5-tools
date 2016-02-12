@@ -1,0 +1,24 @@
+title: $:/plugins/bj/plugins/marked/readme
+
+Adapter for the marked markdown parser:
+https://github.com/chjj/marked
+
+!!Usage
+
+!!!Options (with defaults)
+<pre>`  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  smartLists: false,
+  silent: false,
+  highlight: null,
+  langPrefix: 'lang-',
+  smartypants: false,
+  headerPrefix: '',
+  renderer: new Renderer,
+  xhtml: false
+`</pre>
+
+At present options can only be set using the Flexitype plugin.

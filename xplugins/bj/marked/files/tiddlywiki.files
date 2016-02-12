@@ -1,0 +1,12 @@
+{
+	"tiddlers": [
+		{
+			"file": "markdown.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/bj/plugins/marked/markdown.js",
+				"module-type": "library"
+			}
+		}
+	]
+}

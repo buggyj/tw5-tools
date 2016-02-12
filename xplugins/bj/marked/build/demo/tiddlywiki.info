@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/plugins/marked"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}
