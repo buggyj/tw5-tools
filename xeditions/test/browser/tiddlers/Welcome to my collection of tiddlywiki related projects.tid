@@ -1,5 +1,5 @@
 created: 20140216101316280
-modified: 20151031214358396
+modified: 20160212072649008
 title: Welcome to my collection of tiddlywiki related projects
 type: text/vnd.tiddlywiki
 
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 |MarKed|[[$:/plugins/bj/plugins/marked]]|alternative markdown syntax |
 |! <hr> |! <hr> |! <hr> |
 |JsonEditor|[[$:/plugins/bj/jsoneditor]]|display and edit jsons as trees|
-|ClickAction|[[$:/plugins/bj/smalltools]]|allows multiple actions on a lists to be activated at the same time|
+|ClickAction|[[$:/plugins/bj/clickaction]]|allows multiple actions on a lists to be activated at the same time|
 |! <hr> |! <hr> |! <hr> |
 |''tiddlyclip''|http://tiddlyclip.tiddlyspot.com|Clip webcontent into tiddlers|
 |! <hr> |! <hr> |! <hr> |
