@@ -1,6 +1,6 @@
 {
 	"title": "$:/plugins/bj/plugins/markdownlike",
-	"description": "Markdown Like Wikitext Extensions",
+	"description": "Markdown Like Wikitext Extension",
 	"author": "JeffreyWilkinson",
 	"version": "0.0.1",
 	"list": "readme license",
