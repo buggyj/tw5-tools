@@ -1,0 +1,52 @@
+created: 20160215120312455
+modified: 20160216160312656
+tags: md+
+title: MDL
+type: application/json
+
+{
+  "parserrules": {
+    "pragmaRuleList": [
+      "macrodef",
+      "rules"
+    ],
+    "blockRuleList": [
+      "codeblock",
+      "commentblock",
+      "filteredtranscludeblock",
+      "headingmod",
+      "horizrule",
+      "html",
+      "listdigit",
+      "listmod",
+      "macrocallblock",
+      "quoteblock",
+      "styleblock",
+      "table",
+      "transcludeblock",
+      "typedblock"
+    ],
+    "inlineRuleList": [
+      "boldmod",
+      "codeinline",
+      "commentinline",
+      "dash",
+      "emphasis",
+      "entity",
+      "extlink",
+      "filteredtranscludeinline",
+      "hardlinebreaks",
+      "html",
+      "italic",
+      "macrocallinline",
+      "prettylink",
+      "strikethrough",
+      "styleinline",
+      "subscript",
+      "superscript",
+      "transcludeinline",
+      "underscore"
+    ]
+  },
+  "baserules": ""
+}
