@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/plugins/storytabs"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}
