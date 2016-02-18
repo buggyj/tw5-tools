@@ -45,7 +45,8 @@ type: application/json
       "subscript",
       "superscript",
       "transcludeinline",
-      "underscore"
+      "underscore",
+      "wikilink"
     ]
   },
   "baserules": ""
