@@ -9,7 +9,9 @@
 		"bj/flexitype",
 		"bj/jsoneditor",
 		"bj/marked",
-		"bj/clickaction"
+		"bj/clickaction",
+		"bj/markdownlike",
+		"bj/storytabs"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

@@ -1,8 +1,8 @@
 created: 20131202102427114
-modified: 20140930211920939
+modified: 20160212203919333
 tags: vv
 title: Upgrading2
-type: text/vnd.twbase<tiddlywikiRules
+type: text/vnd.twbase;flexibility=tiddlywikiRules
 
 There are several methods for upgrading an existing TiddlyWiki version 5 document to a new release. There is a [[different procedure|Upgrading TiddlyWiki on Node.js]] for upgrading [[TiddlyWiki on Node.js]].
 

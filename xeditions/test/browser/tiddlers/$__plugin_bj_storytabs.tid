@@ -1,0 +1,24 @@
+created: 20150504175957567
+creator: TonGerner
+modified: 20160218115044285
+modifier: BJ
+tags: $:/tags/AboveStory
+title: $:/plugin/bj/storytabs
+type: text/vnd.tiddlywiki
+
+<div  class="tc-tab-buttons" >
+<$list filter="[list[$:/StoryList]]" history="$:/HistoryList" variable="currentTab">
+<$reveal type="match" state="$:/HistoryList!!current-tiddler" text=<<currentTab>>>
+<div style="display:inline-block;">
+<$button to=<<currentTab>>  class="tc-tab-selected">
+<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+</$button>
+<$button message="tm-close-tiddler" param=<<currentTab>> class="tc-tab-selected">&times;</$button></div></$reveal>
+<$reveal type="nomatch" state="$:/HistoryList!!current-tiddler" text=<<currentTab>>>
+<div style="display:inline-block;">
+<$button to=<<currentTab>>  >
+<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+</$button><$button message="tm-close-tiddler" param=<<currentTab>>>&times;</$button></div></$reveal>
+</$list>
+</div>
+
