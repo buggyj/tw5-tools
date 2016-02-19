@@ -1,7 +1,7 @@
 created: 20140403122020698
-modified: 20150212011848024
+modified: 20160219073050992
 title: VisualEditor
-type: text/vnd.twbase<htmlp
+type: text/x-htmlp
 
 <h2>Demo</h2>
 <p>Try the demo here: VisualEditorDemo</p>
@@ -15,3 +15,8 @@ type: text/vnd.twbase<htmlp
 <p>Then reload your tiddlywiki.</p>
 <p>Also be aware that the editor strips newline characters, this means it cannot&nbsp; be used with some wiki text (it is probably a bad idea to try and mix wiki text with text produced in the visualeditor).</p>
 <p>There is a new type for tiddlers using this plugin: text/x-htmlp, select it from the dropdown type menu when you create a new tiddler.</p>
+<h2>&nbsp;</h2>
+<h2>Configuration Tiddlers</h2>
+<p>The tiddler&nbsp;<a class="tc-tiddlylink tc-tiddlylink-shadow" href="http://127.0.0.1:8080/#%24%3A%2Fplugins%2Fbj%2Fvisualeditor%2Fconfig.json">$:/plugins/bj/visualeditor/config.json</a> contains user adjustable values, such as changing how the menu bar appears.</p>
+<p>The tiddler&nbsp;<a class="tc-tiddlylink tc-tiddlylink-shadow" href="http://127.0.0.1:8080/#%24%3A%2Fplugins%2Fbj%2Fvisualeditor%2Fstyles.json">$:/plugins/bj/visualeditor/styles.json</a> defines the entries in the 'Styles' drop down menu, which define styles that can be applied to selected text. The tiddler [[alternative/styles.json]] contains some alternative definition that could be cut and pasted in this config tiddler</p>
+<p><span class="verbatim">&lt;&lt;version&gt;&gt;</span></p>

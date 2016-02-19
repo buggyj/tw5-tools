@@ -1,10 +1,10 @@
 created: 20140216101316280
-modified: 20160218113813790
+modified: 20160219123946909
 title: Welcome to my collection of tiddlywiki related projects
 type: text/vnd.tiddlywiki
 
 |!Project|!Location|!Objective|
-|[[Flexitype Demo]]|[[$:/plugins/bj/flexitype]] |Exended types - numerous uses|
+|[[Flexitype Demos]]|[[$:/plugins/bj/flexitype]] |Exended types - numerous uses|
 |[[typestemplate]]|[[$:/plugins/bj/typestemplate]] |enables user templates for types|
 |ExtendableCalendar|[[$:/plugins/bj/Calendar]] |A configuarable calendar|
 |! <hr> |! <hr> |! <hr> |

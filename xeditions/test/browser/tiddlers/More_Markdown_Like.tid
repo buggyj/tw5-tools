@@ -1,5 +1,5 @@
 created: 20160216214802085
-modified: 20160218120204953
+modified: 20160219165211189
 tags: MarkDownLike
 title: More Markdown Like
 type: text/vnd.twbase;flexibility=MDL
@@ -48,7 +48,7 @@ A one level order markdown like list is now possible.
 
 ### Complex Lists
 
-The . replaces # in complex list
+The . replaces # in complex lists
 
 ```
 . one
