@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/storytabs",
 	"description": "story tabs",
 	"author": "JeffreyWilkinson",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"list": "license",
-	"core-version": ">=5.1.8",
-	"source": "https://github.com/buggyj/tw5-plugins",
+	"core-version": ">=5.1.10",
+	"source": "https://github.com/buggyj/tw5-tools",
 	"plugin-type": "plugin"
 }
