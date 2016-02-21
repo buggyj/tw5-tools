@@ -2,4 +2,7 @@ title: $:/plugin/bj/visualeditor/includelib
 description: load the external lib
 tags: $:/core/wiki/rawmarkup
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js"></script>
+<script id="ckeditorlocation" type="type/userdefined">
+http://127.0.0.1/libs/ckeditor/ckeditor.js
+</script>
+

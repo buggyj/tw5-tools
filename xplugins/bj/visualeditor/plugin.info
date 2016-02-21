@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/visualeditor",
 	"description": "ckeditor adapter plugin",
 	"author": "JeffreyWilkinson",
-	"version": "0.0.5-alpha",
+	"version": "1.11.0",
 	"list": "readme",
-	"core-version": ">=5.1.0",
-	"source": "https://github.com/buggyj/TW5-visualeditor",
+	"core-version": ">=5.1.11",
+	"source": "https://github.com/buggyj/TW5-tools",
 	"plugin-type": "plugin"
 }

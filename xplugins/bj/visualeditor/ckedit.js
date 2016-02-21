@@ -253,7 +253,7 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 		this.postRender();
 	}
 	// Fix height
-	this.fixHeight();
+	//this.fixHeight();
 };
 
 /*
@@ -384,7 +384,7 @@ EditHtmlWidget.prototype.updateEditorDomNode = function(text) {
 			domNode.value = text;
 		}
 		// Fix the height if needed
-		this.fixHeight();
+		//this.fixHeight();
 	}
 };
 
@@ -421,7 +421,7 @@ Handle a dom "input" event
 */
 EditHtmlWidget.prototype.handleInputEvent = function(event) {
 	this.saveChanges(this.domNodes[0].firstChild.value);
-	this.fixHeight();
+	//this.fixHeight();
 	return true;
 };
 

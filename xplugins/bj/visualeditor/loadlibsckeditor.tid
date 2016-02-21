@@ -1,0 +1,16 @@
+title: $:/plugin/bj/visualeditor/loadlibsckeditor
+description: load the external lib based on host
+tags: $:/core/wiki/rawmarkup
+
+<script>
+var head = document.getElementsByTagName('head')[0];
+var js = document.createElement("script");
+js.type = "text/javascript";
+if (window.location.hostname == "bjtools.tiddlyspot.com") {
+    js.src = "http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js";
+}
+else {
+    js.src = document.getElementById("ckeditorlocation").innerHTML;
+}
+head.appendChild(js);
+</script>
