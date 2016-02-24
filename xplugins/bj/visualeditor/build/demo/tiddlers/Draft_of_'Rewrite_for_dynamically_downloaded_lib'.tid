@@ -1,0 +1,11 @@
+created: 20160223190243812
+draft.of: Rewrite for dynamically downloaded lib
+draft.title: Rewrite for dynamically downloaded lib
+modified: 20160224111824953
+tags: Development
+title: Draft of 'Rewrite for dynamically downloaded lib'
+type: text/html
+
+The original work was with the lib included as a tiddler within the plugin. Now the lib is downloaded. This could mean that the tiddlywiki would allow attempts at editing before the lib is ready causing errors.
+
+There needs to be a github ticket for this work.

@@ -1,8 +1,5 @@
 title: $:/plugin/bj/visualeditor/includelib
 description: load the external lib
-tags: $:/core/wiki/rawmarkup
 
-<script id="ckeditorlocation" type="type/userdefined">
-http://127.0.0.1/libs/ckeditor/ckeditor.js
-</script>
+<script src='http://127.0.0.1/libs/ckeditor/ckeditor.js'></script>
 

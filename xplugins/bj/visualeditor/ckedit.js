@@ -1,106 +1,17 @@
 /*\
-title: $:/plugins/bj/visualeditor/ckedit.js
+title: $:/bj/modules/widgets/edit.js
 type: application/javascript
 module-type: widget
-
-ckeditor adaptor
-
 \*/
 
+if($tw.browser )   {
 (function(){
 
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
-var hasClass=function (e,theClass)
-{
-	if(e.getAttribute('class')) {
-		if(e.getAttribute('class').split(" ").indexOf(theClass) != -1)
-			return true;
-	}
-	return false;
-}
-var applyStyleSheet = function(id,css) {
-	var el = document.getElementById(id);
-	if(document.createStyleSheet) { // Older versions of IE
-		if(el) {
-			el.parentNode.removeChild(el);
-		}
-		document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeEnd",
-			'&nbsp;<style id="' + id + '" type="text/css">' + css + '</style>'); // fails without &nbsp;
-	} else { // Modern browsers
-		if(el) {
-			el.replaceChild(document.createTextNode(css), el.firstChild);
-		} else {
-			el = document.createElement("style");
-			el.type = "text/css";
-			el.id = id;
-			el.appendChild(document.createTextNode(css));
-			document.getElementsByTagName("head")[0].appendChild(el);
-		}
-	}
-};
-if($tw.browser) {
-	//require("$:/plugins/bj/visualeditor/ckeditor.js");
-	if (typeof CKEDITOR != 'undefined')   {
-		var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
-		var sty;
-
-		try {
-		 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
-		} catch(e){ 
-			alert("invalid style format");
-			sty=[];
-		}
-		if (PLUSMODE) sty.push({ "name": "verbatim","element": "span","attributes": {"class": "verbatim"}});
-
-		CKEDITOR.stylesSet.add( 'default',sty);
-		if (PLUSMODE) CKEDITOR.addCss($tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/verbatim.json").verbatim);
-		CKEDITOR.on( 'instanceReady', function( ev ) {
-			var blockTags = ['div','h1','h2','h3','h4','h5','h6','p','pre','li','blockquote','ul','ol',
-	  'table','thead','tbody','tfoot','td','th',];
-			var rules = {
-			indent : false,
-			breakBeforeOpen : true,
-			breakAfterOpen : false,
-			breakBeforeClose : false,
-			breakAfterClose : false
-		};
-
-		for (var i=0; i<blockTags.length; i++) {
-		ev.editor.dataProcessor.writer.setRules( blockTags[i], rules );
-		}
-
-
-		});
-
-		//BJ FixMe: figure out how to hide tw5 tags and macros from ckeditor
-		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
-		CKEDITOR.config.protectedSource.push(/<<[^<]*>>/g);
-		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
-		CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
-		CKEDITOR.config.entities = false;
-	}
-
-	var atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/html");
-	if (atiddler==undefined) {
-				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
-				{title:"$:/config/EditorTypeMappings/text/html", text:"html"}));
-	}
-	atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-perimental");
-	if (atiddler==undefined) {	
-				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
-					{title:"$:/config/EditorTypeMappings/text/x-perimental", text:"x-perimental"}));
-	}
-}
-})();
-
-(function(){
-
-/*jslint node: true, browser: true */
-/*global $tw: false */
-"use strict";
+var ready = false;
 
 var MIN_TEXT_AREA_HEIGHT = 100; // Minimum height of textareas in pixels
 
@@ -308,7 +219,11 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 	return {value: value, update: update};
 };
 
-/*
+EditHtmlWidget.prototype.getAttribute = function () {
+	//parameters are passed to parent
+	return this.parentWidget.getAttribute.apply(this.parentWidget, arguments);
+}
+/*.
 Compute the internal state of the widget
 */
 EditHtmlWidget.prototype.execute = function() {
@@ -353,14 +268,10 @@ EditHtmlWidget.prototype.execute = function() {
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
 EditHtmlWidget.prototype.refresh = function(changedTiddlers) {
-	var changedAttributes = this.computeAttributes();
-	// Completely rerender if any of our attributes have changed
-	if(changedAttributes.tiddler || changedAttributes.field || changedAttributes.index) {
-		this.refreshSelf();
-		return true;
-	} else if(changedTiddlers[this.editTitle]) {
-		this.updateEditor(this.getEditInfo().value);
-		return true;
+// attribute changes are caught by parent widget
+	if(changedTiddlers[this.editTitle]) {
+		//this.refreshSelf(); BJ maybe we don't like to have our edits pulled
+		//return true;
 	}
 	return false;
 };
@@ -385,34 +296,6 @@ EditHtmlWidget.prototype.updateEditorDomNode = function(text) {
 		}
 		// Fix the height if needed
 		//this.fixHeight();
-	}
-};
-
-/*
-Fix the height of textareas to fit their content
-*/
-EditHtmlWidget.prototype.fixHeight = function() {
-	var self = this,
-		domNode = this.domNodes[0];
-	if(domNode && !domNode.isTiddlyWikiFakeDom && this.editTag === "textarea") {
-		$tw.utils.nextTick(function() {
-			// Resize the textarea to fit its content, preserving scroll position
-			var scrollPosition = $tw.utils.getScrollPosition(),
-				scrollTop = scrollPosition.y;
-			// Set its height to auto so that it snaps to the correct height
-			domNode.style.height = "auto";
-			// Calculate the revised height
-			var newHeight = Math.max(domNode.scrollHeight + domNode.offsetHeight - domNode.clientHeight,MIN_TEXT_AREA_HEIGHT);
-			// Only try to change the height if it has changed
-			if(newHeight !== domNode.offsetHeight) {
-				domNode.style.height =  newHeight + "px";
-				// Make sure that the dimensions of the textarea are recalculated
-				$tw.utils.forceLayout(domNode);
-				// Check that the scroll position is still visible before trying to scroll back to it
-				scrollTop = Math.min(scrollTop,self.document.body.scrollHeight - window.innerHeight);
-				window.scrollTo(scrollPosition.x,scrollTop);
-			}
-		});
 	}
 };
 
@@ -444,9 +327,163 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 	}
 };
 
-exports["edit-html"] = EditHtmlWidget;
 $tw.utils.registerFileType("text/x-perimental","utf8",".perimental");
-exports["edit-x-perimental"] = EditHtmlWidget;
+exports["__!ckebase__"] = EditHtmlWidget;//choose an unparseable name to make widget 'private'
 
+
+
+
+
+
+//--------------base initialisation-----------------
+
+var startup =  function () {
+	//require("$:/plugins/bj/visualeditor/ckeditor.js");
+	if (typeof CKEDITOR != 'undefined')   {
+		var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
+
+		var sty;
+//alert("instartup")
+		try {
+		 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
+		} catch(e){ 
+			alert("invalid style format");
+			sty=[];
+		}
+		if (PLUSMODE) sty.push({ "name": "verbatim","element": "span","attributes": {"class": "verbatim"}});
+
+		CKEDITOR.stylesSet.add( 'default',sty);
+		if (PLUSMODE) CKEDITOR.addCss($tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/verbatim.json").verbatim);
+		CKEDITOR.on( 'instanceReady', function( ev ) {
+			var blockTags = ['div','h1','h2','h3','h4','h5','h6','p','pre','li','blockquote','ul','ol',
+	  'table','thead','tbody','tfoot','td','th',];
+			var rules = {
+			indent : false,
+			breakBeforeOpen : true,
+			breakAfterOpen : false,
+			breakBeforeClose : false,
+			breakAfterClose : false
+		};
+
+		for (var i=0; i<blockTags.length; i++) {
+		ev.editor.dataProcessor.writer.setRules( blockTags[i], rules );
+		}
+
+
+		});
+
+		//BJ FixMe: figure out how to hide tw5 tags and macros from ckeditor
+		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
+		CKEDITOR.config.protectedSource.push(/<<[^<]*>>/g);
+		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
+		CKEDITOR.config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
+		CKEDITOR.config.entities = false;
+	}
+
+	var atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/html");
+	if (atiddler==undefined) {
+				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
+				{title:"$:/config/EditorTypeMappings/text/html", text:"html"}));
+	}
+	atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-perimental");
+	if (atiddler==undefined) {	
+				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
+					{title:"$:/config/EditorTypeMappings/text/x-perimental", text:"x-perimental"}));
+	}
+}
+
+//----------------------------------------------
+
+var LoadWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+
+/*
+Inherit from the base widget class
+*/
+LoadWidget.prototype = new Widget();
+
+/*
+create loader 
+*/
+if($tw.browser)  {
+	var head = document.getElementsByTagName('head')[0];
+	var js = document.createElement("script");
+	js.type = "text/javascript";
+	js.onload = function() { //alert("loadedhere")
+		//do non-tree initialisation
+		startup();
+		ready = true;//BJ do this in startup
+		//broadcast ready message
+		$tw.wiki.setTextReference("$:/temp/ckeready","ready");
+	}
+	if (window.location.hostname == "bjtools.tiddlyspot.com") {
+		js.src = $tw.wiki.getTiddlerText("$:/plugin/bj/visualeditor/bjtools/lib")||"";
+	}
+	else {
+		var tiddler = $tw.wiki.getTiddler("$:/plugin/bj/visualeditor/includelib")||{fields:{}};
+		var src = (tiddler.fields.text)||"";
+		js.src = src.replace(/.*?<script.*?src=["'](.*?)["'][\s\S]*/,"$1");
+		if (tiddler.fields.tags) {
+			var pos = tiddler.fields.tags.indexOf("$:/core/wiki/rawmarkup");
+			if(pos !== -1) {
+				alert("Please remove the tag $:/core/wiki/rawmarkup from tiddler $:/plugin/bj/visualeditor/includelib")
+			}
+		}
+	}
+	head.appendChild(js);
+} 
+
+LoadWidget.prototype.getLoadingMessage = function() {
+	var emptyMessage = "<h2>loading ckeditor",
+		parser = this.wiki.parseText("text/vnd.tiddlywiki",emptyMessage,{parseAsInline: true});
+	if(parser) {
+		return parser.tree;
+	} else {
+		return [];
+	}
+};
+/*
+Render this widget into the DOM
+*/
+LoadWidget.prototype.render = function(parent,nextSibling) {
+	this.parentDomNode = parent;
+	this.computeAttributes();
+	this.execute();
+	this.renderChildren(parent,nextSibling);
+};
+
+/*
+Compute the internal state of the widget
+*/
+LoadWidget.prototype.execute = function() {
+
+	if (ready) {
+		// Make the child widgets
+		this.makeChildWidgets([{type: "__!ckebase__"}]);
+	}
+	else this.makeChildWidgets(this.getLoadingMessage());
+};
+
+
+/*
+Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+*/
+LoadWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	// Refresh if an attribute has changed, or the type associated with the target tiddler has changed
+		if(Object.keys(changedAttributes).length || changedTiddlers["$:/temp/ckeready"]) {
+		this.refreshSelf();
+		return true;
+	} else {
+		return this.refreshChildren(changedTiddlers);		
+	}
+};
+LoadWidget.prototype.invokeAction = function(triggeringWidget,event) {
+	this.invokeActions(this,event);
+	return true; // Action was invoked
+};
+exports["edit-html"] = LoadWidget;
+exports["edit-x-perimental"] = LoadWidget;
 })();
-
+}
