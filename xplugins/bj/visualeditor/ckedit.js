@@ -20,7 +20,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 var EditHtmlWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
-var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
+var PLUSMODE = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
 /*
 Inherit from the base widget class
@@ -34,35 +34,33 @@ EditHtmlWidget.prototype.postRender = function() {
 		//if($tw.browser) alert("in towiki "+text)
 
 		//BJ FIXME - in theory the attribs can be in any order, so this may fail as it is
-		var newtext="";
+		var newtext = "";
 
-		 newtext=text.replace(/^<p><span class=\"verbatim\".*?>([^<]*)<\/span><\/p>/,
+		 newtext = text.replace(/^<p><span class=\"verbatim\".*?>([^<]*)<\/span><\/p>/,
 		function(m,key,offset,str){
-                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+                if (key.indexOf('<') != -1) {// we have caputure some formatting - !abort
 					return m;
 				}
-				return $tw.utils.htmlDecode(key)+"\n<!-- verbatim -->";
+				return $tw.utils.htmlDecode(key) + "\n<!-- verbatim -->";
 
 		});
 		newtext =
 		newtext.replace(/<p><span class=\"verbatim\".*?>([^<]*)<\/span><\/p>/g,
 		function(m,key,offset,str){
-                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+                if (key.indexOf('<') != -1) {// we have caputure some formatting - !abort
 					return m;
 				}
 				return "\n<!-- nl verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
 
 			
 		});
-		newtext =
-		newtext.replace(/<span class=\"verbatim\".*?>([^<]*)<\/span>/g,
-		function(m,key,offset,str){
-                if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
+		newtext = newtext.replace(/<span class=\"verbatim\".*?>([^<]*)<\/span>/g,
+			function(m,key,offset,str){
+				if (key.indexOf('<')!=-1) {// we have caputure some formatting - !abort
 					return m;
 				}
 				return "<!-- verb -->"+$tw.utils.htmlDecode(key)+"<!-- atim -->";
-		});
-		//if($tw.browser) alert(newtext);
+			});
 		return newtext;
 	}
 
@@ -73,16 +71,12 @@ EditHtmlWidget.prototype.postRender = function() {
 		this.domNodes[0].firstChild.setAttribute("id",ck);
 		var config;
 		try {
-		    config= $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json");
+		    config = $tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/config.json");
 		} catch(e) {
 			alert("invalid config format");
 			config = [];
 		}
 		CKEDITOR.replace(ck, config);//,
-			//extraPlugins:$tw.wiki.getTiddlerText("$:/plugins/bj/visualeditor/extraplugins.tid")});	
-		//BJ: note that we have statically loaded the style sheet already,
-		//therefore it is not possible to load a different skin here
-		//CKEDITOR.replace(ck,{ extraPlugins : 'divarea'})
 
 		CKEDITOR.instances[ck].on('change', 
 			function() { 
@@ -112,19 +106,19 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	// Execute our logic
 	this.execute();
 	var fromWiki = function(text) {
-		var preAmble='<span class="verbatim">';
+		var preAmble = '<span class="verbatim">';
 		var index=1;
 		//seperate the /define .../end section
 		text = text.split("<\!-- verbatim -->");
-		if (text.length==1) //no preamble defined
-			index=0;
+		if (text.length == 1) //no preamble defined
+			index = 0;
 		else
-			text[0]= preAmble+$tw.utils.htmlEncode(text[0])+'</span>'
-		text[index] = 	text[index].replace(/^<\!-- nl verb -->([\s\S]*?)<\!-- atim -->/mg,
+			text[0] = preAmble+$tw.utils.htmlEncode(text[0]) + '</span>'
+		text[index] = text[index].replace(/^<\!-- nl verb -->([\s\S]*?)<\!-- atim -->/mg,
 		function(m,key,offset,str){//alert(key);
-			return '<p>'+preAmble+$tw.utils.htmlEncode(key)+'</span>'+'</p>';
+			return '<p>' + preAmble+$tw.utils.htmlEncode(key)+'</span>'+'</p>';
 		});//alert ("newtext "+text[index]);
-		text[index] = 	text[index].replace(/<\!-- verb -->([\s\S]*?)<\!-- atim -->/g,
+		text[index] = text[index].replace(/<\!-- verb -->([\s\S]*?)<\!-- atim -->/g,
 		function(m,key,offset,str){//alert(key);
 			return preAmble+$tw.utils.htmlEncode(key)+'</span>';
 		});
@@ -135,9 +129,7 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	var outerDomNode = this.document.createElement('div');
 		outerDomNode.className = "tw-ckeditor-instance";
 	var domNode = this.document.createElement(this.editTag);
-	if(this.editType) {
-		domNode.setAttribute("type",this.editType);
-	}
+
 	if(this.editPlaceholder) {
 		domNode.setAttribute("placeholder",this.editPlaceholder);
 	}
@@ -154,7 +146,7 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 			domNode.appendChild(this.document.createTextNode(editInfo.value));
 		} 
 	} else {
-		domNode.setAttribute("value",editInfo.value)
+		alert("visual editor only works with textarea")
 	}
     outerDomNode.appendChild(domNode);
 	// Insert the element into the DOM
@@ -163,8 +155,6 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	if(this.postRender) {
 		this.postRender();
 	}
-	// Fix height
-	//this.fixHeight();
 };
 
 /*
@@ -203,7 +193,7 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 					value = "";
 					break;
 			}
-			if(this.editDefault !== undefined) {
+			if (this.editDefault !== undefined) {
 				value = this.editDefault;
 			}
 		}
@@ -220,14 +210,11 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 };
 
 EditHtmlWidget.prototype.getAttribute = function () {
-	//parameters are passed to parent
+	//parameters are passed to parent so get them from there
 	return this.parentWidget.getAttribute.apply(this.parentWidget, arguments);
 }
-/*.
-Compute the internal state of the widget
-*/
+ 
 EditHtmlWidget.prototype.execute = function() {
-	// Get our parameters
 	this.editTitle = this.getAttribute("tiddler",this.getVariable("currentTiddler"));
 	this.editField = this.getAttribute("field","text");
 	this.editIndex = this.getAttribute("index");
@@ -236,32 +223,16 @@ EditHtmlWidget.prototype.execute = function() {
 	this.editPlaceholder = this.getAttribute("placeholder");
 	this.editFocusPopup = this.getAttribute("focusPopup");
 	this.onkeyupdate = this.getAttribute("onkeyupdate","yes"); 
-		// Get the content type of the thing we're editing
-	this.edittype;
+	// Get the content type of the thing we're editing
+	this.edittype = "";
 	if(this.editField === "text") {
 		var tiddler = this.wiki.getTiddler(this.editTitle);
 		if(tiddler) {
 			this.edittype = tiddler.fields.type;
 		}
 	}
-	// Get the editor element tag and type
-	var tag,type;
-	if(this.editField === "text") {
-		tag = "textarea";
-	} else {
-		tag = "input";
-		var fieldModule = $tw.Tiddler.fieldModules[this.editField];
-		if(fieldModule && fieldModule.editTag) {
-			tag = fieldModule.editTag;
-		}
-		if(fieldModule && fieldModule.editType) {
-			type = fieldModule.editType;
-		}
-		type = type || "text";
-	}
-	// Get the rest of our parameters
-	this.editTag = this.getAttribute("tag",tag);
-	this.editType = this.getAttribute("type",type);
+	// only textarea can be visually edited
+	this.editTag = "textarea"
 };
 
 /*
@@ -270,7 +241,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 EditHtmlWidget.prototype.refresh = function(changedTiddlers) {
 // attribute changes are caught by parent widget
 	if(changedTiddlers[this.editTitle]) {
-		//this.refreshSelf(); BJ maybe we don't like to have our edits pulled
+		//this.refreshSelf(); BJ maybe we don't like to have our edits pulled - this could be an option
 		//return true;
 	}
 	return false;
@@ -330,20 +301,14 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 $tw.utils.registerFileType("text/x-perimental","utf8",".perimental");
 exports["__!ckebase__"] = EditHtmlWidget;//choose an unparseable name to make widget 'private'
 
-
-
-
-
-
-//--------------base initialisation-----------------
+//-------------- base initialisation - do after lib is loaded ----------------
 
 var startup =  function () {
-	//require("$:/plugins/bj/visualeditor/ckeditor.js");
+	//require("$:/plugins/bj/visualeditor/ckeditor.js"); BJ -option to build in the lib?
 	if (typeof CKEDITOR != 'undefined')   {
 		var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
 		var sty;
-//alert("instartup")
 		try {
 		 sty=$tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/styles.json");
 		} catch(e){ 
@@ -356,23 +321,21 @@ var startup =  function () {
 		if (PLUSMODE) CKEDITOR.addCss($tw.wiki.getTiddlerData("$:/plugins/bj/visualeditor/verbatim.json").verbatim);
 		CKEDITOR.on( 'instanceReady', function( ev ) {
 			var blockTags = ['div','h1','h2','h3','h4','h5','h6','p','pre','li','blockquote','ul','ol',
-	  'table','thead','tbody','tfoot','td','th',];
+							'table','thead','tbody','tfoot','td','th',];
 			var rules = {
-			indent : false,
-			breakBeforeOpen : true,
-			breakAfterOpen : false,
-			breakBeforeClose : false,
-			breakAfterClose : false
-		};
+				indent : false,
+				breakBeforeOpen : true,
+				breakAfterOpen : false,
+				breakBeforeClose : false,
+				breakAfterClose : false
+			};
 
-		for (var i=0; i<blockTags.length; i++) {
-		ev.editor.dataProcessor.writer.setRules( blockTags[i], rules );
-		}
-
-
+			for (var i=0; i<blockTags.length; i++) {
+				ev.editor.dataProcessor.writer.setRules( blockTags[i], rules );
+			}
 		});
 
-		//BJ FixMe: figure out how to hide tw5 tags and macros from ckeditor
+		//BJ hide tw5 tags and macros from ckeditor
 		CKEDITOR.config.protectedSource.push(/<\/?\$[^<]*\/?>/g);
 		CKEDITOR.config.protectedSource.push(/<<[^<]*>>/g);
 		//CKEDITOR. config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
@@ -381,26 +344,23 @@ var startup =  function () {
 	}
 
 	var atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/html");
-	if (atiddler==undefined) {
+	if (atiddler == undefined) {
 				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
 				{title:"$:/config/EditorTypeMappings/text/html", text:"html"}));
 	}
 	atiddler = $tw.wiki.getTiddler("$:/config/EditorTypeMappings/text/x-perimental");
-	if (atiddler==undefined) {	
+	if (atiddler == undefined) {	
 				$tw.wiki.addTiddler(new $tw.Tiddler($tw.wiki.getCreationFields(),
 					{title:"$:/config/EditorTypeMappings/text/x-perimental", text:"x-perimental"}));
 	}
 }
 
-//----------------------------------------------
+//----------------base initialisation finished-----------------------------
 
 var LoadWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
-
-/*
-Inherit from the base widget class
-*/
+ 
 LoadWidget.prototype = new Widget();
 
 /*
@@ -410,7 +370,7 @@ if($tw.browser)  {
 	var head = document.getElementsByTagName('head')[0];
 	var js = document.createElement("script");
 	js.type = "text/javascript";
-	js.onload = function() { //alert("loadedhere")
+	js.onload = function() {  
 		//do non-tree initialisation
 		startup();
 		ready = true;//BJ do this in startup
@@ -443,9 +403,7 @@ LoadWidget.prototype.getLoadingMessage = function() {
 		return [];
 	}
 };
-/*
-Render this widget into the DOM
-*/
+ 
 LoadWidget.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
@@ -453,25 +411,19 @@ LoadWidget.prototype.render = function(parent,nextSibling) {
 	this.renderChildren(parent,nextSibling);
 };
 
-/*
-Compute the internal state of the widget
-*/
+
 LoadWidget.prototype.execute = function() {
 
 	if (ready) {
-		// Make the child widgets
+		// insert the real widget
 		this.makeChildWidgets([{type: "__!ckebase__"}]);
 	}
 	else this.makeChildWidgets(this.getLoadingMessage());
 };
 
-
-/*
-Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
-*/
 LoadWidget.prototype.refresh = function(changedTiddlers) {
 	var changedAttributes = this.computeAttributes();
-	// Refresh if an attribute has changed, or the type associated with the target tiddler has changed
+	// Refresh if an attribute has changed, or the 'lib is loaded' is indicated
 		if(Object.keys(changedAttributes).length || changedTiddlers["$:/temp/ckeready"]) {
 		this.refreshSelf();
 		return true;
@@ -479,10 +431,12 @@ LoadWidget.prototype.refresh = function(changedTiddlers) {
 		return this.refreshChildren(changedTiddlers);		
 	}
 };
+
 LoadWidget.prototype.invokeAction = function(triggeringWidget,event) {
 	this.invokeActions(this,event);
 	return true; // Action was invoked
 };
+
 exports["edit-html"] = LoadWidget;
 exports["edit-x-perimental"] = LoadWidget;
 })();
