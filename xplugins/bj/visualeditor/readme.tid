@@ -1,11 +1,14 @@
 title: $:/plugins/bj/visualeditor/readme
 
-Adapter for ckeditor, which can be obtained from 
-http://ckeditor.com/download
+!!!Basic Configuration
+This plugin enables ckeditor to be used in a tiddlywiki. For the Ckeditor license see http://ckeditor.com/about/license
 
-Note that this plugin is designed to work with the standard packages (but can be configured for custom packages).
+ckeditor can be used directly from the web, eg http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.3.2/ckeditor.js
+or can be obtained directly from http://ckeditor.com/download
 
-the tiddler $:/plugin/bj/visualeditor/includelib
+Note that this plugin is designed to work with the ckeditor standard packages (but can be configured for custom packages).
+
+The tiddler $:/plugin/bj/visualeditor/includelib
 
 needs to contain the location of the ckeditor library. The default is
 

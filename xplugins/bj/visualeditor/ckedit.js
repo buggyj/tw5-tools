@@ -89,14 +89,7 @@ EditHtmlWidget.prototype.postRender = function() {
 		);
 	} 
 };
-/*
-BJ the follow code is from tw5 core, with some minor modifications
-*******************************************************************
-Edit-html widget
-*/
-/*
-Render this widget into the DOM
-*/
+
 EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
 	// Save the parent dom node
@@ -301,10 +294,9 @@ EditHtmlWidget.prototype.saveChanges = function(text) {
 $tw.utils.registerFileType("text/x-perimental","utf8",".perimental");
 exports["__!ckebase__"] = EditHtmlWidget;//choose an unparseable name to make widget 'private'
 
-//-------------- base initialisation - do after lib is loaded ----------------
+//-------------- base initialisation - ----------------
 
-var startup =  function () {
-	//require("$:/plugins/bj/visualeditor/ckeditor.js"); BJ -option to build in the lib?
+var startup =  function () { //do after lib is loaded
 	if (typeof CKEDITOR != 'undefined')   {
 		var PLUSMODE  = (typeof $tw.wiki.getTiddler("$:/language/Docs/Types/text/x-perimental")!='undefined');
 
@@ -355,16 +347,9 @@ var startup =  function () {
 	}
 }
 
-//----------------base initialisation finished-----------------------------
-
-var LoadWidget = function(parseTreeNode,options) {
-	this.initialise(parseTreeNode,options);
-};
- 
-LoadWidget.prototype = new Widget();
-
+//require("$:/plugins/bj/visualeditor/ckeditor.js"); BJ -option to build in the lib?
 /*
-create loader 
+create lib loader 
 */
 if($tw.browser)  {
 	var head = document.getElementsByTagName('head')[0];
@@ -393,10 +378,19 @@ if($tw.browser)  {
 	}
 	head.appendChild(js);
 } 
+//----------------base initialisation finished-----------------------------
+
+var LoadWidget = function(parseTreeNode,options) {
+	this.initialise(parseTreeNode,options);
+};
+ 
+LoadWidget.prototype = new Widget();
+
+
 
 LoadWidget.prototype.getLoadingMessage = function() {
-	var emptyMessage = "<h2>loading ckeditor",
-		parser = this.wiki.parseText("text/vnd.tiddlywiki",emptyMessage,{parseAsInline: true});
+	var message = "<h2>loading ckeditor",
+		parser = this.wiki.parseText("text/vnd.tiddlywiki",message,{parseAsInline: true});
 	if(parser) {
 		return parser.tree;
 	} else {
