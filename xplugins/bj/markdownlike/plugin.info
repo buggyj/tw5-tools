@@ -1,8 +1,9 @@
 {
-	"title": "$:/plugins/bj/plugins/markdownlike",
+	"title": "$:/plugins/bj/markdownlike",
 	"description": "Markdown Like Wikitext Extension",
 	"author": "JeffreyWilkinson",
-	"version": "0.0.1",
+	"tags": "needs:/plugins/bj/flexitype",
+	"version": "1.11.0",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/Tw5-tools",

@@ -27,7 +27,7 @@ type: application/json
       "typedblock"
     ],
     "inlineRuleList": [
-      "boldmod",
+      "strong",
       "codeinline",
       "commentinline",
       "dash",

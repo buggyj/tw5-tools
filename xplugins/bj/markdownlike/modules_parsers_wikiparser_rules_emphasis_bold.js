@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/mdl/modules/parsers/wikiparser/rules/bold.js
+title: $:/bj/mdl/modules/parsers/wikiparser/rules/strong.js
 type: application/javascript
 module-type: wikirule
 
@@ -23,7 +23,7 @@ This wikiparser can be modified using the rules eg:
 /*global $tw: false */
 "use strict";
 
-exports.name = "boldmod";
+exports.name = "strong";
 exports.types = {user: true};
 
 exports.init = function(parser) {

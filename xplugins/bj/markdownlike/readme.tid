@@ -1,5 +1,10 @@
-title: $:/bj/mdl/readme
+title: $:/plugins/bj/markdownlike/readme
+type: text/vnd.twbase;flexibility=MDL
 
+
+----
+
+##Example Source
 ```
 # Source of content made to be even more markdown like
 In this content I have made the following changes to the rules
@@ -14,6 +19,9 @@ I have also:
 
 + **replaced** * with + for unordered lists
 ```
+----
+
+##Example Rendered
 # Source of content made to be even more markdown like
 In this content I have made the following changes to the rules
 
