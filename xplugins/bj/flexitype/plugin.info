@@ -5,6 +5,6 @@
 	"version": "1.11.0",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
-	"source": "https://github.com/buggyj/TW5-flexitype",
+	"source": "https://github.com/buggyj/TW5-tools",
 	"plugin-type": "plugin"
 }
