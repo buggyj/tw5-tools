@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/typestemplate",
 	"description": "enables user templates for each type",
 	"author": "JeffreyWilkinson",
-	"version": "0.0.1",
+	"version": "1.11.0",
 	"list": "readme license",
-	"core-version": ">=5.1.4",
-	"source": "https://github.com/buggyj/TW5-typestemplate",
+	"core-version": ">=5.1.11",
+	"source": "https://github.com/buggyj/TW5-tools",
 	"plugin-type": "plugin"
 }
