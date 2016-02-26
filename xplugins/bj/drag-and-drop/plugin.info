@@ -1,7 +1,7 @@
 {
-	"title": "$:/plugins/bj/Calendar",
-	"description": "calendar with date formatter addons",
-	"author": "JeffreyWilkinson",
+	"title": "$:/plugins/bj/drag-and-drop",
+	"description": "drag and drop widgets",
+	"author": "Jeffrey Wilkinson aka buggyj",
 	"version": "1.11.0",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
