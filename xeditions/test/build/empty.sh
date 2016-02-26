@@ -23,9 +23,9 @@ fi
 export TIDDLYWIKI_PLUGIN_PATH="${PWD%/*/*/*}/xplugins:$TIDDLYWIKI_PLUGIN_PATH"
 
 node $TW5_ROOT/tiddlywiki.js \
-	../browser \
+	../empty \
 	--verbose \
-	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/testtools.html text/plain \
+	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/bjtoolsempty.html text/plain \
 	|| exit 1
 
 

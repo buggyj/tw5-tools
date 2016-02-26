@@ -1,13 +1,15 @@
 {
 	"plugins": [
-		"bj/plug-and-play",
+		"bj/drag-and-drop",
 		"bj/visualeditor",
 		"bj/calendar",
 		"bj/typestemplate",
 		"bj/flexitype",
 		"bj/jsoneditor",
 		"bj/marked",
-		"bj/clickaction"
+		"bj/clickaction",
+		"bj/markdownlike",
+		"bj/storytabs"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",

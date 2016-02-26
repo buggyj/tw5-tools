@@ -1,5 +1,5 @@
 created: 20140216101316280
-modified: 20160219123946909
+modified: 20160225130758074
 title: Welcome to my collection of tiddlywiki related projects
 type: text/vnd.tiddlywiki
 
@@ -16,6 +16,6 @@ type: text/vnd.tiddlywiki
 |ClickAction|[[$:/plugins/bj/clickaction]]|allows multiple actions on a lists to be activated at the same time|
 |StoryTopTabs|[[$:/plugins/bj/storytabs]]|Display links to open tiddlers across top of story|
 |! <hr> |! <hr> |! <hr> |
-|[[More Markdown Like]]|$:/plugins/bj/plugins/markdownlike|Modified wikitext markup|
+|[[More Markdown Like]]|$:/plugins/bj/markdownlike|Modified wikitext markup|
 |''tiddlyclip''|http://tiddlyclip.tiddlyspot.com|Clip webcontent into tiddlers|
 |! <hr> |! <hr> |! <hr> |
