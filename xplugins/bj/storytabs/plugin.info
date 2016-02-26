@@ -1,10 +1,10 @@
 {
 	"title": "$:/plugins/bj/storytabs",
 	"description": "story tabs",
-	"author": "JeffreyWilkinson",
-	"version": "0.0.3",
-	"list": "license",
-	"core-version": ">=5.1.10",
+	"author": "Jeffrey Wilkinson aka BJ",
+	"version": "1.11.0",
+	"list": "license readme",
+	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/tw5-tools",
 	"plugin-type": "plugin"
 }

@@ -1,5 +1,5 @@
 tags: $:/tags/AboveStory
-title: $:/plugin/bj/storytabs-caller
+title: $:/bj/storytabs/storytabs-caller
 type: text/vnd.tiddlywiki
 
 <$transclude tiddler="$:/plugin/bj/storytabs"  mode="inline"/>
