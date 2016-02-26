@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/clickaction",
 	"description": "click trigger widget",
 	"author": "JeffreyWilkinson aka BJ",
-	"version": "0.0.3",
+	"version": "1.11.0",
 	"list": "readme license",
-	"core-version": ">=5.1.10",
+	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/TW5-tools",
 	"plugin-type": "plugin"
 }
