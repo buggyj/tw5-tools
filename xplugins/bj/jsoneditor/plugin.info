@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/jsoneditor",
 	"description": "editor of json!",
 	"author": "Jeffrey Wilkinson (BJ)",
-	"version": "0.0.5",
+	"version": "1.11.0",
 	"list": "readme license",
-	"core-version": ">=5.0.13",
+	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/tw5-tools",
 	"plugin-type": "plugin"
 }
