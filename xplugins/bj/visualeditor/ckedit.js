@@ -362,12 +362,13 @@ if($tw.browser)  {
 		//broadcast ready message
 		$tw.wiki.setTextReference("$:/temp/ckeready","ready");
 	}
-	if (window.location.hostname == "bjtools.tiddlyspot.com") {
+	if (window.location.hostname == $tw.wiki.getTiddlerText("$:/plugin/bj/visualeditor/bjtools/onlineloc").trim()) {
 		js.src = $tw.wiki.getTiddlerText("$:/plugin/bj/visualeditor/bjtools/lib")||"";
 	}
 	else {
 		var tiddler = $tw.wiki.getTiddler("$:/plugin/bj/visualeditor/includelib")||{fields:{}};
 		var src = (tiddler.fields.text)||"";
+		// for backward compatibility handle case that the location is in a script tag
 		js.src = src.replace(/.*?<script.*?src=["'](.*?)["'][\s\S]*/,"$1");
 		if (tiddler.fields.tags) {
 			var pos = tiddler.fields.tags.indexOf("$:/core/wiki/rawmarkup");
