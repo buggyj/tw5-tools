@@ -1,0 +1,10 @@
+created: 20150913114411246
+modified: 20160226215035771
+tags: Release
+title: svgtp
+type: application/json
+
+{
+  "baserules": "",
+  "preparser": "text/vnd.tiddlywiki>text/plain"
+}
