@@ -1,7 +1,9 @@
 created: 20141203191812791
-modified: 20160226212657080
+draft.of: test/EditTemplate
+draft.title: test/EditTemplate
+modified: 20160226221808564
 tags: Release
-title: test/EditTemplate
+title: Draft of 'test/EditTemplate'
 type: text/vnd.tiddlywiki
 
 \define frame-classes()

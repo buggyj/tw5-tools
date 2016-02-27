@@ -1,5 +1,5 @@
 created: 20140216101316280
-modified: 20160225130758074
+modified: 20160226122110257
 title: Welcome to my collection of tiddlywiki related projects
 type: text/vnd.tiddlywiki
 
@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 |[[typestemplate]]|[[$:/plugins/bj/typestemplate]] |enables user templates for types|
 |ExtendableCalendar|[[$:/plugins/bj/Calendar]] |A configuarable calendar|
 |! <hr> |! <hr> |! <hr> |
-|TagList|[[$:/plugins/bj/taglist]] |list by tag that is re-orderable by drag/drop |
+|[[drag-and-drop]]|[[$:/plugins/bj/drag-and-drop]] |list by tag that is re-orderable by drag/drop |
 |VisualEditor|[[$:/plugins/bj/visualeditor]] |Enable html based content to be created or edited|
 |MarKed|[[$:/plugins/bj/plugins/marked]]|alternative markdown (Marked variation) plugin |
 |! <hr> |! <hr> |! <hr> |
