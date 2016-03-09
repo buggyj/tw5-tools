@@ -32,9 +32,10 @@ exports.run = function() {
 	
 var cur = this.getVariable("currentTiddler"), template, 
 	tiddler = this.wiki.getTiddler(cur);
-	
-	tiddler && tiddler.fields && tiddler.fields.type? 
-			template =  $tw.wiki.getTiddlerText(EDIT_TEMPLATE_MAPPING_PREFIX +tiddler.fields.type) : template = null;
+	tiddler && tiddler.fields && tiddler.fields.applicationtype?
+		template =  $tw.wiki.getTiddlerText(EDIT_TEMPLATE_MAPPING_PREFIX +tiddler.fields.applicationtype) :
+		tiddler && tiddler.fields && tiddler.fields.type? 
+				template =  $tw.wiki.getTiddlerText(EDIT_TEMPLATE_MAPPING_PREFIX +tiddler.fields.type) : template = null;
 	if (!template)
 		return  $tw.wiki.getTiddlerText("$:/core/ui/EditTemplate");	
 	template = template.trim();
