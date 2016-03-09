@@ -150,6 +150,17 @@ EditHtmlWidget.prototype.render = function(parent,nextSibling) {
 	}
 };
 
+EditHtmlWidget.prototype.getSubTiddler = function(title,subTiddlerTitle) {
+	var bundleInfo = this.wiki.getTiddlerDataCached(title);
+	if(bundleInfo && bundleInfo.tiddlers) {
+		var subTiddler = bundleInfo.tiddlers[subTiddlerTitle];
+		if(subTiddler) {
+			return new $tw.Tiddler(subTiddler);
+		}
+	}
+	return new $tw.Tiddler();
+};
+
 /*
 Get the tiddler being edited and current value
 */
@@ -157,7 +168,8 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 	// Get the edit value
 	var self = this,
 		value,
-		update;
+		update,
+		updatesimple;
 	if(this.editIndex) {
 		value = this.wiki.extractTiddlerDataItem(this.editTitle,this.editIndex,this.editDefault);
 		update = function(value) {
@@ -168,8 +180,13 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 			}
 		};
 	} else {
-		// Get the current tiddler and the field name
-		var tiddler = this.wiki.getTiddler(this.editTitle);
+		var tiddler;
+		//BJ what happens if there is not a container?
+		if(this.subTiddler) {
+			tiddler = this.getSubTiddler(this.editTitle,this.subTiddler);
+		} else {
+			tiddler = this.wiki.getTiddler(this.editTitle);
+		}
 		if(tiddler) {
 			// If we've got a tiddler, the value to display is the field string value
 			value = tiddler.getFieldString(this.editField);
@@ -191,6 +208,38 @@ EditHtmlWidget.prototype.getEditInfo = function() {
 			}
 		}
 		update = function(value) {
+			if(self.subTiddler) {
+				//update subtiddler first 
+				//BJ does it have a title?
+				/*
+				var tiddler = self.getSubTiddler(self.editTitle,self.subTiddler),
+					updateFields = {
+						title: self.subTiddler
+					};
+				updateFields[self.editField] = value;
+				tiddler = new $tw.Tiddler(self.wiki.getCreationFields(),tiddler,updateFields,self.wiki.getModificationFields());
+				*/
+				//update container
+				var container = self.wiki.getTiddler(self.editTitle),
+					text = JSON.parse(container.fields.text),
+					prototid = text.tiddlers[self.subTiddler] ||{};
+				prototid[self.editField] = value;
+				if (self.editField === "title") {
+					delete text.tiddlers[self.subTiddler];
+					text.tiddlers[value] = prototid;
+				} else {
+					text.tiddlers[self.subTiddler] = prototid;
+				}
+				var updateFields = {
+					title: self.editTitle,
+					text: JSON.stringify(text)
+				};	
+				self.wiki.addTiddler(new $tw.Tiddler(self.wiki.getCreationFields(),container,updateFields,self.wiki.getModificationFields()));				
+			} else {
+				updatesimple(value);
+			}
+		}
+		updatesimple = function(value) {
 			var tiddler = self.wiki.getTiddler(self.editTitle),
 				updateFields = {
 					title: self.editTitle
@@ -209,6 +258,7 @@ EditHtmlWidget.prototype.getAttribute = function () {
  
 EditHtmlWidget.prototype.execute = function() {
 	this.editTitle = this.getAttribute("tiddler",this.getVariable("currentTiddler"));
+	this.subTiddler = this.getAttribute("subtiddler");
 	this.editField = this.getAttribute("field","text");
 	this.editIndex = this.getAttribute("index");
 	this.editDefault = this.getAttribute("default");
