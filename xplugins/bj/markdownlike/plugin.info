@@ -2,7 +2,7 @@
 	"title": "$:/plugins/bj/markdownlike",
 	"description": "Markdown Like Wikitext Extension",
 	"author": "JeffreyWilkinson",
-	"tags": "needs:/plugins/bj/flexitype",
+	"tags": "$:/plugins/bj/flexitype",
 	"version": "1.11.0",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
