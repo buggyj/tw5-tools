@@ -3,31 +3,54 @@ tags: $:/tags/Macro
 
 \define openAllTaggedInner(state)
 <$button set=<<qualify "$state$">> setTo="open">Open all tagged</$button> 
-<$edit-text tiddler="<<qualify $(usertagopen)$>>" tag="input" type="text"/>
-<$list filter="""[!has[draft.of]tag{<<qualify $(usertagopen)$>>}sort[created]]""">
-<$link><$click type="match" state=<<qualify "$state$">> text="open"/> </$link>
+<$edit-text tiddler="$(usertagopen)$" tag="input" type="text" placeholder="enter tag"/>
+<$list filter="""[!has[draft.of]tag{$(usertagopen)$}sort[created]]""">
+	<$link><$click type="match" state=<<qualify "$state$">> text="open"/> </$link>
 </$list>
 \end
 
 \define openAllTagged(userparam:"$:/temp/openall" state:"$:/state/opentagged" )
 <$set name="usertagopen" value=<<qualify "$userparam$">>>
-<<openAllTaggedInner $state$>>
+	<<openAllTaggedInner $state$>>
+</$set>	
 \end
 
 \define closeAllTaggedInner( state:"$:/state/closetagged" )
 <$button set=<<qualify "$state$">> setTo="close">close all tagged</$button> 
-<$edit-text tiddler="<<qualify $(usertagclose)$>>" tag="input" type="text"/>
+<$edit-text tiddler="$(usertagclose)$" tag="input" type="text" placeholder="enter tag"/>
 <$linkcatcher message=tm-close-tiddler>
-<$list filter="""[!has[draft.of]tag{<<qualify $(usertagclose)$>>}sort[created]]""">
-<$link><$click type="match" state=<<qualify "$state$">> text="close"/> </$link>
-</$list>
+	<$list filter="""[!has[draft.of]tag{$(usertagclose)$}sort[created]]""">
+		<$link><$click type="match" state=<<qualify "$state$">> text="close"/></$link>
+	</$list>
 </$linkcatcher>
 \end
 
 \define closeAllTagged(userparam:"$:/temp/closeeall" state:"$:/state/closetagged" )
 <$set name="usertagclose" value=<<qualify "$userparam$">>>
-<<closeAllTaggedInner $state$>>
+	<<closeAllTaggedInner $state$>>
+</$set>	
 \end
 
+\define renameTagAllTaggedInner( state:"$:/state/retagtagged" )
+<$button set=<<qualify "$state$">> setTo="retag">rename tags</$button> 
+<$edit-text tiddler="$(nowtag)$" tag="input" type="text" placeholder="enter old tag"/>
+<$edit-text tiddler="$(newtag)$" tag="input" type="text" placeholder="enter new tag"/>
+<$list filter="""[!has[draft.of]tag{$(nowtag)$}sort[created]]""">
+	<$fieldmangler tiddler=<<currentTiddler>>>
+		<$button class="tc-btn-invisible">
+			<$click type="match" state=<<qualify "$state$">> text="retag"/> 
+			<$action-sendmessage $message='tm-add-tag'    $param={{$(newtag)$}}/>
+			<$action-sendmessage $message="tm-remove-tag" $param={{$(nowtag)$}}/>
+		</$button>
+	</$fieldmangler>
+</$list>
+\end
 
+\define renameTag(userparam:"$:/temp/nowtag" userparam1:"$:/temp/newtag" state:"$:/state/retagtagged" )
+<$set name="nowtag" value=<<qualify "$userparam$">>>
+	<$set name="newtag" value=<<qualify "$userparam1$">>>
+		<<renameTagAllTaggedInner $state$>>
+	</$set>
+</$set>	
+\end
 

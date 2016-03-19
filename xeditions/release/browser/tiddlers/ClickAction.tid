@@ -1,5 +1,5 @@
 created: 20140918102511141
-modified: 20160226214653744
+modified: 20160318193147366
 tags: Release
 title: ClickAction
 type: text/vnd.tiddlywiki
@@ -28,13 +28,20 @@ Enter taglistdemo in the box
 
 !!Macros
 
-I have produced 3 macros that use this widget
+I have produced 4 macros that use this widget
 
 `<<openAllTagged>>` this produces a text box for the user to enter a tag and a button to press to open all tiddlers with the tag in the  Story.
 
 
 `<<closeAllTagged>>` this produces a text box for the user to enter a tag and a button to press to close all tiddlers with the tag in the  Story.
 
-These 2 will be added to the global macros when the plugin is installed
+`<<renameTag>>` for renaming all instances of a tag.
+
+These 3 will be added to the global macros when the plugin is installed
 
 There is also a [[deleteAllTagged]] macro, due to its dangerous nature I have only included the text -  it is not suitable for using globally - If you use it at all I would advise only install it into its own tiddler.
+
+!!! Demos
+<<openAllTagged>>
+<<closeAllTagged>>
+<<renameTag>>
