@@ -1,0 +1,18 @@
+{
+	"plugins": [
+		"bj/plug-and-play",
+		"bj/visualeditor",
+		"bj/calendar",
+		"bj/typestemplate",
+		"bj/flexitype",
+		"bj/jsoneditor",
+		"bj/marked",
+		"bj/clickaction",
+		"bj/markdownlike",
+		"bj/storytabs"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	]
+}
