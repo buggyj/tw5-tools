@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/bj/patchchecker",
+	"description": "check for out of version patch files",
+	"author": "Jeffrey Wilkinson aka BJ",
+	"version": "1.11.0",
+	"list": "license readme",
+	"core-version": ">=5.1.11",
+	"source": "https://github.com/buggyj/tw5-tools",
+	"plugin-type": "plugin"
+}

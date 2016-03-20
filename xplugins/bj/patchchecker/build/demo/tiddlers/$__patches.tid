@@ -1,0 +1,17 @@
+author: Jeffrey Wilkinson aka BJ
+core-version: >=5.1.11
+created: 20160319163522998
+dependents: 
+description: check for out of version patch files
+extended-type: patch
+list: license readme
+modified: 20160319164129040
+plugin-type: plugin
+source: https://github.com/buggyj/tw5-tools
+title: $:/patches
+type: application/json
+version: 5.1.11
+
+{
+    "tiddlers": {}
+}

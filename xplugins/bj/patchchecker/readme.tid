@@ -1,0 +1,3 @@
+title: $:/plugins/bj/patchchecker/readme
+
+Temporary overrides for components are put in a plugin with 'extended-type' = 'patch'. This plugin checks to see if the version in the patch matches the current version
