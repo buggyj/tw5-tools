@@ -1,0 +1,14 @@
+created: 20160327080022842
+modified: 20160328111631842
+tags: 
+title: TagAsBJTools
+type: text/vnd.tiddlywiki
+
+<$button set=<<qualify "bjtools">> setTo="retag">make bjtools tag plugins</$button>
+<$list filter="[prefix[$:/plugins/bj]]">	<$fieldmangler tiddler=<<currentTiddler>>>
+		<$button class="tc-btn-invisible">
+			<$click type="match" state=<<qualify "bjtools">> text="retag"/> 
+			<$action-sendmessage $message='tm-add-tag'    $param="bjtools"/>
+		</$button>
+	</$fieldmangler>
+</$list>
