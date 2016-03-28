@@ -3,7 +3,8 @@ title: $:/bj/modules/patchchecker.js
 type: application/javascript
 module-type: startup
 
-Miscellaneous startup logic for both the client and server.
+Temporary overrides for components are put in a plugin with 'extended-type' = 'patch'. 
+This plugin checks to see if the version in the patch matches the current version
 
 \*/
 (function(){
@@ -12,7 +13,6 @@ Miscellaneous startup logic for both the client and server.
 /*global $tw: false */
 "use strict";
 
-// Export name and synchronous status
 exports.name = "patchchecker";
 exports.after = ["load-modules"];
 exports.platforms = ["browser"];
