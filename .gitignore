@@ -1,2 +1,5 @@
 output/
-$__StoryList.tid/
+$__StoryList.tid
+**/build/extlibs/tiddlers/
+**/build/playground/tiddlers/
+xeditions/playground/browser/tiddlers/
