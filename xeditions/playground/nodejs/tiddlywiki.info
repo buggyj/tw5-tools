@@ -1,21 +1,9 @@
 {
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
-		"tiddlywiki/filesystem",
-		"bj/drag-and-drop",
-		"bj/visualeditor",
-		"bj/calendar",
-		"bj/typestemplate",
-		"bj/flexitype",
-		"bj/jsoneditor",
-		"bj/marked",
-		"bj/clickaction",
-		"bj/markdownlike",
-		"bj/storytabs"
+		"tiddlywiki/filesystem"
 	],
 	"themes": [
-		"tiddlywiki/vanilla",
-		"tiddlywiki/snowwhite"
 	],
 	"includeWikis": [
 		"../browser"
