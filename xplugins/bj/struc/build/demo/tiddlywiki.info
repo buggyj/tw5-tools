@@ -1,0 +1,13 @@
+{
+	"plugins": [
+		"bj/struc"
+	],
+	"themes": [
+		"tiddlywiki/vanilla",
+		"tiddlywiki/snowwhite"
+	],
+		"doNotSave": [
+	],
+	"includeWikis": [
+	]
+}
