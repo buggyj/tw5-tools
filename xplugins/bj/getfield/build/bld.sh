@@ -24,7 +24,7 @@ export TIDDLYWIKI_PLUGIN_PATH="${PWD%/*/*/*}:$TIDDLYWIKI_PLUGIN_PATH"
 node $TW5_ROOT/tiddlywiki.js \
 	./demo \
 	--verbose \
-	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/getvalue.html text/plain \
+	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/getfield.html text/plain \
 	|| exit 1
 
 

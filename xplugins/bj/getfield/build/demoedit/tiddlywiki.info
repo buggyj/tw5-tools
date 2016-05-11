@@ -1,12 +1,10 @@
 {
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
-		"tiddlywiki/filesystem",
-		"bj/getvalue"
+		"tiddlywiki/filesystem"
 	],
 	"themes": [
-		"tiddlywiki/vanilla",
-		"tiddlywiki/snowwhite"
+
 	],
 	"includeWikis": [
 		"../demo"

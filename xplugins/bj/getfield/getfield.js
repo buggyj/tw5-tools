@@ -1,5 +1,5 @@
 /*\
-title: $:/core/modules/widgets/getfield.js
+title: $:/bj/modules/macros/getfield.js
 type: application/javascript
 module-type: macro
 tags: $:/tags/tiddlyclip 

@@ -1,8 +1,8 @@
 {
-	"title": "$:/plugins/bj/getvalue",
+	"title": "$:/plugins/bj/getfield",
 	"description": "macro version of view widget++",
 	"author": "JeffreyWilkinson aka BJ",
-	"version": "1.11.2",
+	"version": "1.11.3",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/TW5-tools",
