@@ -2,6 +2,7 @@
 title: $:/core/modules/widgets/getfield.js
 type: application/javascript
 module-type: macro
+tags: $:/tags/tiddlyclip 
 
 View widget
 
@@ -84,8 +85,8 @@ ViewWidget.prototype.initialise = function() {
 			this.viewSubtiddler = this.getSubtidName();
 		}
 	}
-	this.viewField = field||"text";
-	this.viewIndex = index;
+	this.viewField = this.make(field)||"text";
+	this.viewIndex = this.make(index);
 	this.viewFormat = format||"text";
 	this.viewTemplate = template||"";
 	switch(this.viewFormat) {
