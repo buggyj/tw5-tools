@@ -2,7 +2,7 @@
 	"title": "$:/plugins/bj/getfield",
 	"description": "macro version of view widget++",
 	"author": "JeffreyWilkinson aka BJ",
-	"version": "1.11.3",
+	"version": "1.11.4",
 	"list": "readme license",
 	"core-version": ">=5.1.11",
 	"source": "https://github.com/buggyj/TW5-tools",

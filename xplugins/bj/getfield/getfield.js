@@ -77,7 +77,7 @@ ViewWidget.prototype.getSubtidName = function() {
 ViewWidget.prototype.initialise = function() {
 	this.wiki = $tw.wiki;
 	// Get parameters from our attributes
-	this.viewTitle = this.make(tiddler)||parent.getVariable("currentTiddler");
+	this.viewTitle = this.make(tiddler||"<currentTiddler>");
 	this.viewSubtiddler = this.make(subtiddler);
 	if (this.viewTitle === "$") { 
 		this.viewTitle = this.getTidName();
@@ -85,7 +85,7 @@ ViewWidget.prototype.initialise = function() {
 			this.viewSubtiddler = this.getSubtidName();
 		}
 	}
-	this.viewField = this.make(field)||"text";
+	this.viewField = this.make(field||"text");
 	this.viewIndex = this.make(index);
 	this.viewFormat = format||"text";
 	this.viewTemplate = template||"";
