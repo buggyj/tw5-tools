@@ -1,0 +1,25 @@
+created: 20160610101233075
+description: delete tiddler that is dropped on icon
+list-before: 
+modified: 20160613070738507
+tags: $:/tags/PageControls
+title: DelButton
+type: text/vnd.tiddlywiki
+
+<$ondrop onAddMessage="tm-delete-tiddler">
+<$button tooltip="drag here" aria-label="drag here"class=<<tv-config-toolbar-class>>popup="$:/DelPopupState">
+<$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
+{{$:/core/images/delete-button}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>prefix[yes]]">
+<span class="tc-btn-text"><$text text={{$:/language/Buttons/Delete/Caption}}/></span>
+</$list>
+</$button>
+
+
+<$reveal type="popup" state="$:/DelPopupState">
+<div class="tc-drop-down">drag and drop a tidder here to delete
+</div>
+</$reveal>
+</$ondrop> 
+

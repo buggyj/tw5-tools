@@ -18,6 +18,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget;
 The list widget creates list element sub-widgets that reach back into the list widget for their configuration
 */
 
+
 var OnDrop = function(parseTreeNode,options) {
 	// Main initialisation inherited from widget.js
 	this.initialise(parseTreeNode,options);
@@ -35,11 +36,14 @@ OnDrop.prototype.render = function(parent,nextSibling) {
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
-		// Add event handlers
-	// Create element
-	var domNode = this.document.createElement("div");
+	var tag = this.parseTreeNode.isBlock ? "div" : "span";
+	if(this.dropTag && $tw.config.htmlUnsafeElements.indexOf(this.dropTag) === -1) {
+		tag = this.dropTag;
+	}
+	var domNode = this.document.createElement(tag);
 	domNode.className = "tc-dropzone";
 	$tw.utils.addEventListeners(domNode,[
+		{name: "dragover", handlerObject: this, handlerMethod: "handleDragOverEvent"},	
 		{name: "drop", handlerObject: this, handlerMethod: "handleDropEvent"}
 		]);
 	// Insert element
@@ -55,6 +59,7 @@ OnDrop.prototype.execute = function() {
 	this.listtag = this.getAttribute("targeTtag",this.getVariable("currentTiddler"));
     this.onAddMessage = this.getAttribute("onAddMessage");
     this.action = this.getAttribute("tagAction"); 
+	this.dropTag = this.getAttribute("tag");
 	// Make child widgets
 	this.makeChildWidgets();
 };
@@ -94,6 +99,11 @@ OnDrop.prototype.removeTag = function (tidname) {
 		this.wiki.addTiddler(new $tw.Tiddler(tiddler,modification));
 		}	
 }
+OnDrop.prototype.handleDragOverEvent  = function(event) {
+	// Tell the browser that we're still interested in the drop
+	event.preventDefault();
+	//event.dataTransfer.dropEffect = "copy";
+};
 
 OnDrop.prototype.handleDropEvent  = function(event) {
 	var self = this,
