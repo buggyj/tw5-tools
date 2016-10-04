@@ -40,6 +40,7 @@ Compute the internal state of the widget
 */
 ViewWidget.prototype.make = function(x) {
 	// allow indirection of variable - <varible-name>
+	if (!x) return x; //null str
 	var reParam = /<([^>\s]+)>/mg,
 		paramMatch = reParam.exec(x);
 		
@@ -84,8 +85,14 @@ ViewWidget.prototype.initialise = function() {
 		if (this.viewSubtiddler === "$") {
 			this.viewSubtiddler = this.getSubtidName();
 		}
+		this.viewField = this.make(field||"title");
 	}
-	this.viewField = this.make(field||"text");
+	else if (this.getTidName() == tiddler) {
+		//current tiddler cannot default to text without recursion problem
+		this.viewField = this.make(field||"title");
+	}
+	else this.viewField = this.make(field||"text");
+	
 	this.viewIndex = this.make(index);
 	this.viewFormat = format||"text";
 	this.viewTemplate = template||"";
