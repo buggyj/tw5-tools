@@ -1,4 +1,3 @@
 title: $:/plugins/bj/typestemplate/callEditPicker
 
-<<editTemplatePicker>>
-
+<$editTemplatePicker/>

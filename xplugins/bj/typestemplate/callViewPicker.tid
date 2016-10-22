@@ -1,4 +1,4 @@
 title: $:/plugins/bj/typestemplate/callViewPicker
 
-<<viewTemplatePicker>>
+<$viewTemplatePicker/>
 

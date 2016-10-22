@@ -33,13 +33,14 @@ exports.run = function() {
 var cur = this.getVariable("currentTiddler"), template = null, 
 	tiddler = this.wiki.getTiddler(cur);
 	tiddler && tiddler.fields && tiddler.fields.applicationtype?
-		template =  $tw.wiki.getTiddlerText(VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.applicationtype) :
+		template =  VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.applicationtype :
 		tiddler && tiddler.fields && tiddler.fields.type? 
-				template =  $tw.wiki.getTiddlerText(VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.type) : template = null;
+				template =  VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.type : template = null;
 	if (!template)
-		return  $tw.wiki.getTiddlerText("$:/core/ui/ViewTemplate");
-	template = template.trim();
-return  $tw.wiki.getTiddlerText(template)||$tw.wiki.getTiddlerText("$:/core/ui/ViewTemplate");
+		return  '<$transclude tiddler="$:/core/ui/ViewTemplate")/>';
+	template = $tw.wiki.getTiddlerText(template.trim());
+	if (template) { return '<$transclude tiddler="'+template.trim()+'")/>';}
+return  '<$transclude tiddler="$:/core/ui/ViewTemplate")/>';
 }
 
 })();
