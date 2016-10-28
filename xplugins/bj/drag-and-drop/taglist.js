@@ -158,13 +158,76 @@ TagListWidget.prototype.refresh = function(changedTiddlers) {
 	}
 };
 
-
 /*
 Process any changes to the list
 */
 TagListWidget.prototype.handleListChanges = function(changedTiddlers) {
 	// Get the new list
-	var prevList = this.list;
+	var redolist = false, self = this;
+	//first check if tiddler with title = our tag has been updated 
+		if (changedTiddlers[this.listtag]) {//alert(" tiddler with our tag has been updated");
+			return this.handleOrderChanges(changedTiddlers);
+		} //else
+		// If the list was empty then we need to remove the empty message
+		if(this.list.length === 0) 
+		{
+			this.removeChildDomNodes();
+			this.children = [];
+		}
+		//compare our list with changed list - 
+		//	1. those that are on both lists and are marked as delete need removing
+		//	2. those that are on both lists and now do not have our tag need removing
+		//	3. those that are only on the changed list and have our tag need adding
+		var onlist = {};//used in case 3.
+		for (var t = this.list.length - 1; t >= 0; t--)  {
+			//for each check if on list, 
+			var name =  this.list[t];
+			if (changedTiddlers[name]) {
+				onlist[name] = true;
+				//case 1.
+				if (changedTiddlers[name]["deleted"]){
+					 this.removeListItem(t);
+					 this.list.splice(t,1);
+				 }
+				 //case 2.
+				else {
+					var tiddler = this.wiki.getTiddler(name);
+					if(tiddler && !tiddler.hasTag(this.listtag)){
+						this.removeListItem(t);
+						this.list.splice(t,1);
+					}
+					//else not our type of change
+				}
+			} else {
+				//next
+			}
+		}
+		//case 3.
+		$tw.utils.each(changedTiddlers, function(item,title) {
+			if (!onlist[title]){
+				var tiddler = self.wiki.getTiddler(title);
+				if(tiddler && tiddler.hasTag(self.listtag)) {
+					self.list.push(title);
+					self.insertListItem(self.list.length,title);
+				}
+			}
+		});
+		if (this.list.length === 0) {
+			var nextSibling = this.findNextSiblingDomNode();
+			this.makeChildWidgets(this.getEmptyMessage());
+			this.renderChildren(this.parentDomNode,nextSibling);
+			return true;
+		}
+		return this.refreshChildren(changedTiddlers);
+};
+
+
+/*
+Process any changes to the list
+*/
+TagListWidget.prototype.handleOrderChanges = function(changedTiddlers) {
+	// Get the new list
+	var prevList = this.list||[];
 	this.list = this.getTiddlerList();//alert(this.list);
 	var redolist = false;
 
@@ -181,45 +244,54 @@ TagListWidget.prototype.handleListChanges = function(changedTiddlers) {
 			}
 			var nextSibling = this.findNextSiblingDomNode();
 			this.makeChildWidgets(this.getEmptyMessage());
-			this.renderChildren(this.parentDomNode,nextSibling);
+			return renderChildren(this.parentDomNode,nextSibling);
 			return true;
 		}
 	} else {
+		var hasRefreshed = false;
 		// If the list was empty then we need to remove the empty message
 		if(prevList.length === 0) 
 		{
 			this.removeChildDomNodes();
 			this.children = [];
 		}
-		if (prevList.length!==this.list.length) {
-			redolist = true;
-		} else {
-			var t;
-			for(t=0; t<this.list.length; t++) {
-				if (prevList[t]!==this.list[t]) {//compare tid titles
-					break;
-				}	
-			}
-			if ( t!==this.list.length ){
-				redolist = true;
+
+		var oldnodes = {};
+		// with taglist there is a one-to-one corispondance between order of widgets
+		// and dom nodes (there were rendered into individual divs)
+		// move into array as (name, domnode) then create new list reusing old nodes
+		// where possible then delete any remaining nodes in the array.
+		for (t = prevList.length -1; t >= 0 ; t--) {
+			// build a hash from name to node and dnode
+			oldnodes[prevList[t]] = this.findAndRemove(t);
+		}
+		for (t=0; t<this.list.length ; t++) {
+			if(!oldnodes[this.list[t]]) {
+				// The list item must be inserted
+				this.insertListItem(t,this.list[t]);
+				hasRefreshed = true;
+			} else {
+				this.reinsertListItem(t,oldnodes[this.list[t]]);
+				oldnodes[this.list[t]] = undefined;
 			}
 		}
-		var hasRefreshed = false;
-		if (redolist === true) {
-			var hasRefreshed = true;
-			for(var t=this.children.length-1; t>=0; t--) {
-				this.removeListItem(t);
+		for (var node in oldnodes) {
+			if (oldnodes[node]) {
+				oldnodes[node].widget.removeChildDomNodes();
+				oldnodes[node] = undefined;
+				hasRefreshed = true;
 			}
-			for(var t=0; t<this.list.length; t++) {
-					this.insertListItem(t,this.list[t]);
-			}
-		} else {
-			return this.refreshChildren(changedTiddlers);
 		}
-		return hasRefreshed;
+		return this.refreshChildren(changedTiddlers);
 	}
 };
 
+TagListWidget.prototype.findAndRemove = function(index) {
+	var widget = this.children[index];
+	var item = {widget:widget,dnode:widget.domNodes[0]};
+	this.parentDomNode.removeChild(widget.domNodes[0]);
+    this.children.splice(index,1);
+};
 /*
 Find the list item with a given title, starting from a specified position
 */
@@ -233,9 +305,18 @@ TagListWidget.prototype.findListItem = function(startIndex,title) {
 	return undefined;
 };
 
+
 /*
 Insert a new list item at the specified index
 */
+TagListWidget.prototype.reinsertListItem = function(index,nodes) {
+	// Create, insert and render the new child widgets
+	var widget = nodes.widget;
+	
+	this.children.splice(index,0,widget);
+
+};
+
 TagListWidget.prototype.insertListItem = function(index,title) {
 	// Create, insert and render the new child widgets
 	var widget = this.makeChildWidget(this.makeItemTemplate(title));
@@ -249,6 +330,7 @@ TagListWidget.prototype.insertListItem = function(index,title) {
 	}
 	return true;
 };
+
 
 /*
 Remove the specified list item

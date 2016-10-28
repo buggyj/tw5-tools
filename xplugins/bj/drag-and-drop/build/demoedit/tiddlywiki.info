@@ -2,7 +2,7 @@
 	"plugins": [
 		"tiddlywiki/tiddlyweb",
 		"tiddlywiki/filesystem",
-		"bj/taglist"
+		"bj/drag-and-drop"
 	],
 	"themes": [
 		"tiddlywiki/vanilla",
