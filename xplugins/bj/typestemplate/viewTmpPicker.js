@@ -43,15 +43,18 @@ viewTmpPicker.prototype.makeTemplate = function(title) {
 }
 
 viewTmpPicker.prototype.getTemplate = function() {
-	var cur = this.getVariable("currentTiddler"), template = null, 
-	tiddler = this.wiki.getTiddler(cur);
-	tiddler && tiddler.fields && tiddler.fields.applicationtype?
-		template =  VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.applicationtype :
-		tiddler && tiddler.fields && tiddler.fields.type? 
-				template =  VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields.type : template = null;
-	if (!template)
+	var template = null, tiddler;
+	this.cur = this.getVariable("currentTiddler"),
+	tiddler = this.wiki.getTiddler(this.cur);
+	this.tmplvar = null;
+	this.key = this.getAttribute("key")||"type";
+	this.tmplvar = tiddler && tiddler.fields && tiddler.fields[this.key]?
+		VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields[this.key] : null;
+	if (!this.tmplvar) {
+		this.tmplvar = "";
 		return  "$:/core/ui/ViewTemplate";
-	template = $tw.wiki.getTiddlerText(template.trim());
+	}
+	template = $tw.wiki.getTiddlerText(this.tmplvar.trim());
 	if (template) { return template.trim();}
 return  "$:/core/ui/ViewTemplate";
 }
@@ -72,6 +75,19 @@ viewTmpPicker.prototype.execute = function() {
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
 viewTmpPicker.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if($tw.utils.count(changedAttributes) > 0) {
+		// Rerender ourselves
+		this.refreshSelf();
+		return true;
+	} else if (changedTiddlers[this.cur]||changedTiddlers[this.tmplvar]){
+		this.refreshSelf();
+		return true;
+	}	
+	else {
+		//check to see if we need to change template
+		return this.refreshChildren(changedTiddlers);
+	}
 //refresh when template edited handled by child transclusion
 return this.refreshChildren(changedTiddlers);
 };
