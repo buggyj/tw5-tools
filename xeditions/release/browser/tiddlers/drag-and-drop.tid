@@ -1,10 +1,15 @@
 created: 20140216112117492
-modified: 20160226214653728
+modified: 20160613150141730
 tags: Release
 title: drag-and-drop
 type: text/vnd.tiddlywiki
 
+!!!taglist widget
 A variation on the list widget, the taglist widget doesn't have filters - it only lists  tiddlers with a given tag. The resultant list items can be dragged up and down the list causing a re-ordering. Tiddler links can be dragged onto the list, causing that tiddler to be tagged and inserted into the list.
 
 Try out the demo TagListDemo.
 See it in action : [[Tw5Info]]
+
+!!!Delete on-drop Button
+
+drag and drop a tiddler on this button to delete it. Enable it in the tools menu.
