@@ -1,2 +1,28 @@
 title: $:/plugins/bj/typestemplate/readme
 
+This plugin enables the use of custom designed view and edit templates. A field can be chosen by the user whose contents with be used to pick a template. Configuration tiddlers, based on the content of the chosen field, are used to locate the templates. 
+
+The default field is 'type', this enables the user to setup edit and view templates for each type - defaults to non-plugin behavior.
+
+Example: if a tiddler is given the type 'test' then the templates for test can be specified by these config tiddlers: 
+
+[[$:/config/EditTemplateTypeMappings/test]]
+
+and
+
+[[$:/config/ViewTemplateTypeMappings/test]]
+
+ie the pattern is 
+
+```
+$:/config/EditTemplateTypeMappings/ + value of type field
+$:/config/ViewTemplateTypeMappings/ + value of type field
+```
+
+The field used as the key for the template choosings can be changed in the tiddlers
+
+$:/plugins/bj/typestemplate/callEditPicker
+
+
+$:/plugins/bj/typestemplate/callViewPicker
+

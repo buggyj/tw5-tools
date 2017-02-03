@@ -80,7 +80,7 @@ viewTmpPicker.prototype.refresh = function(changedTiddlers) {
 		// Rerender ourselves
 		this.refreshSelf();
 		return true;
-	} else if (changedTiddlers[this.cur]||changedTiddlers[this.tmplvar]){
+	} else if ((changedTiddlers[this.cur]||changedTiddlers[this.tmplvar])&&this.template != this.getTemplate()){
 		this.refreshSelf();
 		return true;
 	}	
