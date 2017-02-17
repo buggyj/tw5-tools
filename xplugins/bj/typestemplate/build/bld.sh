@@ -1,42 +1,27 @@
 #!/bin/bash
 
-# build TiddlyWiki5 for tiddlywiki.com
-
 # Set up the build output directory
-
 if [  -z "$TW5_BUILD_OUTPUT" ]; then
-    TW5_BUILD_OUTPUT=../../../../../jermolene.github.com
+    TW5_BUILD_OUTPUT=.
 fi
 
 if [  ! -d "$TW5_BUILD_OUTPUT" ]; then
-    TW5_BUILD_OUTPUT=../../
-    exit 1
+    TW5_BUILD_OUTPUT=.
 fi
 
-echo "Using TW5_BUILD_OUTPUT as [$TW5_BUILD_OUTPUT]"
+# and the root of tw5 
+if [  -z "$TW5_ROOT" ]; then
+    TW5_ROOT=../../../../../../..
+fi
 
-# Make the CNAME file that GitHub Pages requires
+if [  ! -d "$TW5_ROOT" ]; then
+    TW5_ROOT=../../../../../../..
+fi
 
-echo "tiddlywiki.com" > $TW5_BUILD_OUTPUT/CNAME
+# add path to root of plugin
+export TIDDLYWIKI_PLUGIN_PATH="${PWD%/*/*/*}:$TIDDLYWIKI_PLUGIN_PATH"
 
-# Create the `static` directories if necessary
-
-mkdir -p $TW5_BUILD_OUTPUT/static
-
-# Delete any existing content
-
-rm $TW5_BUILD_OUTPUT/static/*
-
-# The tw5.com wiki
-#  index.html: the main file, including content
-#  empty.html: the main file, excluding content
-#  static.html: the static version of the default tiddlers
-
-
-
-# codemirrordemo.html: wiki to demo codemirror plugin
-
-node ../../../../tiddlywiki.js \
+node $TW5_ROOT/tiddlywiki.js \
 	./demo \
 	--verbose \
 	--rendertiddler $:/core/save/all $TW5_BUILD_OUTPUT/typestemplate.html text/plain \

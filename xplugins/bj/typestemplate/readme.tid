@@ -19,10 +19,10 @@ $:/config/EditTemplateTypeMappings/ + value of type field
 $:/config/ViewTemplateTypeMappings/ + value of type field
 ```
 
-The field used as the key for the template choosings can be changed in the tiddlers
+The field used as the key for the template choosings can be put the name of the field to base types upon in the tiddlers
 
-$:/plugins/bj/typestemplate/callEditPicker
+$:/bj/config/typestemplate/callViewPicker
 
 
-$:/plugins/bj/typestemplate/callViewPicker
+$:/bj/config/typestemplate/callEditPicker
 
