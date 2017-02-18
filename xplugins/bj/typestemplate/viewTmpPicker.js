@@ -47,7 +47,7 @@ viewTmpPicker.prototype.getTemplate = function() {
 	this.cur = this.getVariable("currentTiddler"),
 	tiddler = this.wiki.getTiddler(this.cur);
 	this.tmplvar = null;
-	this.key = this.getAttribute("key")||"type";
+	this.key = (this.getAttribute("key")||"type").trim();
 	this.tmplvar = tiddler && tiddler.fields && tiddler.fields[this.key]?
 		VIEW_TEMPLATE_MAPPING_PREFIX +tiddler.fields[this.key] : null;
 	if (!this.tmplvar) {
