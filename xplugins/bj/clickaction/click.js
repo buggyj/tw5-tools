@@ -3,17 +3,20 @@ title: $:/bj/modules/widgets/click.js
 type: application/javascript
 module-type: widget
 
-
-
 \*/
 (function(){
 
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
-
-var Widget = require("$:/core/modules/widgets/widget.js").widget;
-
+var Widget, api;
+try {
+	Widget = require("$:/b/modules/widget/baswidget.js").basewidget;
+	api = true;
+} catch(e) {
+	Widget = require("$:/core/modules/widgets/widget.js").widget;
+	api = false;
+} 
 var clickWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
@@ -22,12 +25,17 @@ var clickWidget = function(parseTreeNode,options) {
 Inherit from the base widget class
 */
 clickWidget.prototype = new Widget();
-
+//clickWidget.prototype = Object.create(Widget.prototype)
 /*
 Render this widget into the DOM
 */
 clickWidget.prototype.render = function(parent,nextSibling) {
+	var self = this;
+	var defaults = (api)?this.getvars($tw.utils.widgetapi(module)):[];
 	this.parentDomNode = parent;
+	$tw.utils.each(defaults,function(vari) {
+		if (!!vari["default"]) self.attributes[vari.name]=vari["default"];
+	});
 	this.computeAttributes();
 	this.execute();
 };
@@ -37,7 +45,7 @@ Compute the internal state of the widget
 */
 clickWidget.prototype.execute = function() {
 	this.stateTitle = this.getAttribute("state");
-	this.text = this.getAttribute("text");
+	this.text = this.getAttribute("text","click");
 };
 clickWidget.prototype.readState = function() {
 	// Read the information from the state tiddler
@@ -65,9 +73,7 @@ clickWidget.prototype.refresh = function(changedTiddlers) {
 	}
 	return false;
 };
-	
 
-
-exports["click"] = clickWidget;
-
+var modname = (api)?$tw.utils.widgetrename(module,"click"):"click";
+exports[modname] = clickWidget;
 })();

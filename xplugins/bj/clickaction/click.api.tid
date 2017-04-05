@@ -1,0 +1,10 @@
+/*\
+title: $:/bj/modules/widgets/click.api
+type: application/javascript
+module-type: widget
+name:b-click
+parameters:state:"state",text:"text"
+
+
+
+
