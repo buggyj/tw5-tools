@@ -1,0 +1,11 @@
+created: 20170403103259818
+modified: 20170403103459536
+module-type: widget
+name: b-click
+parameters: state:"state",text:"text1"
+title: $:/bj/modules/widgets/click.api
+type: application/javascript
+
+
+
+

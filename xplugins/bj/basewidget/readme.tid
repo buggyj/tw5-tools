@@ -1,0 +1,4 @@
+title: $:/plugins/bj/basewidget/readme
+
+extends tw widgets to allow name and default param changes
+`

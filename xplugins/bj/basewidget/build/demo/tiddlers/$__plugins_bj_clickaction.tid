@@ -1,0 +1,44 @@
+author: JeffreyWilkinson aka BJ
+core-version: >=5.1.13
+created: 20170420180702972
+dependents: 
+description: click trigger widget
+list: readme license
+modified: 20170420180702972
+plugin-type: plugin
+source: https://github.com/buggyj/TW5-tools
+title: $:/plugins/bj/clickaction
+type: application/json
+version: 1.13.3
+
+{
+    "tiddlers": {
+        "$:/bj/modules/widgets/click.api": {
+            "title": "$:/bj/modules/widgets/click.api",
+            "type": "application/javascript",
+            "module-type": "widget",
+            "name": "b-click",
+            "parameters": "state:\"state\",text:\"text\"",
+            "text": "\n\n\n"
+        },
+        "$:/bj/modules/widgets/click.js": {
+            "text": "/*\\\ntitle: $:/bj/modules/widgets/click.js\ntype: application/javascript\nmodule-type: widget\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\nvar Widget, api;\ntry {\n\tWidget = require(\"$:/b/modules/widget/baswidget.js\").basewidget;\n\tapi = true;\n} catch(e) {\n\tWidget = require(\"$:/core/modules/widgets/widget.js\").widget;\n\tapi = false;\n} \nvar clickWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nclickWidget.prototype = new Widget();\n//clickWidget.prototype = Object.create(Widget.prototype)\n/*\nRender this widget into the DOM\n*/\nclickWidget.prototype.render = function(parent,nextSibling) {\n\tvar self = this;\n\tif (api) this.setdefaults(module);\n\tthis.parentDomNode = parent;\n\tthis.computeAttributes();\n\tthis.execute();\n};\n\n/*\nCompute the internal state of the widget\n*/\nclickWidget.prototype.execute = function() {\n\tthis.stateTitle = this.getAttribute(\"state\");\n\tthis.text = this.getAttribute(\"text\",\"click\");\n};\nclickWidget.prototype.readState = function() {\n\t// Read the information from the state tiddler\n\tif(this.stateTitle) {\n\t\tvar state = this.wiki.getTextReference(this.stateTitle,this[\"default\"],this.getVariable(\"currentTiddler\"));\n\t\tif (state === this.text) {\n\t\t\tthis.parentDomNode.click();\n\t\treturn false;\t\n\t\t}\n\n\t}\n};\n/*\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\n*/\nclickWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\t// Completely rerender if any of our attributes have changed\n\tif(changedAttributes.text || changedAttributes.state) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t} else if(this.stateTitle && changedTiddlers[this.stateTitle]) {\n\t\tthis.readState();\n\t\treturn true;\n\t}\n\treturn false;\n};\n\nvar modname = (api)?$tw.utils.widgetrename(module,\"click\"):\"click\";\nexports[modname] = clickWidget;\n})();\n",
+            "title": "$:/bj/modules/widgets/click.js",
+            "type": "application/javascript",
+            "module-type": "widget"
+        },
+        "$:/plugins/bj/clickaction/license": {
+            "title": "$:/plugins/bj/clickaction/license",
+            "text": "The MIT License (MIT)\n\nCopyright (c) 2014 Jeffrey Wikinson aka buggyj\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+        },
+        "$:/plugins/bj/smalltools/macrosuniversal": {
+            "title": "$:/plugins/bj/smalltools/macrosuniversal",
+            "tags": "$:/tags/Macro",
+            "text": "\\define openAllTaggedInner(state)\n<$button set=<<qualify \"$state$\">> setTo=\"open\">Open all tagged</$button> \n<$edit-text tiddler=\"$(usertagopen)$\" tag=\"input\" type=\"text\" placeholder=\"enter tag\"/>\n<$list filter=\"\"\"[!has[draft.of]tag{$(usertagopen)$}sort[created]]\"\"\">\n\t<$link><$click type=\"match\" state=<<qualify \"$state$\">> text=\"open\"/> </$link>\n</$list>\n\\end\n\n\\define openAllTagged(userparam:\"$:/temp/openall\" state:\"$:/state/opentagged\" )\n<$set name=\"usertagopen\" value=<<qualify \"$userparam$\">>>\n\t<<openAllTaggedInner $state$>>\n</$set>\t\n\\end\n\n\\define closeAllTaggedInner( state:\"$:/state/closetagged\" )\n<$button set=<<qualify \"$state$\">> setTo=\"close\">close all tagged</$button> \n<$edit-text tiddler=\"$(usertagclose)$\" tag=\"input\" type=\"text\" placeholder=\"enter tag\"/>\n<$linkcatcher message=tm-close-tiddler>\n\t<$list filter=\"\"\"[!has[draft.of]tag{$(usertagclose)$}sort[created]]\"\"\">\n\t\t<$link><$click type=\"match\" state=<<qualify \"$state$\">> text=\"close\"/></$link>\n\t</$list>\n</$linkcatcher>\n\\end\n\n\\define closeAllTagged(userparam:\"$:/temp/closeeall\" state:\"$:/state/closetagged\" )\n<$set name=\"usertagclose\" value=<<qualify \"$userparam$\">>>\n\t<<closeAllTaggedInner $state$>>\n</$set>\t\n\\end\n\n\\define renameTagAllTaggedInner( state:\"$:/state/retagtagged\" )\n<$button set=<<qualify \"$state$\">> setTo=\"retag\">rename tags</$button> \n<$edit-text tiddler=\"$(nowtag)$\" tag=\"input\" type=\"text\" placeholder=\"enter old tag\"/>\n<$edit-text tiddler=\"$(newtag)$\" tag=\"input\" type=\"text\" placeholder=\"enter new tag\"/>\n<$list filter=\"\"\"[!has[draft.of]tag{$(nowtag)$}sort[created]]\"\"\">\n\t<$fieldmangler tiddler=<<currentTiddler>>>\n\t\t<$button class=\"tc-btn-invisible\">\n\t\t\t<$click type=\"match\" state=<<qualify \"$state$\">> text=\"retag\"/> \n\t\t\t<$action-sendmessage $message='tm-add-tag'    $param={{$(newtag)$}}/>\n\t\t\t<$action-sendmessage $message=\"tm-remove-tag\" $param={{$(nowtag)$}}/>\n\t\t</$button>\n\t</$fieldmangler>\n</$list>\n\\end\n\n\\define renameTag(userparam:\"$:/temp/nowtag\" userparam1:\"$:/temp/newtag\" state:\"$:/state/retagtagged\" )\n<$set name=\"nowtag\" value=<<qualify \"$userparam$\">>>\n\t<$set name=\"newtag\" value=<<qualify \"$userparam1$\">>>\n\t\t<<renameTagAllTaggedInner $state$>>\n\t</$set>\n</$set>\t\n\\end\n\n"
+        },
+        "$:/plugins/bj/clickaction/readme": {
+            "title": "$:/plugins/bj/clickaction/readme",
+            "text": "\n!!The Click Widget\nwatches for writes to tiddler specified in 'state' and clicks when the it sees the contents matches that specified by'text'\n\n!!Usage\ncan be used to click all items on a list \n\n!!Example open all tiddlers with the same tag:\n\n`\n<$button set=<<qualify \"$:/state\">> setTo=\"open\">Open all tagged</$button> \n<$edit-text tiddler=\"$:/temp/openall\" tag=\"input\" type=\"text\"/>\n\n\n<$list filter=\"[!has[draft.of]tag{$:/temp/openall}sort[created]]\">\n\n<$link><$click state=<<qualify \"$:/state\">> text=\"open\"/> </$link>\n\n</$list>\n`\n"
+        }
+    }
+}
