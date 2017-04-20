@@ -31,11 +31,8 @@ Render this widget into the DOM
 */
 clickWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
-	var defaults = (api)?this.getvars($tw.utils.widgetapi(module)):[];
+	if (api) this.setdefaults(module);
 	this.parentDomNode = parent;
-	$tw.utils.each(defaults,function(vari) {
-		if (!!vari["default"]) self.attributes[vari.name]=vari["default"];
-	});
 	this.computeAttributes();
 	this.execute();
 };
