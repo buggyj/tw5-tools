@@ -24,14 +24,11 @@ Inherit from the base widget class
 baseWidget.prototype = new Widget();
 
 
-baseWidget.prototype.getvars = function(component) {
-	var paramString, 
-		tid= this.wiki.getTiddler(component),
-		params = [];
-	if (tid) paramString = tid.fields.parameters;
-	if(paramString) {
+baseWidget.prototype.getvars = function() {
+	var params = [];
+	if(this.paramString) {
 		var reParam = /\s*([A-Za-z0-9\-_]+)(?:\s*:\s*(?:"""([\s\S]*?)"""|"([^"]*)"|'([^']*)'|\[\[([^\]]*)\]\]|([^"'\s]+)))?/mg,
-			paramMatch = reParam.exec(paramString);
+			paramMatch = reParam.exec(this.paramString);
 		while(paramMatch) {
 			// Save the parameter details
 			var paramInfo = {name: paramMatch[1]},
@@ -41,7 +38,7 @@ baseWidget.prototype.getvars = function(component) {
 			}
 			params.push(paramInfo);
 			// Look for the next parameter
-			paramMatch = reParam.exec(paramString);
+			paramMatch = reParam.exec(this.paramString);
 		}
 	}
 	return params;
@@ -54,8 +51,8 @@ baseWidget.prototype.setvars = function(defaults) {
 	});
 }
 
-baseWidget.prototype.setdefaults = function(module) {
-	var defaults = this.getvars($tw.utils.widgetapi(module));
+baseWidget.prototype.setdefaults = function() {
+	var defaults = this.getvars();
 	this.setvars(defaults);
 }
 exports["basewidget"] = baseWidget;
