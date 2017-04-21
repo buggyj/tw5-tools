@@ -9,26 +9,40 @@ module-type: widget
 /*jslint node: true, browser: true */
 /*global $tw: false */
 "use strict";
-var Widget, api;
+
+///////////////// this block enables the default params values ///////////////
+var Widget,api,paramString = null;
 try {
 	Widget = require("$:/b/modules/widget/baswidget.js").basewidget;
-	api = true;
+	var tid= $tw.wiki.getTiddler($tw.utils.widgetapi(module));
+	if (tid) paramString = tid.fields.parameters;
+	api = true; 
 } catch(e) {
 	Widget = require("$:/core/modules/widgets/widget.js").widget;
 	api = false;
 } 
+///////////////// ------------------- end ------------------- ///////////////
+
 var clickWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
+
 
 /*
 Inherit from the base widget class
 */
 clickWidget.prototype = new Widget();
 //clickWidget.prototype = Object.create(Widget.prototype)
+
+/*
+expose the widgets default parameters
+*/
+clickWidget.prototype.paramString = paramString;
+
 /*
 Render this widget into the DOM
 */
+
 clickWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
 	if (api) this.setdefaults(module);
