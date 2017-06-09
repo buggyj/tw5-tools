@@ -1,0 +1,28 @@
+created: 20170403213330946
+draft.of: ClickAction 1
+draft.title: ClickAction 1
+modified: 20170405070659055
+tags: 
+title: Draft of 'ClickAction 1'
+type: text/vnd.tiddlywiki
+
+!!Demo
+Enter taglistdemo in the box
+
+<$button set="state" setTo="text">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$b-click state="state" > </$link> </$list>
+
+
+
+
+!!Macros
+
+I have produced 3 macros that use this widget
+
+`<<openAllTagged>>` this produces a text box for the user to enter a tag and a button to press to open all tiddlers with the tag in the  Story.
+
+
+`<<closeAllTagged>>` this produces a text box for the user to enter a tag and a button to press to close all tiddlers with the tag in the  Story.
+
+These 2 will be added to the global macros when the plugin is installed
+
+There is also a [[deleteAllTagged]] macro, due to its dangerous nature I have only included the text -  it is not suitable for using globally - If you use it at all I would advise only install it into its own tiddler.

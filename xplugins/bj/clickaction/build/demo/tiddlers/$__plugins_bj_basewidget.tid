@@ -1,0 +1,37 @@
+author: JeffreyWilkinson aka BJ
+core-version: >=5.1.13
+created: 20170421191746682
+dependents: 
+description: exends the widget to include rename and default params
+list: readme license
+modified: 20170421191746682
+plugin-type: plugin
+source: https://github.com/buggyj/TW5-tools
+title: $:/plugins/bj/basewidget
+type: application/json
+version: 1.13.4
+
+{
+    "tiddlers": {
+        "$:/b/modules/widget/baswidget.js": {
+            "text": "/*\\\ntitle: $:/b/modules/widget/baswidget.js\ntype: application/javascript\nmodule-type: widget\n\nallows default param vals to be set\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar Widget = require(\"$:/core/modules/widgets/widget.js\").widget;\n\nvar baseWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nbaseWidget.prototype = new Widget();\n\nbaseWidget.prototype.setvars = function(defaults) {\n\tvar self = this;\n\t$tw.utils.each(defaults,function(vari) {\n\t\tif (!!vari[\"default\"]) self.attributes[vari.name]=vari[\"default\"];\n\t});\n}\n\nbaseWidget.prototype.setdefaults = function() {\n\tthis.setvars(this.defaults);\n}\nexports[\"basewidget\"] = baseWidget;\n\n})();\n",
+            "title": "$:/b/modules/widget/baswidget.js",
+            "type": "application/javascript",
+            "module-type": "widget"
+        },
+        "$:/plugins/bj/basewidget/license": {
+            "title": "$:/plugins/bj/basewidget/license",
+            "text": "The MIT License (MIT)\n\nCopyright (c) 2017 Jeffrey Wikinson aka buggyj\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+        },
+        "$:/plugins/bj/basewidget/readme": {
+            "title": "$:/plugins/bj/basewidget/readme",
+            "text": "extends tw widgets to allow name and default param changes\n`\n"
+        },
+        "$:/b/modules/widget/utils.js": {
+            "text": "/*\\\ntitle: $:/b/modules/widget/utils.js\ntype: application/javascript\nmodule-type: utils\n\nThese functions can be called before creating widgets,\nie when the name of the widget is exported, and so cannot be\nincluded in the basewidget.\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\nexports.widgetapi = function (module) {\n\treturn module.id.replace(/^(.*).js$/,\"$1.api\");\n}\n\nexports.getvars = function(paramString) {\n\tvar params = [];\n\tif(paramString) {\n\t\tvar reParam = /\\s*([A-Za-z0-9\\-_]+)(?:\\s*:\\s*(?:\"\"\"([\\s\\S]*?)\"\"\"|\"([^\"]*)\"|'([^']*)'|\\[\\[([^\\]]*)\\]\\]|([^\"'\\s]+)))?/mg,\n\t\t\tparamMatch = reParam.exec(paramString);\n\t\twhile(paramMatch) {\n\t\t\t// Save the parameter details\n\t\t\tvar paramInfo = {name: paramMatch[1]},\n\t\t\t\tdefaultValue = paramMatch[2] || paramMatch[3] || paramMatch[4] || paramMatch[5] || paramMatch[6];\n\t\t\tif(defaultValue) {\n\t\t\t\tparamInfo[\"default\"] = defaultValue;\n\t\t\t}\n\t\t\tparams.push(paramInfo);\n\t\t\t// Look for the next parameter\n\t\t\tparamMatch = reParam.exec(paramString);\n\t\t}\n\t}\n\treturn params;\n}\n\nexports.widgetdefaults = function(module) {\n\tvar api = exports.widgetapi(module);\n\tvar tiddler = $tw.wiki.getTiddler(api);\n\tif (tiddler) {\n\t\t return tiddler.fields.parameters;\n\t}\n\treturn null;\n}\n\nexports.makevars = function(module) {\n\tvar defaultstr= exports.widgetdefaults(module);\n\tif (defaultstr) return exports.getvars(defaultstr);\n\treturn [];\n}\n\nexports.widgetrename = function(module,name) {\n\tvar api = exports.widgetapi(module);\n\tvar tiddler = $tw.wiki.getTiddler(api);\n\tif (tiddler && $tw.utils.hop(tiddler.fields,\"name\")) {\n\t\tname = tiddler.fields.name;\n\t}\n\treturn name;\n}\n\n})();\n",
+            "title": "$:/b/modules/widget/utils.js",
+            "type": "application/javascript",
+            "module-type": "utils"
+        }
+    }
+}

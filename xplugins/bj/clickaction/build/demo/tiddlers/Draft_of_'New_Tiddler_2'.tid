@@ -1,0 +1,9 @@
+created: 20170331173418899
+draft.of: New Tiddler 2
+draft.title: New Tiddler 2
+modified: 20170331173429070
+tags: 
+title: Draft of 'New Tiddler 2'
+type: text/vnd.tiddlywiki
+
+{{$:/bj/modules/widgets/click.api!!name}}

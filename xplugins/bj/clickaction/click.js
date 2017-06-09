@@ -11,11 +11,9 @@ module-type: widget
 "use strict";
 
 ///////////////// this block enables the default params values ///////////////
-var Widget,api,paramString = null;
+var Widget,api;
 try {
 	Widget = require("$:/b/modules/widget/baswidget.js").basewidget;
-	var tid= $tw.wiki.getTiddler($tw.utils.widgetapi(module));
-	if (tid) paramString = tid.fields.parameters;
 	api = true; 
 } catch(e) {
 	Widget = require("$:/core/modules/widgets/widget.js").widget;
@@ -37,7 +35,7 @@ clickWidget.prototype = new Widget();
 /*
 expose the widgets default parameters
 */
-clickWidget.prototype.paramString = paramString;
+clickWidget.prototype.defaults = (api)? $tw.utils.makevars(module):[];
 
 /*
 Render this widget into the DOM
@@ -45,7 +43,7 @@ Render this widget into the DOM
 
 clickWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
-	if (api) this.setdefaults(module);
+	if (api) this.setdefaults();
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
