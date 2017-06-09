@@ -1,5 +1,5 @@
 created: 20140918102511141
-modified: 20170420181202351
+modified: 20170421192040145
 title: Demo
 type: text/vnd.tiddlywiki
 
@@ -9,7 +9,7 @@ It watches for writes to tiddler specified in 'state' and clicks when the it see
 !!Demo
 Enter taglistdemo in the box
 
-<$button set="state" setTo="text1">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$b-click > </$link> </$list>
+<$button set="state" setTo="text">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$b-click > </$link> </$list>
 
 
 !!Demo code
