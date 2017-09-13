@@ -1,3 +1,41 @@
 title: $:/plugins/bj/struc/readme
+tags: readme
+
+!!note only filters shown here are supported
+
+Plugin: [[$:/plugins/bj/struc]]
+
+!example usage
+
+```
+<$set name="plugintiddler" value="$:/plugins/bj/struc">
+<$list filter = "[plugin<plugintiddler>tidsub[$:/plugins/bj/struc/license]fields[]]">
+
+<<currentTiddler>>::<$view tiddler=<<plugintiddler>> subtiddler="$:/plugins/bj/struc/license" field=<<currentTiddler>> format="text"/> 
+</$list>
+<hr>
+<$set name="plugintiddler" value="$:/plugins/bj/struc">
+<$list filter = "[plugin<plugintiddler>tagsub[license]]">
+
+tagged license: <<currentTiddler>>
+ 
+</$list>
+</$set>
+```
+!result
+
+<$set name="plugintiddler" value="$:/plugins/bj/struc">
+<$list filter = "[plugin<plugintiddler>tidsub[$:/plugins/bj/struc/license]fields[]]">
+
+<<currentTiddler>>::<$view tiddler=<<plugintiddler>> subtiddler="$:/plugins/bj/struc/license" field=<<currentTiddler>> format="text"/> 
+</$list>
+<hr>
+<$set name="plugintiddler" value="$:/plugins/bj/struc">
+<$list filter = "[plugin<plugintiddler>tagsub[license]]">
+
+tagged license: <<currentTiddler>>
+ 
+</$list>
+</$set>
 
 
