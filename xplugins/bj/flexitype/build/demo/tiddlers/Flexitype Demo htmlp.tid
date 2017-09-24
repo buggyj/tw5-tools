@@ -1,7 +1,7 @@
 created: 20160111124436445
-modified: 20160210082705263
+modified: 20170924083313471
 tags: 
-title: Flexitype Demo tw5flex 1
+title: Flexitype Demo htmlp
 type: text/vnd.twbase;flexibility=htmlp
 
 <h1>Example illustrating the use of 'flexitype'</h1>
@@ -10,7 +10,8 @@ type: text/vnd.twbase;flexibility=htmlp
 
 !!Only links are wikified
 
-##Only links are wikified
+££Only links are wikified
 
 <h3>htmlp contains</h3>
 {{htmlp}}
+

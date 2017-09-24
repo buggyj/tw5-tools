@@ -1,0 +1,44 @@
+created: 20170923154958764
+modified: 20170924091355670
+tags: 
+title: Flexitype Regex Demo
+type: text/vnd.twbase;flexibility=htmlpp
+
+!!test defined in tiddler [[testregexdefs]] and contains:
+
+---
+{{testregexdefs}}
+
+----
+
+<h2>Test tiddler [[regex tests]] contains:-</h2>
+<$text text={{regex tests}}/>
+
+---
+
+!!Results:
+
+
+{{regex tests}}
+
+---
+
+!how does it work?
+
+Two parsers are linked together thru the 'flexibility' type syntax:
+
+The type  of the tiddler [[regex tests]] is <code>{{regex tests!!type}}</code> where the tiddler [[replace]]
+ contains:
+
+{{replace}}
+
+This show the syntax for invoking the regexparse parser before the text/vnd.tiddlywiki parser (and to produce the results as "text/plain")and shows that the regexparse is 'modified' by the tiddler [[RegxParseParam]] which contains :
+{{RegxParseParam}}
+
+Which tells the regexparse parser to use the rules contained in the tiddler [[testregexdefs]].
+
+---
+
+!Limitations
+
+changes to the tiddlers defining rules do no cause refreshes of the tiddlers using the rules, a manual refresh is necessary in this case.

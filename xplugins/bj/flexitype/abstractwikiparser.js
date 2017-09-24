@@ -36,7 +36,7 @@ var AbstrWikiParser = function(specifier) {
 	if(this.options.parseAsInline) {
 		topBranch.push.apply(topBranch,this.parseInlineRun());
 	} else {
-		topBranch.push.apply(topBranch,this.parseBlocks());
+		topBranch.push.apply(topBranch,this.parseBlocks(this.options.parserrules.blockregex));
 	}
 	// Return the parse tree
 };

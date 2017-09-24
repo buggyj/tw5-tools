@@ -1,0 +1,10 @@
+created: 20170923155125520
+modified: 20170923160054686
+tags: 
+title: htmlpp
+type: application/json
+
+{
+"baserules": ""
+"preparser":"text/x-regexparse;flexibilty=RegxParseParam>text/html"
+}

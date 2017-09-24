@@ -1,0 +1,8 @@
+created: 20140126102231764
+modified: 20170924085029695
+title: RegxParseParam
+type: application/json
+
+{
+"parserrules":{"replacementstid":"testregexdefs"}
+}

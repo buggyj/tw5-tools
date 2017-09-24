@@ -1,0 +1,439 @@
+created: 20160925194630493
+modified: 20170924095128728
+tags: 
+title: Tree1
+type: json/x-tree
+
+[
+    {
+        "type": "element",
+        "tag": "p",
+        "children": [
+            {
+                "type": "button",
+                "start": 0,
+                "attributes": {
+                    "set": {
+                        "start": 8,
+                        "name": "set",
+                        "type": "string",
+                        "value": "$:/StateTiddlerWordsToday",
+                        "end": 40
+                    },
+                    "setTo": {
+                        "start": 40,
+                        "name": "setTo",
+                        "type": "string",
+                        "value": "0",
+                        "end": 50
+                    }
+                },
+                "tag": "$button",
+                "end": 51,
+                "isBlock": false,
+                "children": [
+                    {
+                        "type": "text",
+                        "text": "24:September:2016"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "text": "\n"
+            },
+            {
+                "type": "reveal",
+                "start": 79,
+                "attributes": {
+                    "type": {
+                        "start": 87,
+                        "name": "type",
+                        "type": "string",
+                        "value": "match",
+                        "end": 100
+                    },
+                    "state": {
+                        "start": 100,
+                        "name": "state",
+                        "type": "string",
+                        "value": "$:/StateTiddlerWordsToday",
+                        "end": 134
+                    },
+                    "text": {
+                        "start": 134,
+                        "name": "text",
+                        "type": "string",
+                        "value": "0",
+                        "end": 143
+                    }
+                },
+                "tag": "$reveal",
+                "end": 144,
+                "isBlock": true,
+                "children": [
+                    {
+                        "type": "element",
+                        "tag": "table",
+                        "children": [
+                            {
+                                "type": "element",
+                                "tag": "tbody",
+                                "children": [
+                                    {
+                                        "type": "element",
+                                        "tag": "tr",
+                                        "children": [
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Las vacaciones están a la vuelta de la esquina"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "The holidays are (just) around the corner."
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "element",
+                                                        "tag": "a",
+                                                        "attributes": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "value": "http://www.spanishdict.com/answers/146641/what-is-the-difference-between-esquina-and-rincon"
+                                                            },
+                                                            "class": {
+                                                                "type": "string",
+                                                                "value": "tc-tiddlylink-external"
+                                                            },
+                                                            "target": {
+                                                                "type": "string",
+                                                                "value": "_blank"
+                                                            },
+                                                            "rel": {
+                                                                "type": "string",
+                                                                "value": "noopener noreferrer"
+                                                            }
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "http://www.spanishdict.com/answers/146641/what-is-the-difference-between-esquina-and-rincon"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "attributes": {
+                                            "class": {
+                                                "type": "string",
+                                                "value": "evenRow"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "element",
+                                        "tag": "tr",
+                                        "children": [
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Una vez que se ha creado la contraseña"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "Once you have ceated (once one has created) a password,(or once the password has been created)"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "element",
+                                                        "tag": "a",
+                                                        "attributes": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "value": "http://www.linguee.com/spanish-english/translation/uno+vez.html"
+                                                            },
+                                                            "class": {
+                                                                "type": "string",
+                                                                "value": "tc-tiddlylink-external"
+                                                            },
+                                                            "target": {
+                                                                "type": "string",
+                                                                "value": "_blank"
+                                                            },
+                                                            "rel": {
+                                                                "type": "string",
+                                                                "value": "noopener noreferrer"
+                                                            }
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "http://www.linguee.com/spanish-english/translation/uno+vez.html"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "attributes": {
+                                            "class": {
+                                                "type": "string",
+                                                "value": "oddRow"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "element",
+                                        "tag": "tr",
+                                        "children": [
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "cada vez que (en todas las ocasiones)"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "\teach time that (in every occasion)"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "element",
+                                                        "tag": "a",
+                                                        "attributes": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "value": "http://www.wordreference.com/es/en/translation.asp?spen=vez"
+                                                            },
+                                                            "class": {
+                                                                "type": "string",
+                                                                "value": "tc-tiddlylink-external"
+                                                            },
+                                                            "target": {
+                                                                "type": "string",
+                                                                "value": "_blank"
+                                                            },
+                                                            "rel": {
+                                                                "type": "string",
+                                                                "value": "noopener noreferrer"
+                                                            }
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "http://www.wordreference.com/es/en/translation.asp?spen=vez"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "attributes": {
+                                            "class": {
+                                                "type": "string",
+                                                "value": "evenRow"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "element",
+        "tag": "p",
+        "children": [
+            {
+                "type": "button",
+                "start": 678,
+                "attributes": {
+                    "set": {
+                        "start": 686,
+                        "name": "set",
+                        "type": "string",
+                        "value": "$:/StateTiddlerWordsToday",
+                        "end": 718
+                    },
+                    "setTo": {
+                        "start": 718,
+                        "name": "setTo",
+                        "type": "string",
+                        "value": "3",
+                        "end": 728
+                    }
+                },
+                "tag": "$button",
+                "end": 729,
+                "isBlock": false,
+                "children": [
+                    {
+                        "type": "text",
+                        "text": "25:September:2016"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "text": "\n"
+            },
+            {
+                "type": "reveal",
+                "start": 757,
+                "attributes": {
+                    "type": {
+                        "start": 765,
+                        "name": "type",
+                        "type": "string",
+                        "value": "match",
+                        "end": 778
+                    },
+                    "state": {
+                        "start": 778,
+                        "name": "state",
+                        "type": "string",
+                        "value": "$:/StateTiddlerWordsToday",
+                        "end": 812
+                    },
+                    "text": {
+                        "start": 812,
+                        "name": "text",
+                        "type": "string",
+                        "value": "3",
+                        "end": 821
+                    }
+                },
+                "tag": "$reveal",
+                "end": 822,
+                "isBlock": true,
+                "children": [
+                    {
+                        "type": "element",
+                        "tag": "table",
+                        "children": [
+                            {
+                                "type": "element",
+                                "tag": "tbody",
+                                "children": [
+                                    {
+                                        "type": "element",
+                                        "tag": "tr",
+                                        "children": [
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "I've agreed to meet him at the museum"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "text",
+                                                        "text": "he quedado con él en el museo (short for quedar de acuerdo)"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "element",
+                                                "tag": "td",
+                                                "children": [
+                                                    {
+                                                        "type": "element",
+                                                        "tag": "a",
+                                                        "attributes": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "value": "http://www.spanishdict.com/answers/249030/present-perfect-used-to-refer-to-the-future-he-quedado-con-l"
+                                                            },
+                                                            "class": {
+                                                                "type": "string",
+                                                                "value": "tc-tiddlylink-external"
+                                                            },
+                                                            "target": {
+                                                                "type": "string",
+                                                                "value": "_blank"
+                                                            },
+                                                            "rel": {
+                                                                "type": "string",
+                                                                "value": "noopener noreferrer"
+                                                            }
+                                                        },
+                                                        "children": [
+                                                            {
+                                                                "type": "text",
+                                                                "text": "http://www.spanishdict.com/answers/249030/present-perfect-used-to-refer-to-the-future-he-quedado-con-l"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "attributes": {
+                                            "class": {
+                                                "type": "string",
+                                                "value": "evenRow"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
+

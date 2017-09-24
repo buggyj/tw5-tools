@@ -1,0 +1,9 @@
+created: 20170924092550764
+modified: 20170924092843182
+tags: 
+title: blckparsesrreg
+type: application/json
+
+{
+"parserrules":{"blockregex":"\\n"}
+}

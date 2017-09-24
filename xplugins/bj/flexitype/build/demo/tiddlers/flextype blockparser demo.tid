@@ -1,0 +1,27 @@
+created: 20170924092904934
+modified: 20170924093858805
+tags: 
+title: flextype blockparser demo
+type: text/vnd.twbase;flexibility=blckparsesrreg
+
+This text has type <code>{{!!type}}</code>  which uses a single line break for paragraphs, see [[blckparsesrreg]]
+!!example text:
+```
+
+sometext with single 
+break - normally the single line
+breaks are ignored, and only double line
+
+
+breaks are processed
+```
+!!result
+---
+
+sometext with single 
+break - normally the single line
+breaks are ignored, and only double line
+
+
+breaks are processed
+---
