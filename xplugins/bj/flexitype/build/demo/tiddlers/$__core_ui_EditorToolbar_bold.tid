@@ -1,0 +1,17 @@
+caption: {{$:/language/Buttons/Bold/Caption}}
+condition: [<targetTiddler>!has[type]] [<targetTiddler>regexp:type[text/vnd.tiddlywiki]]
+created: 20170925222121295
+description: {{$:/language/Buttons/Bold/Hint}}
+icon: $:/core/images/bold
+modified: 20170925222157108
+shortcuts: ((bold))
+tags: $:/tags/EditorToolbar
+title: $:/core/ui/EditorToolbar/bold
+type: text/vnd.tiddlywiki
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="wrap-selection"
+	prefix="''"
+	suffix="''"
+/>

@@ -1,0 +1,17 @@
+caption: {{$:/language/Buttons/Heading4/Caption}}
+condition: [<targetTiddler>!has[type]] [<targetTiddler>regexp:type[text/vnd.tiddlywiki]]
+created: 20170925222422094
+description: {{$:/language/Buttons/Heading4/Hint}}
+icon: $:/core/images/heading-4
+modified: 20170925222431446
+shortcuts: ((heading-4))
+tags: $:/tags/EditorToolbar
+title: $:/core/ui/EditorToolbar/heading-4
+type: text/vnd.tiddlywiki
+
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="prefix-lines"
+	character="!"
+	count="4"
+/>

@@ -1,0 +1,15 @@
+created: 20170926092435057
+modified: 20170926093014177
+tags: 
+title: Flexitype Regex Usage
+type: text/vnd.tiddlywiki
+
+Regexs are placed on a single line, with 3 parts separated by '/':
+
+/matchrule/substitutionpattern/flags
+
+Match rule is the actual regular expression, and follows the usage in javascript. Similarly the  substitution pattern follows the replace patterns found in javascript. Flags are those of javascript, g,m, etc.
+
+A sequence of rules can be included in one tiddler and each is applied after the previous.
+
+see the example below.

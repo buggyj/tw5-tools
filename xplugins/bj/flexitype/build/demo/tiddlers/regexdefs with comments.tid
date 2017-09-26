@@ -1,0 +1,12 @@
+created: 20170923151810206
+modified: 20170926160908158
+title: regexdefs with comments
+type: text/vnd.twbase;flexibility=htmlp
+
+<pre>
+1) /\///g
+2) /(\().*?(\))/$1gone$2/
+-- this is a comment, but no &#8725; characters are allowed 
+-- comments can also be placed before the first &#8725; of a regex definition
+3) /\(embbeded\)/\\\//g
+</pre>

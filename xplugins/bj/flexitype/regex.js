@@ -18,9 +18,11 @@ var doregex=function(text,fileofregexes){
 		lines = tid.split(/\n/);
 		for (n=0; n<lines.length; n++) {
 			var parts;
-			if ((parts = (lines[n].replace(/([^\\])\/|^\//g, '$1\u000B').split('\u000B'))).length !=4) break;
+			parts = lines[n].replace(/([^\\])\/|^\//g, '$1\u000B').replace(/([^\\])\//g, '$1\u000B').split('\u000B');
+			if (parts.length ==1){continue;}
+			if (parts.length !=4){break;}
 			var pattern=new RegExp(parts[1],parts[3]);
-			text = text.replace(pattern, parts[2]);
+			text = text.replace(pattern, parts[2].replace(/(\\r)?\\n/g,"\n").replace(/\\t/g,"\t").replace(/\\(.)/g, "$1"));
 		} 
 		return text;
 }

@@ -1,5 +1,5 @@
 created: 20170923154958764
-modified: 20170924091355670
+modified: 20170926163350294
 tags: 
 title: Flexitype Regex Demo
 type: text/vnd.twbase;flexibility=htmlpp
@@ -42,3 +42,9 @@ Which tells the regexparse parser to use the rules contained in the tiddler [[te
 !Limitations
 
 changes to the tiddlers defining rules do no cause refreshes of the tiddlers using the rules, a manual refresh is necessary in this case.
+
+
+!Comments
+Comments can be put with the regex commands, eg
+
+{{regexdefs with comments}}

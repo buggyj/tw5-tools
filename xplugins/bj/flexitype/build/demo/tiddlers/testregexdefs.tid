@@ -1,0 +1,9 @@
+created: 20170926162931253
+modified: 20170926163139298
+tags: 
+title: testregexdefs
+type: text/plain
+
+/\///g
+/(\().*?(\))/$1gone$2/
+/\(embbeded\)/\\\//g
