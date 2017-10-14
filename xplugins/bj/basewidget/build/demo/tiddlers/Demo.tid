@@ -1,35 +1,35 @@
-created: 20140918102511141
-modified: 20170421192040145
+created: 20170405070614853
+modified: 20171014171134036
+tags: 
 title: Demo
 type: text/vnd.tiddlywiki
 
-below is a demo of setting default params and renaming a widget using the `<$b:click>` (default name is click) widget clicking all links in a list.
-It watches for writes to tiddler specified in 'state' and clicks when the it sees the contents matches that specified by'text1' (set as default in $:/bj/modules/widgets/click.api) 
+\define rename(x:"click")
+
+<$button set="state" setTo="text">Open all tagged a</$button><$list filter="[!has[draft.of]tag[a]sort[created]]"> <$link><$$x$ state="state"/> </$link> </$list>
+
+\end
+
+
+below is a demo of the `<$click>` widget being overriden to  `<$b-click>` . The widget is used to click all links in a list which opens each tiddler in the story.
+
+The override is here: [[$:/bj/modules/widgets/click.api]], a reload is necessary to inact the change.
 
 !!Demo
-Enter taglistdemo in the box
+Enter rename of 'click' in the box
 
-<$button set="state" setTo="text">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$b-click > </$link> </$list>
+<$edit-text tiddler="$:/temp/name" tag="input" type="text"  default="click"/>
+
+<$macrocall $name="rename"  x={{$:/temp/name}}/>
 
 
 !!Demo code
 
 `
-<$button set=<<qualify "$:/state">> setTo="open">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> 
-<$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> 
-<$link><$b-click state=<<qualify "$:/state">> /> </$link> 
-</$list>
+\define rename(x:click)
+<$button set="state" setTo="text">Open all tagged a</$button><$list filter="[!has[draft.of]tag[a]sort[created]]"> <$link><$$x$ state="state"/> </$link> </$list>
+\end
+
+<$edit-text tiddler="$:/temp/name" tag="input" type="text"/>
+<$macrocall $name=rename x={{$:/temp/name}}/>
 `
-
-!!Macros
-
-I have produced 3 macros that use this widget
-
-`<<openAllTagged>>` this produces a text box for the user to enter a tag and a button to press to open all tiddlers with the tag in the  Story.
-
-
-`<<closeAllTagged>>` this produces a text box for the user to enter a tag and a button to press to close all tiddlers with the tag in the  Story.
-
-These 2 will be added to the global macros when the plugin is installed
-
-There is also a [[deleteAllTagged]] macro, due to its dangerous nature I have only included the text -  it is not suitable for using globally - If you use it at all I would advise only install it into its own tiddler.

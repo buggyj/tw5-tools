@@ -2,9 +2,9 @@
 	"title": "$:/plugins/bj/basewidget",
 	"description": "exends the widget to include rename and default params",
 	"author": "JeffreyWilkinson aka BJ",
-	"version": "1.13.4",
+	"version": "1.14.0",
 	"list": "readme license",
-	"core-version": ">=5.1.13",
+	"core-version": ">=5.1.14",
 	"source": "https://github.com/buggyj/TW5-tools",
 	"plugin-type": "plugin"
 }

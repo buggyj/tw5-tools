@@ -1,7 +1,0 @@
-created: 20170331173418899
-modified: 20170420180614417
-tags: 
-title: New Tiddler 2
-type: text/vnd.tiddlywiki
-
-{{$:/bj/modules/widgets/click.api!!name}}
