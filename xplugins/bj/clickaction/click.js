@@ -10,16 +10,27 @@ module-type: widget
 /*global $tw: false */
 "use strict";
 
-///////////////// this block enables the default params values ///////////////
-var Widget,api;
+var modname = "click";
+
+//-------this block enables the default params values and name change --------
+// *** add this var above changing to you 'default external name for the widget
+//var modname = "mywidget";
+/////////// ----------------- invariant block --------------------- ///////////
+var Widget,api,defaults;
 try {
 	Widget = require("$:/b/modules/widget/baswidget.js").basewidget;
-	api = true; 
+	defaults = $tw.utils.makevars(module);
+	modname  = $tw.utils.widgetrename(module,modname);
 } catch(e) {
 	Widget = require("$:/core/modules/widgets/widget.js").widget;
-	api = false;
+	defaults = [];
 } 
-///////////////// ------------------- end ------------------- ///////////////
+/////////// --------------- end invariant block ------------------ ///////////
+// *** add this protoype below the definition of your version of 'thisWidget'
+// *** changing the widget name to the actual name *** 
+
+//thisWidget.prototype = new Widget();
+//------------------------------ end --------------------------------------
 
 var clickWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
@@ -35,7 +46,7 @@ clickWidget.prototype = new Widget();
 /*
 expose the widgets default parameters
 */
-clickWidget.prototype.defaults = (api)? $tw.utils.makevars(module):[];
+clickWidget.prototype.defaults = defaults;
 
 /*
 Render this widget into the DOM
@@ -43,7 +54,6 @@ Render this widget into the DOM
 
 clickWidget.prototype.render = function(parent,nextSibling) {
 	var self = this;
-	if (api) this.setdefaults();
 	this.parentDomNode = parent;
 	this.computeAttributes();
 	this.execute();
@@ -53,7 +63,7 @@ clickWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 clickWidget.prototype.execute = function() {
-	this.stateTitle = this.getAttribute("state");
+	this.stateTitle = this.getAttribute("state","state");
 	this.text = this.getAttribute("text","click");
 };
 clickWidget.prototype.readState = function() {
@@ -83,6 +93,6 @@ clickWidget.prototype.refresh = function(changedTiddlers) {
 	return false;
 };
 
-var modname = (api)?$tw.utils.widgetrename(module,"click"):"click";
+
 exports[modname] = clickWidget;
 })();

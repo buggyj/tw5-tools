@@ -1,7 +1,5 @@
 /*\
 title: $:/bj/modules/widgets/click.api
-type: application/javascript
-module-type: widget
 name:click
 parameters:state:"state",text:"click"
 

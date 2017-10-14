@@ -1,5 +1,6 @@
-created: 20140918102511141
-modified: 20170404090253212
+created: 20170405065628209
+modified: 20171014182415301
+tags: 
 title: ClickAction
 type: text/vnd.tiddlywiki
 
@@ -13,16 +14,13 @@ It watches for writes to tiddler specified in 'state' and clicks when the it see
 !!Demo
 Enter taglistdemo in the box
 
-<$button set="state" setTo="text">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$click state="state" text="text"> </$link> </$list>
+<$button set="state" setTo="click">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$click state="state"/> </$link> </$list>
 
 
 !!Demo code
 
 `
-<$button set=<<qualify "$:/state">> setTo="open">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> 
-<$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> 
-<$link><$b-click state=<<qualify "$:/state">> text/> </$link> 
-</$list>
+<$button set="state" setTo="click">Open all tagged</$button> <$edit-text tiddler="$:/temp/openall" tag="input" type="text"/> <$list filter="[!has[draft.of]tag{$:/temp/openall}sort[created]]"> <$link><$click state="state"/> </$link> </$list>
 `
 
 !!Macros

@@ -1,20 +1,20 @@
 author: JeffreyWilkinson aka BJ
-core-version: >=5.1.13
-created: 20170421191746682
+core-version: >=5.1.14
+created: 20171014182737159
 dependents: 
 description: exends the widget to include rename and default params
 list: readme license
-modified: 20170421191746682
+modified: 20171014182737160
 plugin-type: plugin
 source: https://github.com/buggyj/TW5-tools
 title: $:/plugins/bj/basewidget
 type: application/json
-version: 1.13.4
+version: 1.14.0
 
 {
     "tiddlers": {
         "$:/b/modules/widget/baswidget.js": {
-            "text": "/*\\\ntitle: $:/b/modules/widget/baswidget.js\ntype: application/javascript\nmodule-type: widget\n\nallows default param vals to be set\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar Widget = require(\"$:/core/modules/widgets/widget.js\").widget;\n\nvar baseWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nbaseWidget.prototype = new Widget();\n\nbaseWidget.prototype.setvars = function(defaults) {\n\tvar self = this;\n\t$tw.utils.each(defaults,function(vari) {\n\t\tif (!!vari[\"default\"]) self.attributes[vari.name]=vari[\"default\"];\n\t});\n}\n\nbaseWidget.prototype.setdefaults = function() {\n\tthis.setvars(this.defaults);\n}\nexports[\"basewidget\"] = baseWidget;\n\n})();\n",
+            "text": "/*\\\ntitle: $:/b/modules/widget/baswidget.js\ntype: application/javascript\nmodule-type: widget\n\nallows default param vals to be set\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nvar Widget = require(\"$:/core/modules/widgets/widget.js\").widget;\n\nvar baseWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n/*\nInherit from the base widget class\n*/\nbaseWidget.prototype = new Widget();\n/*\nset the defaults (they were provided in the api tid)\n*/\nbaseWidget.prototype.initialise = function(parseTreeNode,options) {\n\tWidget.prototype.initialise.call(this,parseTreeNode,options);\n\tthis.setdefaults();\n}\n/*\nexpose the widgets default parameters\n*/\nbaseWidget.prototype.defaults = [];\n\nbaseWidget.prototype.setvars = function(defaults) {\n\tvar self = this;\n\t$tw.utils.each(defaults,function(vari) {\n\t\tif (!!vari[\"default\"]) self.attributes[vari.name]=vari[\"default\"];\n\t});\n}\n\t\nbaseWidget.prototype.setdefaults = function() {\n\tthis.setvars(this.defaults);\n}\nexports[\"basewidget\"] = baseWidget;\n\n})();\n",
             "title": "$:/b/modules/widget/baswidget.js",
             "type": "application/javascript",
             "module-type": "widget"
