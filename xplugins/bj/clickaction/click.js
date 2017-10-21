@@ -29,7 +29,7 @@ try {
 // *** add this protoype below the definition of your version of 'thisWidget'
 // *** changing the widget name to the actual name *** 
 
-//thisWidget.prototype = new Widget();
+//thisWidget.prototype.defaults = defaults;
 //------------------------------ end --------------------------------------
 
 var clickWidget = function(parseTreeNode,options) {
@@ -66,6 +66,7 @@ clickWidget.prototype.execute = function() {
 	this.stateTitle = this.getAttribute("state","state");
 	this.text = this.getAttribute("text","click");
 };
+
 clickWidget.prototype.readState = function() {
 	// Read the information from the state tiddler
 	if(this.stateTitle) {
