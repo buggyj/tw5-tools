@@ -1,9 +1,9 @@
 /*\
-title: $:/core/modules/filters/tibsub.js
+title: $:/core/modules/filters/tagsub.js
 type: application/javascript
 module-type: filteroperator
 
-Filter operator for checking for the presence of a subtid
+Filter operator for checking for the presence of a tag
 
 \*/
 (function(){
@@ -15,22 +15,24 @@ Filter operator for checking for the presence of a subtid
 /*
 Export our filter function
 */
+var myHasTag = function(tiddler,op) {
 
-function is(tiddler,x) {
-	return tiddler.fields.title == x;
-}
+ if(!op&&(!tiddler.hasField("tags")||tiddler.fields.tags=='')) {return true;}
+	return tiddler.hasTag(op);
+};
 
-exports.tidsub = function(source,operator,options) {
+
+exports.tagsub = function(source,operator,options) {
 	var results = {};
 	if(operator.prefix === "!") {
 		source(function(tiddler,title) {
-			if(tiddler && !is(tiddler,operator.operand)) {
+			if(tiddler && !myHasTag(tiddler,operator.operand)) {
 				results[title] = tiddler;
 			}
 		});
 	} else {
 		source(function(tiddler,title) {
-			if(tiddler && is(tiddler,operator.operand)) {
+			if(tiddler && myHasTag(tiddler,operator.operand)) {
 				results[title] = tiddler;
 			}
 		});
@@ -45,4 +47,4 @@ exports.tidsub = function(source,operator,options) {
 	}
 };
 
-})()
+})();
