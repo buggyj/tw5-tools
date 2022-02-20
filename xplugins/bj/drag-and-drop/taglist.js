@@ -52,6 +52,7 @@ TagListWidget.prototype.execute = function() {
 	this.editTemplate = this.getAttribute("editTemplate");
 	this.variableName = this.getAttribute("variable","currentTiddler");
 	this.nodrop = this.getAttribute("nodrop");
+	this.noadd = this.getAttribute("noadd");
 	this.htmltag = this.getAttribute("htmltag");
 	this.static = this.getAttribute("static"); 
 	this.listtag=this.getAttribute("targeTtag",this.getVariable("currentTiddler"));
@@ -139,7 +140,7 @@ TagListWidget.prototype.makeItemTemplate = function(title) {
 	}
 	// Return the list item
 	if (this.nodrop) return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:null};
-	return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:this.listtag, htmltag:this.htmltag};
+	return {type: "taglistitem", itemTitle: title, variableName: this.variableName, children: templateTree, listtag:this.listtag, htmltag:this.htmltag, noadd:this.noadd};
 };
 
 /*
@@ -352,6 +353,7 @@ exports.taglist = TagListWidget;
 var TagListItemWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 	this.nodrop = this.parseTreeNode.listtag;
+	this.noadd = this.parseTreeNode.noadd;
 };
 
 /*
@@ -377,6 +379,11 @@ TagListItemWidget.prototype.handleDropEvent  = function(event) {
 	}
 	if (!!returned.name) { //only handle tiddler drops
 		 if (!returned.onList) { //this means tiddler does not have the tag
+                 if (this.noadd=="true"){ 
+		              this.cancelAction(event);
+		              self.dispatchEvent({type: "tm-dropHandled", param: null});
+		              return;
+	              }      
 			 this.addTag(returned.name);
 		 }
 		 this.parentWidget.setTiddlerList(returned.name, this.parseTreeNode.itemTitle);
