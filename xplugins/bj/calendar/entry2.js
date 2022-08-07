@@ -30,7 +30,7 @@ Run the macro
 */
 
 exports.run = function(year, month,opts) {
-	var tags = $tw.wiki.getTiddlerText("$:/config/NewJournal/Tags");
+	var tags = ($tw.wiki.getTiddlerText("$:/config/NewJournal/Tags")||"").trim();
 	if (!opts) opts = "diary";
 	return '<$ifnew fields="""{"tags":"'+tags+'"}""">' +
 	'<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" opts="'+opts+'" $refresh="calendarrefresh"/>'+ '</$ifnew>';

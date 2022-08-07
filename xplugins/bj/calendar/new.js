@@ -71,12 +71,18 @@ IfNewWidget.prototype.handleNavigateEvent = function(event) {
 		fds=JSON.parse(this.fields);
 	} catch(e) {
 		fds={};
+		if (this.fields) fds.fields=this.fields;	
 	}
 	fds.title = event.navigateTo;
+	$tw.utils.each(this.attributes,function(attribute,name) {
+		if(name.charAt(0) !== "$" && name!=="fields") {
+			fds[name] = attribute;
+		}
+	});
 	if(this.parentWidget) {
 		this.parentWidget.dispatchEvent({
 			type: "tm-new-tiddler",
-			param: fds
+			paramObject: fds
 		});
 	}
 	return false;

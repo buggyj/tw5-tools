@@ -21,6 +21,13 @@
 		"highlightThisDay":"no",
 		"highlightLinks":"yes"
 	},
+	"newdiary":{
+		"lastDayOfWeek":"0",
+		"formatter":"$:/macros/bj/Calendar/newdiary.js",
+		"titlebold":"yes",
+		"highlightThisDay":"no",
+		"highlightLinks":"yes"
+	},
 	"plain":{
 		"lastDayOfWeek":"0",
 		"formatter":"",
