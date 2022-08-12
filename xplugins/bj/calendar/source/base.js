@@ -30,9 +30,14 @@ Run the macro
 */
 
 exports.run = function(year, month,opts) {
+var options,optid,extraopts;
 if (!opts) opts="default";
-var options = $tw.wiki.getTiddlerData("$:/config/bj/Calendar.json")[opts]||
+
+optid = "$:/config/bj/CalendarOpts/"+opts;
+extraopts =  $tw.wiki.getTiddlerData(optid)||{};
+options =$tw.wiki.getTiddlerData("$:/config/bj/Calendar.json")[opts]||
 				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightThisDay:"",highlightThisDate:""};
+options = Object.assign(options, extraopts);				
 var createMonth;
 try {
 	createMonth = require(options.formatter).createMonth;
