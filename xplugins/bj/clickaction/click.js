@@ -65,14 +65,17 @@ Compute the internal state of the widget
 clickWidget.prototype.execute = function() {
 	this.stateTitle = this.getAttribute("state","state");
 	this.text = this.getAttribute("text","click");
+    this.match=(this.getAttribute("mode","match")==="match");
+	this.delay = 1*(this.getAttribute("delay","0"));
 };
-
 clickWidget.prototype.readState = function() {
+var self=this;
 	// Read the information from the state tiddler
 	if(this.stateTitle) {
 		var state = this.wiki.getTextReference(this.stateTitle,this["default"],this.getVariable("currentTiddler"));
-		if (state === this.text) {
-			this.parentDomNode.click();
+		if (( this.match&&state === this.text)||(!this.match&&state !== this.text)) {
+			if (this.delay == 0) this.parentDomNode.click();
+            else setTimeout(function(){self.parentDomNode.click();},this.delay);
 		return false;	
 		}
 
@@ -96,4 +99,5 @@ clickWidget.prototype.refresh = function(changedTiddlers) {
 
 
 exports[modname] = clickWidget;
+exports["bj/"+modname] = clickWidget;
 })();
