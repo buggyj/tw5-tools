@@ -1,6 +1,0 @@
-tags: $:/tags/Macro
-title: $:/bj/macros/Calendar/diarydetsmacro
-
-\define diarydets(i,tiddlerDate,rawDate,tags)
- <$ifnew tags="""$tags$"""> [[$i$|$tiddlerDate$]]</$ifnew>
-\end
