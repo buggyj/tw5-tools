@@ -1,5 +1,5 @@
 /*\
-title: $:/macros/bj/Calendar/newdiary.js
+title: $:/macros/bj/Calendar/diaryext.js
 type: application/javascript
 module-type: global
 \*/
@@ -20,17 +20,22 @@ var createMonth= function(mnth,year,options){
 	return month;
 }
 function createDate(i,mnth,year,options){
-	var strong='',rawDate,tiddlerDate,format = $tw.wiki.getTiddlerText("$:/config/NewJournal/Title") || "YYYY MM DD";
-var tags = ($tw.wiki.getTiddlerText("$:/config/NewJournal/Tags")||"").trim();
-var macro="diarydets";
+	var divend="",div='',tiddlerDate,format = $tw.wiki.getTiddlerText("$:/config/NewJournal/Title") || "YYYY MM DD";
 	var date=(new Date(year, mnth-1, i));
-	if (options.highlightLinks=="yes") strong ='!';
-	if(options["$macro"]) macro=options["$macro"];
+
 	tiddlerDate = $tw.utils.formatDateString(date,format);
-    rawDate= $tw.utils.formatDateString(date,"YYYY0MM0DD");
-   
-	if ($tw.wiki.getTiddler(tiddlerDate))return centre(strong+'<<'+macro+' ' + i +' """'+ tiddlerDate+'""" '+rawDate+' '+tags+'>>');
-	return  centre('<<'+macro+' ' + i +' """'+ tiddlerDate+'""" '+rawDate+' '+tags+'>>');
+	if ($tw.wiki.getTiddler(tiddlerDate)!==undefined){
+	div ='@@.bj-diary-exists @@';
+	divend='';
+return centre(div+'[['+i+'|'+tiddlerDate+']]'+divend);
+}
+ else  	if ((options.highlightThisDate=="yes") &&(date.toDateString()===Calendar.toDateString())) {
+	div ='@@.bj-diary-today @@';
+	divend='';
+return centre(div+'[['+i+'|'+tiddlerDate+']]'+divend);
+	}
+
+	return  centre('[['+i+'|'+tiddlerDate+']]');
 }
 function daysInMonth(iMonth, iYear){
 		return 32 - new Date(iYear, iMonth-1, 32).getDate();
@@ -38,4 +43,3 @@ function daysInMonth(iMonth, iYear){
 function centre (x){ return ' '+x+' ';}
 exports.createMonth = createMonth;
 })();
-

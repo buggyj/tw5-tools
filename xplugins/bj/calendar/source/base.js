@@ -3,11 +3,7 @@ title: $:/macros/buggyj/Calendar/base.js
 type: application/javascript
 module-type: macro
 
-<<diary year month>>
-<<diary year>> - year calendar
-<<diary>> - this month
 
-Options:$:/macros/diary/options.json
 \*/
 (function(){
 
@@ -23,21 +19,24 @@ CAL demo
 exports.name = "calendarbase";
 
 exports.params = [
-	{ name: "year" },{ name: "month" },{ name: "opts" }
+	{ name: "year" },{ name: "month" },{ name: "name" },{ name: "opts" }
 ];
 /*
 Run the macro
 */
 
-exports.run = function(year, month,opts) {
-var options,optid,extraopts;
-if (!opts) opts="default";
-
-optid = "$:/config/bj/CalendarOpts/"+opts;
-extraopts =  $tw.wiki.getTiddlerData(optid)||{};
-options =$tw.wiki.getTiddlerData("$:/config/bj/Calendar.json")[opts]||
+exports.run = function(year, month ,name, opts) {
+var options,optid, overrides;
+var optjson = $tw.wiki.getTiddlerData("$:/config/bj/Calendar.json");
+options =$tw.wiki.getTiddlerData("$:/config/bj/CalendarOpts/"+name)||optjson[name]||
 				{lastDayOfWeek:"6",formatter:"",titlebold:"",highlightThisDay:"",highlightThisDate:""};
-options = Object.assign(options, extraopts);				
+
+if (opts) {
+	optid = "$:/config/bj/CalendarOpts/"+opts;
+	overrides =  $tw.wiki.getTiddlerData(optid);
+	if (!overrides) overrides =optjson[opts]||{};
+	options = Object.assign(options, overrides);
+}				
 var createMonth;
 try {
 	createMonth = require(options.formatter).createMonth;
@@ -67,7 +66,9 @@ var WEEKFIN = parseInt(options.lastDayOfWeek);
 var MONTHS_IN_YEAR=12;					
                            
 var lf ='\n';
-var cal='<div>'+lf+lf; 
+var cal='<div>'+lf+lf; console.log (options) 
+var classes = options["$class"] + " " + options["$classplus"];
+if (options["$class"]) cal += "|"+classes+"|k" + lf; 
 var ayear=thisyear;
 if (!!month) {
 	if (!!year) {
@@ -80,8 +81,18 @@ if (!!month) {
 			cal+=titleOfYear(year); 
 		options.seperateYearHeading = 'yes';
 		ayear=year; 
-		for(var i=0; i<MONTHS_IN_YEAR; i+=2)
-			cal+=splicetable(calendar (i+1,ayear,options),calendar (i+2,ayear,options));
+        if (options.ncols=='1') for(var i=0; i<MONTHS_IN_YEAR; i+=1) cal+=calendar (i+1,thisyear,options);	
+		else if (options.ncols=='3') for(var i=0; i<MONTHS_IN_YEAR; i+=3) {
+var cal2=splicetable(calendar (i+1,ayear,options),calendar (i+2,ayear,options),"||||||||","||||||||");
+ cal+=splicetable(cal2,calendar (i+3,ayear,options),"||||||||"+"||||||||","||||||||");
+}
+else if (options.ncols=='4') for(var i=0; i<MONTHS_IN_YEAR; i+=4) {
+var cal2=splicetable(calendar (i+1,ayear,options),calendar (i+2,ayear,options),"||||||||","||||||||");
+var cal3=splicetable(calendar (i+3,ayear,options),calendar (i+4,ayear,options),"||||||||","||||||||");
+ cal+=splicetable(cal2,cal3,"||||||||"+"||||||||","||||||||"+"||||||||");
+}
+else for(var i=0; i<MONTHS_IN_YEAR; i+=2)  cal+=splicetable(calendar (i+1,ayear,options),calendar (i+2,ayear,options),"||||||||","||||||||");
+
 	}
 	else {
 			cal+=calendar (thismonth,thisyear,options);	
@@ -92,7 +103,7 @@ return cal+lf+lf+'</div>';
 function calendar (mnth,year,options){
     var month =	createMonth(mnth,year,options);
     var blankdays = (firstDayInMonth(mnth,year)+13-WEEKFIN)%7;
-	return titleOfMonth(mnth,year)+createWeekHeading()+
+	return titleOfMonth(mnth,year)+((!options['$noweekdays'])?createWeekHeading():'')+
 	       formatAsMonth(month,blankdays);
 }
 function titleOfMonth(mth,year) {
@@ -104,7 +115,7 @@ function titleOfMonth(mth,year) {
 }
 
 function titleOfYear(year) {
-		return '|>|>|>|>|>|>|>|'+ centre('!'+year) +'|<|<|<|<|<|<|<|'+lf;
+		return  '|>|>|>|>|>|>|>|'+ '>|>|>|>|>|>|>|>|'+ centre('!'+year) +'|<|<|<|<|<|<|<' +'|<|<|<|<|<|<|<|<|'+lf;
 }
 function centre (x){ return ' '+x+' ';}
 
@@ -123,6 +134,7 @@ function createWeekHeading(){
 		var daystitle=[],weekdays= day_of_week.slice(0);
 		// highlight today's day of week
 		if (options.highlightThisDay=='yes')weekdays[thisday] ='!'+weekdays[thisday];
+if (options.DaysSmall=='yes')for (var i=0;i < weekdays.length; i++) weekdays[i] =weekdays[i][0];
 		for (var i=0;i < weekdays.length; i++) daystitle[i] =centre(weekdays[(i+1+WEEKFIN)%7]);
 		return '|'+daystitle.join('|')+'|'+lf; 
 }
@@ -132,12 +144,12 @@ function daysInMonth(iMonth, iYear){
 function firstDayInMonth(iMonth, iYear){
 		return new Date(iYear, iMonth-1, 1).getDay();
 	} 
-function splicetable (a,b) {
+function splicetable (a,b,sep1,sep2) {
 	var i,cal='',taba =a.split('\n'),tabb=b.split('|\n');
 	var limit=(taba.length<tabb.length)?taba.length:tabb.length;//shortest
 	for (i=0;i<limit-1;i++) 		cal+=taba[i]+tabb[i]+'|'+lf;	 
-	for (;i < taba.length-1;i++) 	cal+=taba[i]+"||||||||"+lf;
-	for (;i < tabb.length-1;i++) 	cal+="||||||||"+tabb[i]+lf;
+	for (;i < taba.length-1;i++) 	cal+=taba[i]+sep2+lf;
+	for (;i < tabb.length-1;i++) 	cal+=sep1+tabb[i]+'|'+lf;
 	return cal;
 }		   
 }  

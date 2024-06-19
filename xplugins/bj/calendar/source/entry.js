@@ -28,9 +28,10 @@ exports.params = [
 /*
 Run the macro
 */
-
+var name = "default";
 exports.run = function(year, month,opts) {
-return '<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" opts="'+opts+'" $refresh="calendarrefresh"/>';
+if (!opts) opts = "";
+return '<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" name="'+name+'" opts="'+opts+'" $refresh="calendarrefresh"/>';
 }
 
 })();

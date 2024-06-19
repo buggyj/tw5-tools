@@ -1,0 +1,26 @@
+title: $:/bj/calendarcss
+tags: $:/tags/Stylesheet
+type: text/plain
+
+table.bj-diary-table td:has(.bj-diary-exists) { 
+	background-color: var(--bj-calcol-exists, lightgrey);
+	font-weight: bold;
+} 
+
+table.bj-diary-table td:has(.bj-diary-today) { 
+	background-color: var(--bj-calcol-today, khaki);
+	font-weight: bold;
+} 
+
+table.bj-diary-table tr:has(.row) { 
+	background-color: yellow;
+    color: red;
+} 
+
+table.bj-diary-table   th {
+	background-color:var(--bj-calcol-heading, lightgrey); 
+}
+
+table.bj-diary-table  td {
+	background-color:var(--bj-calcol-cell, transparent); 
+}

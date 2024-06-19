@@ -1,0 +1,13 @@
+title: $:/config/bj/CalendarOpts/newdiary
+type: application/x-tiddler-dictionary
+
+lastDayOfWeek:0
+formatter:$:/macros/bj/Calendar/newdiary.js
+titlebold:yes
+highlightThisDay:no
+highlightLinks:yes
+$extrefresh:yes
+$macro:diarydets
+$class:bj-cal-table
+$classplus:bj-cal-palette
+$extrefresh:yes

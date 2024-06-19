@@ -1,0 +1,65 @@
+title: $:/bj/heatmapcss
+tags: $:/tags/Stylesheet
+type: text/plain
+
+table.bj-heatmap-table   th {
+	background-color:var(--bj-calcol-heading, lightgrey); 
+	font-weight: bold;apect-ratio:1/1;
+}
+
+table.bj-heatmap-table  td {
+	background-color:var(--bj-calcol-cell, transparent); 
+	font-weight: bold;apect-ratio:1/1;
+
+}
+table.bj-heatmap-table      tr {
+            height: 15px;
+        }
+
+table.bj-heatmap-table  td:has(.bj-heatmap-today) { 
+		background-color: var(--bj-calcol-today, khaki);
+} 
+table.bj-heatmap-table td:has(.bj-mapclass-0) { 
+	background-color: var(--bj-mapcolor-0, lightgrey);
+} 
+table.bj-heatmap-table td:has(.bj-mapclass-1) { 
+	background-color: var(--bj-mapcolor-1, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-2) { 
+	background-color: var(--bj-mapcolor-2, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-3) { 
+	background-color: var(--bj-mapcolor-3, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-4) { 
+	background-color: var(--bj-mapcolor-4, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-5) { 
+	background-color: var(--bj-mapcolor-5, lightgrey);
+}
+
+table.bj-heatmap-table td:has(.bj-mapclass-6) { 
+	background-color: var(--bj-mapcolor-6, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-7) { 
+	background-color: var(--bj-mapcolor-7, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-8) { 
+	background-color: var(--bj-mapcolor-8, lightgrey);
+} 
+
+table.bj-heatmap-table td:has(.bj-mapclass-9) { 
+	background-color: var(--bj-mapcolor-9, lightgrey);
+} 
+
+
+
+table.bj-heatmap-table td:empty {
+ border-style : hidden!important;
+}

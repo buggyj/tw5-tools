@@ -1,0 +1,25 @@
+title: $:/bj/calcolcss
+tags: $:/tags/Stylesheet
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline
+
+.bj-cal-pastel    {
+--bj-calcol-today: gold;
+--bj-calcol-exists: pink;
+--bj-calcol-heading: powderblue;
+--bj-calcol-cell: khaki;
+}
+
+.bj-cal-bright    {
+--bj-calcol-today: yellow;
+--bj-calcol-exists: magenta;
+--bj-calcol-heading: cyan;
+--bj-calcol-cell: white;
+}
+
+.bj-cal-palette    {
+--bj-calcol-today: <<colour alert-background>>;
+--bj-calcol-exists: <<colour tag-background>>;
+--bj-calcol-heading: <<colour table-header-background>>;
+--bj-calcol-cell: transparent;
+}

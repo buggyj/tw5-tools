@@ -28,12 +28,12 @@ exports.params = [
 /*
 Run the macro
 */
-
+var name = "default";
 exports.run = function(year, month,opts) {
 	var tags = ($tw.wiki.getTiddlerText("$:/config/NewJournal/Tags")||"").trim();
-	if (!opts) opts = "diary";
+	if (!opts) opts = "";
 	return '<$ifnew fields="""{"tags":"'+tags+'"}""">' +
-	'<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" opts="'+opts+'" $refresh="calendarrefresh"/>'+ '</$ifnew>';
+	'<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" name="'+name+'" opts="'+opts+'" $refresh="calendarrefresh"/>'+ '</$ifnew>';
 }
 
 })();

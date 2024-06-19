@@ -1,0 +1,14 @@
+title: $:/config/bj/CalendarOpts/heatmap
+type: application/x-tiddler-dictionary
+
+lastDayOfWeek:0
+formatter:$:/macros/bj/Calendar/newdiary.js
+titlebold:yes
+highlightThisDay:no
+highlightLinks:no
+$macro:heatmapdets
+$class:bj-heatmap-table
+$classplus:bj-map-palette
+DaysSmall:yes
+$noweekdays:yes
+ncols:4

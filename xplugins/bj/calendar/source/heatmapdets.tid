@@ -1,0 +1,11 @@
+tags: $:/tags/Macro
+title: $:/plugins/bj/calendar/heatmapdets
+type: text/vnd.tiddlywiki
+
+\procedure heatmapdets(i,tiddlerDate,rawDate,tags)
+<$set name=num value={{{ [sameday:created<rawDate>] +[count[]compare:number:gt[0]else[0]compare:number:lt[8]else[8]]}}}>
+<$vars n=`@@.bj-heatmap-exists.bj-mapclass-$(num)$ @@` >
+&nbsp;
+</$vars>
+</$set>
+\end

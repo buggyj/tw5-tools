@@ -1,0 +1,11 @@
+title: $:/config/bj/CalendarOpts/diaryext
+type: application/x-tiddler-dictionary
+
+lastDayOfWeek:0
+formatter:$:/macros/bj/Calendar/diaryext.js
+titlebold:yes
+highlightThisDay:yes
+highlightThisDate:yes
+$class:bj-diary-table
+$classplus:bj-cal-palette
+$extrefresh:yes

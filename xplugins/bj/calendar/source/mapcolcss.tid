@@ -1,0 +1,16 @@
+title: $:/bj/mapcolcss
+tags: $:/tags/Stylesheet
+type: text/plain
+
+.bj-map-palette    {
+--bj-mapcolor-0 :black;
+--bj-mapcolor-1: hsl(300 47 25);
+--bj-mapcolor-2: hsl(247 100 45);
+--bj-mapcolor-3: hsl(216 100 45);
+--bj-mapcolor-4: hsl(200 100 48);
+--bj-mapcolor-5: hsl(160 100 40);
+--bj-mapcolor-6: hsl(96 100 60);
+--bj-mapcolor-7: hsl(68 100 50);
+--bj-mapcolor-8: hsl(60 100 70);
+--bj-mapcolor-9: hsl(50 100 92);
+}

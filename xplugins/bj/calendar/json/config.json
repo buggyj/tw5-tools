@@ -7,6 +7,16 @@
 		"highlightThisDay":"no",
 		"highlightThisDate":"yes"
 	},
+	"diaryplus":{
+		"lastDayOfWeek":"0",
+		"formatter":"$:/macros/bj/Calendar/diaryplus.js",
+		"titlebold":"yes",
+		"highlightThisDay":"yes",
+		"highlightThisDate":"yes",
+		"$class":"bj-cal-table",
+		"$classplus":"bj-cal-palette",
+		"$extrefresh":"yes"
+	},
 	"default":{
 		"lastDayOfWeek":"0",
 		"formatter":"$:/macros/bj/Calendar/journalslinked.js",
@@ -21,12 +31,13 @@
 		"highlightThisDay":"no",
 		"highlightLinks":"yes"
 	},
-	"newdiary":{
+	"diarytoday":{
 		"lastDayOfWeek":"0",
-		"formatter":"$:/macros/bj/Calendar/newdiary.js",
+		"formatter":"$:/macros/bj/Calendar/diarytoday.js",
 		"titlebold":"yes",
 		"highlightThisDay":"no",
-		"highlightLinks":"yes"
+		"highlightLinks":"yes",
+		"highlightThisDate":"yes"
 	},
 	"plain":{
 		"lastDayOfWeek":"0",

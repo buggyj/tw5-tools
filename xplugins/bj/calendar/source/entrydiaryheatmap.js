@@ -1,5 +1,5 @@
 /*\
-title: $:/bj/macros/if/Calendar/newdiary.js
+title: $:/bj/macros/if/Calendar/heatmap.js
 type: application/javascript
 module-type: macro
 

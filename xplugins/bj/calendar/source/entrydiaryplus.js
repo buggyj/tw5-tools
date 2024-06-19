@@ -1,9 +1,8 @@
 /*\
-title: $:/bj/macros/if/Calendar/newdiary.js
+title: $:bj/macro/if/Calendar/diaryplus.js
 type: application/javascript
 module-type: macro
 
-Options: $:/config/bj/CalendarOpts/'name'
 \*/
 (function(){
 
@@ -11,14 +10,20 @@ Options: $:/config/bj/CalendarOpts/'name'
 /*global $tw: false */
 "use strict";
 
-var name = module.id.replace(/^[\s\S]*\/([^\/]*)\.js$/,"$1");//the part of tid name between last / and .js
+/*
+Information about this macro
+CAL demo
+*/
 
-exports.name = name;
+exports.name = "diaryplus";
 
 exports.params = [
 	{ name: "year" },{ name: "month" },{ name: "opts" }
 ];
-
+/*
+Run the macro
+*/
+var name="diaryplus";
 exports.run = function(year, month,opts) {
 	if (!opts) opts = "";
 	return '<$macrorefresh $name="calendarbase" year="'+year+'" month="'+month+'" name="'+name+'" opts="'+opts+'" $refresh="calendarrefresh"/>';
@@ -26,3 +31,4 @@ exports.run = function(year, month,opts) {
 }
 
 })();
+
