@@ -297,7 +297,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json,imagepath,format,updater){
 		self = this;
 		if (!!this.forSaving)this.forSaving();
 		this.$('jformMessage').innerHTML=x
-		setTimeout("self.$('jformMessage').innerHTML=''",1500)
+		setTimeout(()=>{document.getElementById('jformMessage').innerHTML=''},500)
 	}
 	JSONeditor.treeBuilder.prototype.changeJsonDataType=function(x,f){
 		this.jTypeChanged=true

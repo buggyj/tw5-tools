@@ -2,6 +2,6 @@ title: $:/plugins/bj/jsoneditor/options.json
 type: application/json
 
 {
-"onkeyupdate":"no",
+"onkeyupdate":"yes",
 "format":2
 }
