@@ -499,7 +499,7 @@ JSONeditor.treeBuilder=function(treeDivName,f,json,imagepath,format,updater){
 					if(j=="vertLine"){break};
 					var img=document.createElement('img');
 					var k=(m.first && j.indexOf('Node')>=0)?j+'First':j;
-					img.src="data:image/png;base64,"+ $tw.wiki.getTiddlerText(im.path+(im[k]?im[k]:k+'.gif'));
+					img.src="data:image/png;base64,"+ $tw.wiki.getTiddlerText(im.path+(im[k]?im[k]:k+'.gif'),"");
 					img.style.display="none";
 					img.style.verticalAlign="middle";
 					img.id=m.id+"_"+j;
