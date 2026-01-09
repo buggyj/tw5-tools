@@ -11,3 +11,5 @@ $macro:diarydets
 $class:bj-cal-table
 $classplus:bj-cal-palette
 $extrefresh:yes
+$summary:yes
+$summarymacro:summarydets

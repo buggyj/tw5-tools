@@ -32,6 +32,15 @@ var macro="diarydets";
 	if ($tw.wiki.getTiddler(tiddlerDate))return centre(strong+'<<'+macro+' ' + i +' """'+ tiddlerDate+'""" '+rawDate+' '+tags+'>>');
 	return  centre('<<'+macro+' ' + i +' """'+ tiddlerDate+'""" '+rawDate+' '+tags+'>>');
 }
+
+
+
+exports.createSummary = function (mnth,year,options){
+    var macro="summarydets";
+	if(!!options["$summarymacro"]) macro=options["$summarymacro"];
+	return  centre('<<'+macro+' '+mnth+' '+year+'>>');
+}
+
 function daysInMonth(iMonth, iYear){
 		return 32 - new Date(iYear, iMonth-1, 32).getDate();
 	}

@@ -2,7 +2,7 @@
 	"title": "$:/plugins/bj/Calendar",
 	"description": "calendar with date formatter addons",
 	"author": "JeffreyWilkinson",
-	"version": "2.2.5",
+	"version": "2.2.6",
 	"list": "readme license",
 	"core-version": ">=5.2.4",
 	"source": "https://github.com/buggyj/TW5-tools",

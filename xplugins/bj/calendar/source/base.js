@@ -37,8 +37,9 @@ if (opts) {
 	if (!overrides) overrides =optjson[opts]||{};
 	options = Object.assign(options, overrides);
 }				
-var createMonth;
+var createMonth,createSummary;
 try {
+    createSummary =  require(options.formatter).createSummary
 	createMonth = require(options.formatter).createMonth;
 } catch (e) {
 	createMonth= function(mnth,year){
@@ -103,8 +104,7 @@ return cal+lf+lf+'</div>';
 function calendar (mnth,year,options){
     var month =	createMonth(mnth,year,options);
     var blankdays = (firstDayInMonth(mnth,year)+13-WEEKFIN)%7;
-	return titleOfMonth(mnth,year)+((!options['$noweekdays'])?createWeekHeading():'')+
-	       formatAsMonth(month,blankdays);
+	return titleOfMonth(mnth,year)+((!!options['$summarymacro'])?addSummary(mnth,year,options):'')+((!options['$noweekdays'])?createWeekHeading():'')+ formatAsMonth(month,blankdays);
 }
 function titleOfMonth(mth,year) {
 	if (!!options.seperateYearHeading ) {
@@ -129,6 +129,9 @@ function formatAsMonth(month,blankdays){
 	}
 	if (theday !== 6) cal += blank[7 - theday] + lf;//pad out rest of week, if needed
 	return cal ;
+}
+function addSummary(mnth,year,options){
+		return '|>|>|>|'+createSummary(mnth,year,options) +'|<|<|<|'+lf;
 }
 function createWeekHeading(){
 		var daystitle=[],weekdays= day_of_week.slice(0);
